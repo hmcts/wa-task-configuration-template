@@ -1,5 +1,5 @@
 server:
-  port: 4550
+  port: 4551
 
 management:
   endpoint:
@@ -13,4 +13,4 @@ management:
 
 spring:
   application:
-    name: ia-task-configuration
+    name: wa-task-configuration-template

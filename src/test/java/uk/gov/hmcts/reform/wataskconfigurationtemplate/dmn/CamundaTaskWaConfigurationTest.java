@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.iataskconfiguration.dmn;
+package uk.gov.hmcts.reform.wataskconfigurationtemplate.dmn;
 
 import lombok.Builder;
 import lombok.Value;
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import uk.gov.hmcts.reform.iataskconfiguration.DmnDecisionTableBaseUnitTest;
+import uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTableBaseUnitTest;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,20 +22,20 @@ import static java.util.Collections.emptyMap;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static uk.gov.hmcts.reform.iataskconfiguration.DmnDecisionTable.WA_TASK_CONFIGURATION_IA_ASYLUM;
+import static uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTable.WA_TASK_CONFIGURATION_WA_WACASETYPE;
 
-class CamundaTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
+class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = WA_TASK_CONFIGURATION_IA_ASYLUM;
+        CURRENT_DMN_DECISION_TABLE = WA_TASK_CONFIGURATION_WA_WACASETYPE;
     }
 
     @Test
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(6));
+        assertThat(logic.getRules().size(), is(5));
     }
 
     @SuppressWarnings("checkstyle:indentation")
@@ -68,32 +68,45 @@ class CamundaTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
         )));
     }
 
-   @Test
+    @Test
     void when_caseData_then_return_expected_case_management_category() {
         String refusalOfEuLabel = "Refusal of application under the EEA regulations";
         String revocationLabel = "Revocation of a protection status";
-        List<Map<String,Object>> caseManagementCategories = List.of(Map.of(
-            "value", Map.of("code","refusalOfHumanRights","label","Refusal of a human rights claim"),
-            "list_items", List.of(Map.of("code","refusalOfHumanRights","label","Refusal of a human rights claim"))
-        ),
+        List<Map<String, Object>> caseManagementCategories = List.of(
             Map.of(
-                "value", Map.of("code","refusalOfEu","label","Refusal of application under the EEA regulations"),
-                "list_items", List.of(Map.of("code","refusalOfEu","label",refusalOfEuLabel))),
+                "value",
+                Map.of("code", "refusalOfHumanRights", "label", "Refusal of a human rights claim"),
+                "list_items",
+                List.of(Map.of("code", "refusalOfHumanRights", "label", "Refusal of a human rights claim"))
+            ),
             Map.of(
-                "value", Map.of("code","deprivation","label","Deprivation of citizenship"),
-                "list_items", List.of(Map.of("code","deprivation","label","Deprivation of citizenship"))),
+                "value", Map.of("code", "refusalOfEu", "label", "Refusal of application under the EEA regulations"),
+                "list_items", List.of(Map.of("code", "refusalOfEu", "label", refusalOfEuLabel))
+            ),
             Map.of(
-                "value", Map.of("code","protection","label","Refusal of protection claim"),
-                "list_items", List.of(Map.of("code","protection","label","Refusal of protection claim"))),
+                "value", Map.of("code", "deprivation", "label", "Deprivation of citizenship"),
+                "list_items", List.of(Map.of("code", "deprivation", "label", "Deprivation of citizenship"))
+            ),
             Map.of(
-                "value", Map.of("code","revocationOfProtection","label","Revocation of a protection status"),
-                "list_items", List.of(Map.of("code","revocationOfProtection","label",revocationLabel)))
+                "value", Map.of("code", "protection", "label", "Refusal of protection claim"),
+                "list_items", List.of(Map.of("code", "protection", "label", "Refusal of protection claim"))
+            ),
+            Map.of(
+                "value", Map.of("code", "revocationOfProtection", "label", "Revocation of a protection status"),
+                "list_items", List.of(Map.of("code", "revocationOfProtection", "label", revocationLabel))
+            )
         );
 
-        List<String> expectedCaseManagementCategories = List.of("Human rights","EEA","DoC","Protection","Revocation");
+        List<String> expectedCaseManagementCategories = List.of(
+            "Human rights",
+            "EEA",
+            "DoC",
+            "Protection",
+            "Revocation"
+        );
 
         for (int i = 0; i < caseManagementCategories.size(); i++) {
-            Map<String,Object> caseManagementCategory = caseManagementCategories.get(i);
+            Map<String, Object> caseManagementCategory = caseManagementCategories.get(i);
             VariableMap inputVariables = new VariableMapImpl();
             Map<String, Object> caseData = new HashMap<>(); // allow null values
             caseData.put("caseManagementCategory", caseManagementCategory);
@@ -139,9 +152,9 @@ class CamundaTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
                     "baseLocation", "some other location"
                 ),
                 "staffLocation", "some other location name",
-                "caseManagementCategory",  Map.of(
-                    "value", Map.of("code","refusalOfHumanRights","label","Refusal of a human rights claim"),
-                    "list_items", List.of(Map.of("code","refusalOfHumanRights","label",refusalOfEuLabel))
+                "caseManagementCategory", Map.of(
+                    "value", Map.of("code", "refusalOfHumanRights", "label", "Refusal of a human rights claim"),
+                    "list_items", List.of(Map.of("code", "refusalOfHumanRights", "label", refusalOfEuLabel))
                 )
             ))
             .expectedCaseNameValue("some appellant given names some appellant family name")
@@ -172,10 +185,6 @@ class CamundaTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
     }
 
     private List<Map<String, Object>> getExpectedValues(Scenario scenario) {
-        Map<String, Object> caseNameRule = new HashMap<>(); // allow null values
-        caseNameRule.put("name", "caseName");
-        caseNameRule.put("value", scenario.getExpectedCaseNameValue());
-
         Map<String, Object> appealTypeRule = Map.of(
             "name", "appealType",
             "value", scenario.getExpectedAppealTypeValue()
@@ -197,7 +206,7 @@ class CamundaTaskConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "value", scenario.getExpectedCaseManagementCategoryValue()
         );
         return List.of(
-            caseNameRule, appealTypeRule, regionRule, locationRule, locationNameRule,caseManagementCategoryRule
+            appealTypeRule, regionRule, locationRule, locationNameRule, caseManagementCategoryRule
         );
     }
 

@@ -3,8 +3,8 @@
 @Library("Infrastructure")
 
 def type = "java"
-def product = "ia"
-def component = "task-configuration"
+def product = "wa"
+def component = "task-configuration-template"
 
 withPipeline(type, product, component) {
 }
