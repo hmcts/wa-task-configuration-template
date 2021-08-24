@@ -1,6 +1,6 @@
 #!groovy
 
-@Library('Infrastructure@task/deploy-to-prod-flag')
+@Library('Infrastructure')
 
 def type = "java"
 def product = "wa"
