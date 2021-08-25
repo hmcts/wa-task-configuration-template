@@ -81,6 +81,93 @@
           <text>"caseProgression"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_046wm6a">
+        <inputEntry id="UnaryTests_02g9rgn">
+          <text>"submitTimeExtension"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jwdel0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06un14x">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00bhd5h">
+          <text>"decideOnTimeExtension"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jfenyd">
+          <text>"Decide On Time Extension"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0o3ekx3">
+          <text>"TCW"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tpiw26">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16urfvv">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zy6a6s">
+          <text>"timeExtension"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10q7721">
+        <inputEntry id="UnaryTests_0ifxfwu">
+          <text>"requestCaseBuilding"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kwb3ti">
+          <text>"caseBuilding"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02ez9r6">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0lb6c30">
+          <text>"followUpOverdueCaseBuilding"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gk868l">
+          <text>"Follow-up overdue case building"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13iptpi">
+          <text>"TCW"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16vucs8">
+          <text>if (directionDueDate != null and directionDueDate != "") then (date(directionDueDate) - date(now)).days else 0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17t1pof">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0m9jin9">
+          <text>"followUpOverdue"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0odg0q4">
+        <inputEntry id="UnaryTests_0x449ig">
+          <text>"listCma"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lwznn4">
+          <text>"cmaListed"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03axt5h">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ksn1uz">
+          <text>"attendCma"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ddqedk">
+          <text>"Attend Cma"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05ydvee">
+          <text>"TCW"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xnoa0r">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1umafvm">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1oy20uf">
+          <text>"caseProgression"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>

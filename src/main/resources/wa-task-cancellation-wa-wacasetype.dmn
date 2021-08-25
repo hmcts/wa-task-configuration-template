@@ -67,6 +67,52 @@
           <text></text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0opeefl">
+        <inputEntry id="UnaryTests_0cq1esc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0henhaf">
+          <text>"_DUMMY_makeAnApplication101"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1uzat1i">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0plb0sr">
+          <text>"Warn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17rt32n">
+          <text>"Code101"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0th375q">
+          <text>"Warning Text 101"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nquj3b">
+          <text>"timeExtension"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1b606aa">
+        <inputEntry id="UnaryTests_024wk1c">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y30dqn">
+          <text>"_DUMMY_makeAnApplication101"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cw4hkr">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0h86jl3">
+          <text>"Warn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1qwqsmi">
+          <text>"Code102"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0h6zql9">
+          <text>"Warning Text 102"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01ef6dh">
+          <text>"followUpOverdue"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>

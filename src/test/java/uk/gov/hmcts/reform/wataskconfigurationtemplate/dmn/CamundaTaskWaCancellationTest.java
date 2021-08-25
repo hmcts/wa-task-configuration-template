@@ -66,6 +66,23 @@ class CamundaTaskWaCancellationTest extends DmnDecisionTableBaseUnitTest {
             Arguments.of(
                 null, "_DUMMY_makeAnApplication", null,
                 outcome
+            ),
+            Arguments.of(
+                null, "_DUMMY_makeAnApplication101", null,
+                List.of(
+                    Map.of(
+                        "action", "Warn",
+                        "warningCode", "Code101",
+                        "warningText", "Warning Text 101",
+                        "processCategories", "timeExtension"
+                    ),
+                    Map.of(
+                        "action", "Warn",
+                        "warningCode", "Code102",
+                        "warningText", "Warning Text 102",
+                        "processCategories", "followUpOverdue"
+                    )
+                )
             )
         );
     }
@@ -76,6 +93,6 @@ class CamundaTaskWaCancellationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
         assertThat(logic.getInputs().size(), is(3));
         assertThat(logic.getOutputs().size(), is(4));
-        assertThat(logic.getRules().size(), is(2));
+        assertThat(logic.getRules().size(), is(4));
     }
 }
