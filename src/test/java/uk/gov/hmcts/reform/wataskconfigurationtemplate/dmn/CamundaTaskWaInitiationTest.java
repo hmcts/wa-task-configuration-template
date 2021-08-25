@@ -63,6 +63,26 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
                     "workingDaysAllowed", 2,
                     "processCategories", "caseProgression"
                 )
+            ),
+            Arguments.of(
+                "submitCase", "caseUnderReview", "",
+                Map.of(
+                    "taskId", "reviewAppealSkeletonArgument",
+                    "name", "Review Appeal Skeleton Argument",
+                    "group", "TCW",
+                    "workingDaysAllowed", 2,
+                    "processCategories", "caseProgression"
+                )
+            ),
+            Arguments.of(
+                "submitCase", "caseUnderReview", null,
+                Map.of(
+                    "taskId", "reviewAppealSkeletonArgument",
+                    "name", "Review Appeal Skeleton Argument",
+                    "group", "TCW",
+                    "workingDaysAllowed", 2,
+                    "processCategories", "caseProgression"
+                )
             )
         );
     }

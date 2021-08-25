@@ -4,12 +4,17 @@ import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.impl.VariableMapImpl;
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTableBaseUnitTest;
 
-import static java.util.Collections.EMPTY_LIST;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTable.WA_TASK_CANCELLATION_WA_WACASETYPE;
@@ -20,16 +25,49 @@ class CamundaTaskWaCancellationTest extends DmnDecisionTableBaseUnitTest {
         CURRENT_DMN_DECISION_TABLE = WA_TASK_CANCELLATION_WA_WACASETYPE;
     }
 
-    @Test
-    void given_multiple_event_ids_should_evaluate_dmn() {
+    @ParameterizedTest
+    @MethodSource("scenarioProvider")
+    void given_multiple_event_ids_should_evaluate_dmn(String fromState,
+                                                      String eventId,
+                                                      String state,
+                                                      List<Map<String, Object>> expectedDmnOutcome) {
         VariableMap inputVariables = new VariableMapImpl();
-        inputVariables.putValue("fromState", "some from state");
-        inputVariables.putValue("event", "some event id");
-        inputVariables.putValue("state", "some state");
+        inputVariables.putValue("fromState", fromState);
+        inputVariables.putValue("event", eventId);
+        inputVariables.putValue("state", state);
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
-        MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(EMPTY_LIST));
+        assertThat(dmnDecisionTableResult.getResultList(), is(expectedDmnOutcome));
+    }
+
+    public static Stream<Arguments> scenarioProvider() {
+        List<Map<String, String>> outcome = List.of(
+            Map.of(
+                "action", "Warn",
+                "warningCode", "TA01",
+                "warningText", "There is an application task which might impact other active tasks"
+            ),
+            Map.of(
+                "action", "Warn",
+                "warningCode", "TA02",
+                "warningText", "There is another task on this case that needs your attention"
+            )
+        );
+        return Stream.of(
+            Arguments.of(
+                "any from state", "_DUMMY_makeAnApplication", "any state",
+                outcome
+            ),
+            Arguments.of(
+                "", "_DUMMY_makeAnApplication", "",
+                outcome
+            ),
+            Arguments.of(
+                null, "_DUMMY_makeAnApplication", null,
+                outcome
+            )
+        );
     }
 
     @Test
@@ -38,6 +76,6 @@ class CamundaTaskWaCancellationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
         assertThat(logic.getInputs().size(), is(3));
         assertThat(logic.getOutputs().size(), is(4));
-        assertThat(logic.getRules().size(), is(0));
+        assertThat(logic.getRules().size(), is(2));
     }
 }
