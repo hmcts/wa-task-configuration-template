@@ -21,6 +21,52 @@
       <output id="OutputClause_0tu8bqp" label="Warning Code" name="warningCode" typeRef="string" />
       <output id="OutputClause_1kfc3jv" label="Warning Text" name="warningText" typeRef="string" />
       <output id="OutputClause_0dqzted" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="277" />
+      <rule id="DecisionRule_0p1obrw">
+        <inputEntry id="UnaryTests_0gl1rp0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ctvz64">
+          <text>"_DUMMY_makeAnApplication"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bmvq1l">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gfl813">
+          <text>"Warn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wce9wr">
+          <text>"TA01"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lxubci">
+          <text>"There is an application task which might impact other active tasks"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1b2vutc">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1skstuo">
+        <inputEntry id="UnaryTests_0i5ruiz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05ipy6b">
+          <text>"_DUMMY_makeAnApplication"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02nw4nv">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hw2fgz">
+          <text>"Warn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19n0i7s">
+          <text>"TA02"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18nyj5z">
+          <text>"There is another task on this case that needs your attention"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qcqh52">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>

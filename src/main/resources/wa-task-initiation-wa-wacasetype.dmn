@@ -52,6 +52,35 @@
           <text></text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0vq8eyq">
+        <inputEntry id="UnaryTests_12iduf0">
+          <text>"submitCase"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b46j48">
+          <text>"caseUnderReview"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0r4rye4">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1n41eyk">
+          <text>"reviewAppealSkeletonArgument"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kbtu56">
+          <text>"Review Appeal Skeleton Argument"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03te4ib">
+          <text>"TCW"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jdthqq">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tr1ig7">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bodtr6">
+          <text>"caseProgression"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
