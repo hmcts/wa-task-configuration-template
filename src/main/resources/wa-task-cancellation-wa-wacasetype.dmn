@@ -205,6 +205,29 @@
           <text>"followUpOverdue"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0bseixb">
+        <inputEntry id="UnaryTests_1gua6n3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fn9pw6">
+          <text>"_DUMMY_makeAnApplication102"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0v8fkxk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18a03ly">
+          <text>"Warn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dw6bs8">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0739ppg">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0g3yrg9">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
