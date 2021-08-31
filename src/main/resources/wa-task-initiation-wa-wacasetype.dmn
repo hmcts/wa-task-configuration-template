@@ -168,6 +168,35 @@
           <text>"caseProgression"</text>
         </outputEntry>
       </rule>
+       <rule id="DecisionRule_1tpr9e2">
+        <inputEntry id="UnaryTests_0jppcim">
+          <text>"uploadHomeOfficeAppealResponse"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1eotwou">
+          <text>"respondentReview"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rpbdry">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qn921m">
+          <text>"reviewRespondentResponse"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1x9v27m">
+          <text>"Review Respondent Response"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tjk1uy">
+          <text>"TCW"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14a2upo">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11qiura">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lum3zd">
+          <text>"caseProgression"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
