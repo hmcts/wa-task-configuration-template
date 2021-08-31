@@ -124,6 +124,17 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
                     "workingDaysAllowed", 2,
                     "processCategories", "caseProgression"
                 )
+            ),
+            Arguments.of(
+                "requestRespondentEvidence", "awaitingRespondentEvidence", "",
+                Map.of(
+                    "taskId", "followUpOverdueRespondentEvidence",
+                    "name", "Follow-up overdue respondent evidence",
+                    "group", "TCW",
+                    "delayDuration", 0,
+                    "workingDaysAllowed", 2,
+                    "processCategories", "followUpOverdue"
+                )
             )
         );
     }
@@ -132,7 +143,7 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(6));
+        assertThat(logic.getRules().size(), is(7));
 
     }
 }
