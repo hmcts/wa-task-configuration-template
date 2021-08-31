@@ -29,7 +29,7 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
 
     @ParameterizedTest
     @MethodSource("scenarioProvider")
-    void given_multiple_event_ids_should_evaluate_dmn(String eventId,
+    void given_input_should_return_outcome_dmn(String eventId,
                                                       String postEventState,
                                                       String appealType,
                                                       Map<String, ? extends Serializable> expectedDmnOutcome) {
@@ -114,6 +114,16 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
                     "workingDaysAllowed", 2,
                     "processCategories", "caseProgression"
                 )
+            ),
+            Arguments.of(
+                "uploadHomeOfficeAppealResponse", "respondentReview", "",
+                Map.of(
+                    "taskId", "reviewRespondentResponse",
+                    "name", "Review Respondent Response",
+                    "group", "TCW",
+                    "workingDaysAllowed", 2,
+                    "processCategories", "caseProgression"
+                )
             )
         );
     }
@@ -122,7 +132,7 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(5));
+        assertThat(logic.getRules().size(), is(6));
 
     }
 }
