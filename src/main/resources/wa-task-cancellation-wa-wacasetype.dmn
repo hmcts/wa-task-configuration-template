@@ -228,6 +228,53 @@
           <text></text>
         </outputEntry>
       </rule>
+       <rule id="DecisionRule_1ed9xds">
+        <inputEntry id="UnaryTests_0j04gym">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05vmrif">
+          <text>"_DUMMY_makeAnApplication105"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dtf127">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0s09ps0">
+          <text>"Warn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tj0n0k">
+          <text>"Code105"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zlpfxt">
+          <text>"Warning Text 105"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_057s4q6">
+          <text>"timeExtension"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_066hn1a">
+        <inputEntry id="UnaryTests_07alm2v">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y2dea8">
+          <text>"_DUMMY_makeAnApplication106"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lsqadp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hebkpi">
+          <text>"Warn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i8y7ai">
+          <text>"Code105"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10a35cq">
+          <text>"Warning Text 105"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1h3p12s">
+          <text>"timeExtension"</text>
+        </outputEntry>
+      </rule>
+
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
