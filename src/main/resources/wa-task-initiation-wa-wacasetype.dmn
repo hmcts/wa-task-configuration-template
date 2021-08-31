@@ -197,6 +197,35 @@
           <text>"caseProgression"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0i6qihx">
+        <inputEntry id="UnaryTests_03alruf">
+          <text>"requestRespondentEvidence"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ce2dnf">
+          <text>"awaitingRespondentEvidence"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dlr8sr">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1j9930c">
+          <text>"followUpOverdueRespondentEvidence"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00pwci6">
+          <text>"Follow-up overdue respondent evidence"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11zq0r5">
+          <text>"TCW"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1u0h529">
+          <text>if (directionDueDate != null and directionDueDate != "") then (date(directionDueDate) - date(now)).days else 0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_184ro7i">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yoh9gf">
+          <text>"followUpOverdue"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
