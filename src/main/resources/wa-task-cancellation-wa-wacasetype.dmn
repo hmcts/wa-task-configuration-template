@@ -113,6 +113,52 @@
           <text>"followUpOverdue"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0ctr2r5">
+        <inputEntry id="UnaryTests_00djbva">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03jc8wn">
+          <text>"_DUMMY_makeAnApplication103"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03jy8ot">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qh6y96">
+          <text>"Warn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0s1x2rm">
+          <text>"Code103"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cpqq7d">
+          <text>"Warning Text 103"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1qvh88c">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hkt1q9">
+        <inputEntry id="UnaryTests_171cr5t">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ckcrvc">
+          <text>"_DUMMY_makeAnApplication103"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02nend0">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ba1zgw">
+          <text>"Warn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1911pbd">
+          <text>"Code103"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18q58sj">
+          <text>"Warning Text 103"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04rc7jz">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
