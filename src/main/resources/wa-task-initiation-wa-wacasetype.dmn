@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.2.0">
   <decision id="wa-task-initiation-wa-wacasetype" name="Task initiation DMN">
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" camunda:inputVariable="eventId">
@@ -19,7 +19,6 @@
       </input>
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" />
       <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" />
-      <output id="OutputClause_0f63m65" label="Group" name="group" typeRef="string" biodi:width="192" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" />
       <output id="OutputClause_0i6c6c2" label="Working Days Allowed" name="workingDaysAllowed" typeRef="integer" />
       <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
@@ -38,9 +37,6 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_02t95m8">
           <text>"Process Application"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0epp4rf">
-          <text>"TCW"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1x6roa1">
           <text></text>
@@ -68,9 +64,6 @@
         <outputEntry id="LiteralExpression_1kbtu56">
           <text>"Review Appeal Skeleton Argument"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_03te4ib">
-          <text>"TCW"</text>
-        </outputEntry>
         <outputEntry id="LiteralExpression_1jdthqq">
           <text></text>
         </outputEntry>
@@ -96,9 +89,6 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1jfenyd">
           <text>"Decide On Time Extension"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0o3ekx3">
-          <text>"TCW"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0tpiw26">
           <text></text>
@@ -126,9 +116,6 @@
         <outputEntry id="LiteralExpression_0gk868l">
           <text>"Follow-up overdue case building"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_13iptpi">
-          <text>"TCW"</text>
-        </outputEntry>
         <outputEntry id="LiteralExpression_16vucs8">
           <text>if (directionDueDate != null and directionDueDate != "") then (date(directionDueDate) - date(now)).days else 0</text>
         </outputEntry>
@@ -155,9 +142,6 @@
         <outputEntry id="LiteralExpression_1ddqedk">
           <text>"Attend Cma"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_05ydvee">
-          <text>"TCW"</text>
-        </outputEntry>
         <outputEntry id="LiteralExpression_0xnoa0r">
           <text></text>
         </outputEntry>
@@ -168,7 +152,7 @@
           <text>"caseProgression"</text>
         </outputEntry>
       </rule>
-       <rule id="DecisionRule_1tpr9e2">
+      <rule id="DecisionRule_1tpr9e2">
         <inputEntry id="UnaryTests_0jppcim">
           <text>"uploadHomeOfficeAppealResponse"</text>
         </inputEntry>
@@ -183,9 +167,6 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1x9v27m">
           <text>"Review Respondent Response"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1tjk1uy">
-          <text>"TCW"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14a2upo">
           <text></text>
@@ -212,9 +193,6 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_00pwci6">
           <text>"Follow-up overdue respondent evidence"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_11zq0r5">
-          <text>"TCW"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1u0h529">
           <text>if (directionDueDate != null and directionDueDate != "") then (date(directionDueDate) - date(now)).days else 0</text>
