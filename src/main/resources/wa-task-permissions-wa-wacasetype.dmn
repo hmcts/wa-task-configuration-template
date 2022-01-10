@@ -22,6 +22,36 @@ else
       <output id="OutputClause_0eprg3b" label="Authorisations" name="authorisations" typeRef="string" />
       <output id="OutputClause_06kex8t" label="Assignment Priority" name="assignmentPriority" typeRef="integer" />
       <output id="OutputClause_1ch8ip1" label="Auto Assignable" name="autoAssignable" typeRef="boolean" />
+      <rule id="DecisionRule_1d430vn">
+        <description>supervisor task permissions</description>
+        <inputEntry id="UnaryTests_1jqe7xg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sw3b2f">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mvemzj">
+          <text>"categoryA"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0f68x1m">
+          <text>"task-supervisor"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15maf8m">
+          <text>"Read,Refer,Manage,Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jrkhhy">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00w4eai">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13l2uwp">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vo1uu8">
+          <text>false</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1tvtlre">
         <description>Tribunal caseworker task permissions</description>
         <inputEntry id="UnaryTests_1y1bm07">
@@ -84,7 +114,7 @@ else
       </rule>
       <rule id="DecisionRule_0xwt5yu">
         <inputEntry id="UnaryTests_18pne00">
-          <text>"reviewHearingBundle"</text>
+          <text>"processApplication"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_09g3r7q">
           <text></text>
@@ -113,7 +143,7 @@ else
       </rule>
       <rule id="DecisionRule_05a8clg">
         <inputEntry id="UnaryTests_0e0on6v">
-          <text>"reviewHearingBundle"</text>
+          <text>"processApplication"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1pwt0dk">
           <text></text>
@@ -137,36 +167,6 @@ else
           <text>2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0cmwo84">
-          <text>false</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1d430vn">
-        <description>supervisor task permissions</description>
-        <inputEntry id="UnaryTests_1jqe7xg">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1sw3b2f">
-          <text></text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1mvemzj">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0f68x1m">
-          <text>"task-supervisor"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_15maf8m">
-          <text>"Read,Refer,Manage,Cancel"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1jrkhhy">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_00w4eai">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_13l2uwp">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0vo1uu8">
           <text>false</text>
         </outputEntry>
       </rule>

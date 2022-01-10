@@ -11,11 +11,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.platform.commons.util.StringUtils;
 import uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTableBaseUnitTest;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 import static java.util.Collections.emptyMap;
@@ -35,7 +38,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(5));
+        assertThat(logic.getRules().size(), is(9));
     }
 
     @SuppressWarnings("checkstyle:indentation")
@@ -126,6 +129,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void when_caseData_then_return_expected_name_and_value_rows(Scenario scenario) {
         VariableMap inputVariables = new VariableMapImpl();
         inputVariables.putValue("caseData", scenario.caseData);
+        inputVariables.putValue("taskAttributes", scenario.taskAttributes);
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
         assertThat(dmnDecisionTableResult.getResultList(), is(getExpectedValues(scenario)));
@@ -140,6 +144,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedLocationValue("765324")
             .expectedLocationNameValue("Taylor House")
             .expectedCaseManagementCategoryValue("")
+            .expectedDescription("")
             .build();
         String refusalOfEuLabel = "Refusal of a human rights claim";
         Scenario givenCaseDataIsPresentThenReturnNameAndValueScenario = Scenario.builder()
@@ -157,12 +162,16 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
                     "list_items", List.of(Map.of("code", "refusalOfHumanRights", "label", refusalOfEuLabel))
                 )
             ))
+            .taskAttributes(Map.of("taskType", "processApplication"))
             .expectedCaseNameValue("some appellant given names some appellant family name")
             .expectedAppealTypeValue("Human rights")
             .expectedRegionValue("some other region")
             .expectedLocationValue("some other location")
             .expectedLocationNameValue("some other location name")
             .expectedCaseManagementCategoryValue("Human rights")
+            .expectedWorkType("hearing_work")
+            .expectedRoleCategory("LEGAL_OPERATIONS")
+            .expectedDescription("[Decide an application](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)")
             .build();
 
         return Stream.of(
@@ -175,39 +184,42 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     @Builder
     private static class Scenario {
         Map<String, Object> caseData;
-
+        Map<String, Object> taskAttributes;
         String expectedCaseNameValue;
         String expectedAppealTypeValue;
         String expectedRegionValue;
         String expectedLocationValue;
         String expectedLocationNameValue;
         String expectedCaseManagementCategoryValue;
+        String expectedWorkType;
+        String expectedRoleCategory;
+        String expectedDescription;
     }
 
-    private List<Map<String, Object>> getExpectedValues(Scenario scenario) {
-        Map<String, Object> appealTypeRule = Map.of(
-            "name", "appealType",
-            "value", scenario.getExpectedAppealTypeValue()
-        );
-        Map<String, Object> regionRule = Map.of(
-            "name", "region",
-            "value", scenario.getExpectedRegionValue()
-        );
-        Map<String, Object> locationRule = Map.of(
-            "name", "location",
-            "value", scenario.getExpectedLocationValue()
-        );
-        Map<String, Object> locationNameRule = Map.of(
-            "name", "locationName",
-            "value", scenario.getExpectedLocationNameValue()
-        );
-        Map<String, Object> caseManagementCategoryRule = Map.of(
-            "name", "caseManagementCategory",
-            "value", scenario.getExpectedCaseManagementCategoryValue()
-        );
-        return List.of(
-            appealTypeRule, regionRule, locationRule, locationNameRule, caseManagementCategoryRule
-        );
+    private List<Map<String, String>> getExpectedValues(Scenario scenario) {
+        List<Map<String, String>> rules = new ArrayList<>();
+
+        getExpectedValue(rules, "caseName", scenario.getExpectedCaseNameValue());
+        getExpectedValue(rules, "appealType", scenario.getExpectedAppealTypeValue());
+        getExpectedValue(rules, "region", scenario.getExpectedRegionValue());
+        getExpectedValue(rules, "location", scenario.getExpectedLocationValue());
+        getExpectedValue(rules, "locationName", scenario.getExpectedLocationNameValue());
+        getExpectedValue(rules, "caseManagementCategory", scenario.getExpectedCaseManagementCategoryValue());
+
+        if (!Objects.isNull(scenario.getTaskAttributes())
+            && StringUtils.isNotBlank(scenario.taskAttributes.get("taskType").toString())) {
+            getExpectedValue(rules, "workType", scenario.getExpectedWorkType());
+            getExpectedValue(rules, "roleCategory", scenario.getExpectedRoleCategory());
+        }
+        getExpectedValue(rules, "description", scenario.getExpectedDescription());
+        return rules;
+    }
+
+    private void getExpectedValue(List<Map<String, String>> rules, String name, String value) {
+        Map<String, String> rule = new HashMap<>();
+        rule.put("name", name);
+        rule.put("value", value);
+        rules.add(rule);
     }
 
 }
