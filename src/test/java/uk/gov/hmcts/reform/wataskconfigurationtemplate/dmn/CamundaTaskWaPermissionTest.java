@@ -35,6 +35,12 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
                 "anything",
                 asList(
                     Map.of(
+                        "autoAssignable", false,
+                        "name", "task-supervisor",
+                        "value", "Read,Refer,Manage,Cancel",
+                        "caseAccessCategory", "categoryA"
+                    ),
+                    Map.of(
                         "name", "tribunal-caseworker",
                         "value", "Read,Refer,Own,Manage,Cancel",
                         "roleCategory", "LEGAL_OPERATIONS",
@@ -45,11 +51,6 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
                         "value", "Read,Refer,Own,Manage,Cancel",
                         "roleCategory", "LEGAL_OPERATIONS",
                         "autoAssignable", false
-                    ),
-                    Map.of(
-                        "autoAssignable", false,
-                        "name", "task-supervisor",
-                        "value", "Read,Refer,Manage,Cancel"
                     )
                 )
             ),
@@ -57,6 +58,12 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
                 "null",
                 asList(
                     Map.of(
+                        "autoAssignable", false,
+                        "name", "task-supervisor",
+                        "value", "Read,Refer,Manage,Cancel",
+                        "caseAccessCategory", "categoryA"
+                    ),
+                    Map.of(
                         "name", "tribunal-caseworker",
                         "value", "Read,Refer,Own,Manage,Cancel",
                         "roleCategory", "LEGAL_OPERATIONS",
@@ -67,11 +74,6 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
                         "value", "Read,Refer,Own,Manage,Cancel",
                         "roleCategory", "LEGAL_OPERATIONS",
                         "autoAssignable", false
-                    ),
-                    Map.of(
-                        "autoAssignable", false,
-                        "name", "task-supervisor",
-                        "value", "Read,Refer,Manage,Cancel"
                     )
                 )
             )
@@ -92,31 +94,34 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
 
     @SuppressWarnings("checkstyle:indentation")
     @Test
-    void given_reviewHearingBundle_taskType_when_evaluate_dmn_then_it_returns_expected_rule() {
+    void given_processApplication_taskType_when_evaluate_dmn_then_it_returns_expected_rule() {
         VariableMap inputVariables = new VariableMapImpl();
-        inputVariables.putValue("taskAttributes", Map.of("taskType", "reviewHearingBundle"));
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "processApplication"));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(List.of(
             Map.of(
+                "name", "task-supervisor",
+                "value", "Read,Refer,Manage,Cancel",
+                "autoAssignable", false,
+                "caseAccessCategory", "categoryA"
+            ),
+            Map.of(
                 "name", "tribunal-caseworker",
                 "value", "Read,Refer,Execute",
                 "roleCategory", "LEGAL_OPERATIONS",
-                "assignmentPriority",2,
-                "autoAssignable", false
+                "assignmentPriority", 2,
+                "autoAssignable", false,
+                "caseAccessCategory", "categoryA,categoryB"
             ),
             Map.of(
                 "name", "senior-tribunal-caseworker",
                 "value", "Read,Refer,Execute",
                 "roleCategory", "LEGAL_OPERATIONS",
-                "assignmentPriority",2,
-                "autoAssignable", false
-            ),
-            Map.of(
-                "name", "task-supervisor",
-                "value", "Read,Refer,Manage,Cancel",
-                "autoAssignable", false
+                "assignmentPriority", 2,
+                "autoAssignable", false,
+                "caseAccessCategory", "categoryC,categoryD"
             )
         )));
     }

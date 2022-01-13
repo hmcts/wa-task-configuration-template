@@ -171,7 +171,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedCaseManagementCategoryValue("Human rights")
             .expectedWorkType("hearing_work")
             .expectedRoleCategory("LEGAL_OPERATIONS")
-            .expectedDescription("[Decide an application](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)")
+            .expectedDescription("[Decide an application]"
+                                     + "(/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)")
             .build();
 
         return Stream.of(
