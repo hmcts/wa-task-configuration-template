@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.wataskconfigurationtemplate.dmn;
 
+import camundajar.impl.com.google.gson.Gson;
 import lombok.Builder;
 import lombok.Value;
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
@@ -38,7 +39,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(9));
+        assertThat(logic.getRules().size(), is(10));
     }
 
     @SuppressWarnings("checkstyle:indentation")
@@ -145,6 +146,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedLocationNameValue("Taylor House")
             .expectedCaseManagementCategoryValue("")
             .expectedDescription("")
+            .expectedAdditionalProperties("")
             .build();
         String refusalOfEuLabel = "Refusal of a human rights claim";
         Scenario givenCaseDataIsPresentThenReturnNameAndValueScenario = Scenario.builder()
@@ -173,6 +175,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedRoleCategory("LEGAL_OPERATIONS")
             .expectedDescription("[Decide an application]"
                                      + "(/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)")
+            .expectedAdditionalProperties("")
             .build();
 
         return Stream.of(
@@ -195,6 +198,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         String expectedWorkType;
         String expectedRoleCategory;
         String expectedDescription;
+        String expectedAdditionalProperties;
     }
 
     private List<Map<String, String>> getExpectedValues(Scenario scenario) {
@@ -213,6 +217,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             getExpectedValue(rules, "roleCategory", scenario.getExpectedRoleCategory());
         }
         getExpectedValue(rules, "description", scenario.getExpectedDescription());
+        getExpectedValue(rules, "additionalProperties", scenario.getExpectedAdditionalProperties());
         return rules;
     }
 
