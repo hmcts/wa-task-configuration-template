@@ -222,7 +222,7 @@
   </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram>
-      <dmndi:DMNShape dmnElementRef="wa-task-completion-ia-asylum">
+      <dmndi:DMNShape dmnElementRef="wa-task-completion-wa-wacasetype">
         <dc:Bounds height="80" width="180" x="160" y="80" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
