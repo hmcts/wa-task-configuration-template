@@ -30,5 +30,15 @@
    ]]></notes>
     <cve>CVE-2021-43797</cve>
   </suppress>
+  <suppress until="2030-01-01">
+    <cpe>cpe:2.3:a:gradle:gradle:1.7.0:*:*:*:*:*:*:*</cpe>
+    <cve>CVE-2019-11065</cve>
+    <cve>CVE-2019-15052</cve>
+    <cve>CVE-2019-16370</cve>
+    <cve>CVE-2020-11979</cve>
+    <cve>CVE-2021-32751</cve>
+    <cve>CVE-2021-29428</cve>
+    <cve>CVE-2021-29429</cve>
+  </suppress>
 </suppressions>
 
