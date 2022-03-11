@@ -17,7 +17,7 @@ else
 null</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="192" />
+      <output id="Output_1" label="Name" name="name" typeRef="string" />
       <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="2175" />
       <rule id="DecisionRule_19opwhc">
         <inputEntry id="UnaryTests_11xjbt2">
@@ -193,6 +193,62 @@ else if (taskAttributes != null and taskAttributes.taskType != null and taskAttr
 else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewAddendumAppellantEvidence" or taskType != null and taskType = "reviewAddendumAppellantEvidence") then "[Review evidence](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/markEvidenceAsReviewed)"
 else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewAddendumEvidence" or taskType != null and taskType = "reviewAddendumEvidence") then "[Review evidence](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/markEvidenceAsReviewed)"
 else ""</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0o5yerq">
+        <inputEntry id="UnaryTests_0s5crry">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0iy5xeu">
+          <text>"processApplication"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1i8kwjh">
+          <text>"additionalProperties_key1"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yye4zp">
+          <text>"value1"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tybj5a">
+        <inputEntry id="UnaryTests_1ez4fb3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fx1dt8">
+          <text>"processApplication"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_068uuoq">
+          <text>"additionalProperties_key2"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1m9hxl6">
+          <text>"value2"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00ooorq">
+        <inputEntry id="UnaryTests_1a9cmfg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0l40dey">
+          <text>"processApplication"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0a37919">
+          <text>"additionalProperties_key3"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1090ndb">
+          <text>"value3"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11hnaic">
+        <inputEntry id="UnaryTests_06ci3fi">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_106xmn2">
+          <text>"processApplication"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1owcrj9">
+          <text>"additionalProperties_key4"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zhelg7">
+          <text>"value4"</text>
         </outputEntry>
       </rule>
     </decisionTable>
