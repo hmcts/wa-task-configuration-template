@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.2.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
   <decision id="wa-task-permissions-wa-wacasetype" name="Permissions DMN">
     <decisionTable id="DecisionTable_1pr5oic" hitPolicy="RULE ORDER">
       <input id="InputClause_1t6frhu" label="Task Type" camunda:inputVariable="taskType">
@@ -167,6 +167,156 @@ else
           <text>2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0cmwo84">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1l4qhkw">
+        <description>Judge task permissions</description>
+        <inputEntry id="UnaryTests_1wx9djl">
+          <text>"reviewSpecificAccessRequestJudiciary"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1568z16">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0mzaei0">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fme2um">
+          <text>"judge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1iypf68">
+          <text>"Read,Refer,Own"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pyd2t3">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ko14d9">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1o54iql">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0t2jv08">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ogz9wl">
+        <description>Tribunal caseworker task permissions</description>
+        <inputEntry id="UnaryTests_1atfecc">
+          <text>"reviewSpecificAccessRequestLegalOps"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0i7x5tu">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0etn7nu">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kksl7y">
+          <text>"tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gf28wd">
+          <text>"Read,Refer,Own"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1otontm">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0g8s8x9">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0h2f16p">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i13xtd">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_030cch0">
+        <description>Senior Tribunal caseworker task permissions</description>
+        <inputEntry id="UnaryTests_1sa2nev">
+          <text>"reviewSpecificAccessRequestLegalOps"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09i31cq">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1e0qp1c">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1s3ctaa">
+          <text>"senior-tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jyqrdf">
+          <text>"Read,Refer,Own"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0m7xtzd">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13l1r23">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qf6tt0">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1q4zxlj">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zjrxj1">
+        <description>National business centre task permissions</description>
+        <inputEntry id="UnaryTests_0kgiw9u">
+          <text>"reviewSpecificAccessRequestAdmin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06bia6q">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_130h0ip">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11ys1id">
+          <text>"national-business-centre"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0son1ga">
+          <text>"Read,Refer,Own"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16jqdqv">
+          <text>"ADMIN"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10xpvou">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gb7giv">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13oc7sn">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_075yeg8">
+        <description>Hearing centre admin task permissions</description>
+        <inputEntry id="UnaryTests_1e9n8q3">
+          <text>"reviewSpecificAccessRequestAdmin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vsw4pl">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0918oe9">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0im51tg">
+          <text>"hearing-centre-admin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lij4s3">
+          <text>"Read,Refer,Own"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1essq3m">
+          <text>"ADMIN"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mmlpxn">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_120kqdb">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18kdj6g">
           <text>false</text>
         </outputEntry>
       </rule>
