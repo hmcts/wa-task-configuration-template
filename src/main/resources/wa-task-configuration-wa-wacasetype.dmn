@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.12.0">
   <decision id="wa-task-configuration-wa-wacasetype" name="Task configuration DMN">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="RULE ORDER">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -19,6 +19,7 @@ null</text>
       </input>
       <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="307" />
       <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="2175" />
+      <output id="OutputClause_17ycphg" name="Can reconfigure?" typeRef="boolean" />
       <rule id="DecisionRule_19opwhc">
         <inputEntry id="UnaryTests_11xjbt2">
           <text></text>
@@ -31,6 +32,9 @@ null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1eo7s5z">
           <text>caseData.appellantGivenNames + " " + caseData.appellantFamilyName</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0idhann">
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0oagl97">
@@ -46,6 +50,9 @@ null</text>
         <outputEntry id="LiteralExpression_0t707ev">
           <text>if caseData.appealType = "refusalOfHumanRights" then "Human rights" else if caseData.appealType = "refusalOfEu" then "EEA" else if caseData.appealType = "deprivation" then "DoC" else if caseData.appealType = "protection" then "Protection" else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1b29lsh">
+          <text>true</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0r3u9cf">
         <inputEntry id="UnaryTests_1bqxdqr">
@@ -59,6 +66,9 @@ null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05korws">
           <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.region != null) then caseData.caseManagementLocation.region else "1"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0l12s5r">
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_06fd9qz">
@@ -74,6 +84,9 @@ null</text>
         <outputEntry id="LiteralExpression_0jj1wzo">
           <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.baseLocation != null) then caseData.caseManagementLocation.baseLocation else "765324"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_146tl50">
+          <text>true</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1oirne1">
         <inputEntry id="UnaryTests_04xtpdu">
@@ -87,6 +100,9 @@ null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0xp4dc7">
           <text>if (caseData.caseManagementLocation != null and caseData.caseManagementLocation.baseLocation != null  and caseData.staffLocation != null) then caseData.staffLocation else "Taylor House"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1qayetj">
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_03afipt">
@@ -111,6 +127,9 @@ else if caseData.appealType = "deprivation" then "DoC"
 else if caseData.appealType = "protection" then "Protection"
 else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1woqzfp">
+          <text>true</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1c6ndy4">
         <inputEntry id="UnaryTests_03bd6ck">
@@ -124,6 +143,9 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
         </outputEntry>
         <outputEntry id="LiteralExpression_1mqbh7v">
           <text>"hearing_work"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1d2t9ry">
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0wejcqf">
@@ -152,6 +174,9 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
         </outputEntry>
         <outputEntry id="LiteralExpression_0lxs8kq">
           <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0l6staq">
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0zoqqep">
@@ -236,6 +261,9 @@ else if (taskAttributes != null and taskAttributes.taskType != null and taskAttr
 else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewAddendumEvidence" or taskType != null and taskType = "reviewAddendumEvidence") then "[Review evidence](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/markEvidenceAsReviewed)"
 else ""</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_08t2a7d">
+          <text>true</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0o5yerq">
         <inputEntry id="UnaryTests_0s5crry">
@@ -249,6 +277,9 @@ else ""</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0yye4zp">
           <text>"value1"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_12bpru9">
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0tybj5a">
@@ -264,6 +295,9 @@ else ""</text>
         <outputEntry id="LiteralExpression_1m9hxl6">
           <text>"value2"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0k7kvfo">
+          <text>true</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_00ooorq">
         <inputEntry id="UnaryTests_1a9cmfg">
@@ -278,6 +312,9 @@ else ""</text>
         <outputEntry id="LiteralExpression_1090ndb">
           <text>"value3"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1pbkegp">
+          <text>true</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_11hnaic">
         <inputEntry id="UnaryTests_06ci3fi">
@@ -291,6 +328,9 @@ else ""</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zhelg7">
           <text>"value4"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1irucz3">
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1hlb86c">

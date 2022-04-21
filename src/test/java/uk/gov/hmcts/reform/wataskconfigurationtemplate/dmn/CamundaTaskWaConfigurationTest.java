@@ -64,12 +64,14 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
             "name", "appealType",
-            "value", expectedAppealType
+            "value", expectedAppealType,
+            "Can reconfigure?", true
         )));
 
         assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
             "name", "caseManagementCategory",
-            "value", expectedAppealType
+            "value", expectedAppealType,
+            "Can reconfigure?", true
         )));
     }
 
@@ -121,7 +123,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
             assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
                 "name", "caseManagementCategory",
-                "value", expectedCaseManagementCategories.get(i)
+                "value", expectedCaseManagementCategories.get(i),
+                "Can reconfigure?", true
             )));
         }
     }
@@ -322,8 +325,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         String expectedAdditionalPropertiesKey4;
     }
 
-    private List<Map<String, String>> getExpectedValues(Scenario scenario) {
-        List<Map<String, String>> rules = new ArrayList<>();
+    private List<Map<String, Object>> getExpectedValues(Scenario scenario) {
+        List<Map<String, Object>> rules = new ArrayList<>();
 
         getExpectedValue(rules, "caseName", scenario.getExpectedCaseNameValue());
         getExpectedValue(rules, "appealType", scenario.getExpectedAppealTypeValue());
@@ -350,10 +353,11 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         return rules;
     }
 
-    private void getExpectedValue(List<Map<String, String>> rules, String name, String value) {
-        Map<String, String> rule = new HashMap<>();
+    private void getExpectedValue(List<Map<String, Object>> rules, String name, String value) {
+        Map<String, Object> rule = new HashMap<>();
         rule.put("name", name);
         rule.put("value", value);
+        rule.put("Can reconfigure?", true);
         rules.add(rule);
     }
 
