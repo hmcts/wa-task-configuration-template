@@ -122,8 +122,58 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
                 "assignmentPriority", 2,
                 "autoAssignable", false,
                 "caseAccessCategory", "categoryC,categoryD"
+            ),
+            Map.of(
+                "name", "lead-judge",
+                "value", "Read",
+                "roleCategory", "JUDICIAL",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ),
+            Map.of(
+                "name", "case-manager",
+                "value", "Own",
+                "roleCategory", "LEGAL_OPERATIONS",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ),
+            Map.of(
+                "name", "ftpa-judge",
+                "value", "Execute",
+                "roleCategory", "JUDICIAL",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ),
+            Map.of(
+                "name", "hearing-panel-judge",
+                "value", "Manage",
+                "roleCategory", "JUDICIAL",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ),
+            Map.of(
+                "name", "challenged-access-judiciary",
+                "value", "Read",
+                "roleCategory", "JUDICIAL",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ),
+            Map.of(
+                "name", "challenged-access-legal-ops",
+                "value", "Manage",
+                "roleCategory", "LEGAL_OPERATIONS",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ),
+            Map.of(
+                "name", "challenged-access-admin",
+                "value", "Execute",
+                "roleCategory", "ADMIN",
+                "assignmentPriority", 1,
+                "autoAssignable", false
             )
         )));
+
     }
 
     @SuppressWarnings("checkstyle:indentation")
@@ -147,8 +197,51 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
                 "roleCategory", "JUDICIAL",
                 "assignmentPriority", 1,
                 "autoAssignable", true
+            ), Map.of(
+                "name", "lead-judge",
+                "value", "Cancel",
+                "roleCategory", "JUDICIAL",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ), Map.of(
+                "name", "case-manager",
+                "value", "Own,Manage",
+                "roleCategory", "LEGAL_OPERATIONS",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ), Map.of(
+                "name", "ftpa-judge",
+                "value", "Manage,Execute",
+                "roleCategory", "JUDICIAL",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ), Map.of(
+                "name", "hearing-panel-judge",
+                "value", "Read,Manage,Cancel",
+                "roleCategory", "JUDICIAL",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ), Map.of(
+                "name", "challenged-access-judiciary",
+                "value", "Manage",
+                "roleCategory", "JUDICIAL",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ), Map.of(
+                "name", "challenged-access-legal-ops",
+                "value", "Cancel",
+                "roleCategory", "LEGAL_OPERATIONS",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ), Map.of(
+                "name", "challenged-access-admin",
+                "value", "Own,Manage",
+                "roleCategory", "ADMIN",
+                "assignmentPriority", 1,
+                "autoAssignable", false
             )
         )));
+
     }
 
     @SuppressWarnings("checkstyle:indentation")
@@ -179,8 +272,43 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
                 "roleCategory", "LEGAL_OPERATIONS",
                 "assignmentPriority", 1,
                 "autoAssignable", true
+            ),
+            Map.of(
+                "name", "lead-judge",
+                "value", "Read,Own,Manage,Cancel",
+                "roleCategory", "JUDICIAL",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ), Map.of(
+                "name", "case-manager",
+                "value", "Read,Manage,Execute,Cancel",
+                "roleCategory", "LEGAL_OPERATIONS",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ),
+            Map.of(
+                "name", "challenged-access-judiciary",
+                "value", "Execute,Manage",
+                "roleCategory", "JUDICIAL",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ),
+            Map.of(
+                "name", "challenged-access-legal-ops",
+                "value", "Read,Manage,Cancel",
+                "roleCategory", "LEGAL_OPERATIONS",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ),
+            Map.of(
+                "name", "challenged-access-admin",
+                "value", "Read,Manage,Own,Cancel",
+                "roleCategory", "ADMIN",
+                "assignmentPriority", 1,
+                "autoAssignable", false
             )
         )));
+
     }
 
     @SuppressWarnings("checkstyle:indentation")
@@ -211,6 +339,13 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
                 "roleCategory", "ADMIN",
                 "assignmentPriority", 1,
                 "autoAssignable", false
+            ),
+            Map.of(
+                "name", "challenged-access-judiciary",
+                "value", "Read,Manage,Execute,Cancel",
+                "roleCategory", "JUDICIAL",
+                "assignmentPriority", 1,
+                "autoAssignable", false
             )
         )));
     }
@@ -219,7 +354,7 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(10));
+        assertThat(logic.getRules().size(), is(30));
 
     }
 }
