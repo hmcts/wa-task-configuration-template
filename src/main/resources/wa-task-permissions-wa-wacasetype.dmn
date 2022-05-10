@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.9.0">
   <decision id="wa-task-permissions-wa-wacasetype" name="Permissions DMN">
     <decisionTable id="DecisionTable_1pr5oic" hitPolicy="RULE ORDER">
       <input id="InputClause_1t6frhu" label="Task Type" camunda:inputVariable="taskType">
@@ -317,6 +317,606 @@ else
           <text>1</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18kdj6g">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0y7llh2">
+        <description>Lead Judge task permissions</description>
+        <inputEntry id="UnaryTests_0asgnjh">
+          <text>"processApplication"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0o2rbq3">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13k1n7x">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10nmih1">
+          <text>"lead-judge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08q49a3">
+          <text>"Read"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bx2f64">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nslrbo">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07jswgw">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10qbiim">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0efh8xd">
+        <description>Case Manager task permissions</description>
+        <inputEntry id="UnaryTests_1nwdtfi">
+          <text>"processApplication"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qqpjwx">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fk92sx">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kwqcdo">
+          <text>"case-manager"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0euuh2t">
+          <text>"Own"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00h8euq">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03q45wo">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13p3bfp">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xaeelf">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1m8nao5">
+        <description>FTPA Judge task permissions</description>
+        <inputEntry id="UnaryTests_1b83szh">
+          <text>"processApplication"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1drytx7">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0v0hgx2">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0080zvi">
+          <text>"ftpa-judge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13j9gr3">
+          <text>"Execute"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wnb6ap">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06jy9b8">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1n6yywa">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03mgyda">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bzsq7p">
+        <description>Hearing Panel Judge task permissions</description>
+        <inputEntry id="UnaryTests_1g1jifr">
+          <text>"processApplication"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dwx6pq">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tumts0">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tx748p">
+          <text>"hearing-panel-judge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0030ex3">
+          <text>"Manage"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ka371o">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ra5fep">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_108m6ms">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tkfj25">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02rjpwi">
+        <description>Lead Judge task permissions</description>
+        <inputEntry id="UnaryTests_1d7m5cg">
+          <text>"reviewSpecificAccessRequestJudiciary"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00ikaea">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12969s2">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0q5upws">
+          <text>"lead-judge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19qvu0i">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rgx38f">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1b4vxhy">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09nikf5">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13rche9">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ibd622">
+        <description>Case Manager task permissions</description>
+        <inputEntry id="UnaryTests_102l2ov">
+          <text>"reviewSpecificAccessRequestJudiciary"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0un5dgg">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xanver">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jl6hkd">
+          <text>"case-manager"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07qx45y">
+          <text>"Own,Manage"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1m4ypvr">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07bgmla">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wzy5mr">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0n3cwoy">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1v2ot3a">
+        <description>FTPA Judge task permissions</description>
+        <inputEntry id="UnaryTests_0rj43p2">
+          <text>"reviewSpecificAccessRequestJudiciary"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1peja47">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0mq3f0f">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sguu5c">
+          <text>"ftpa-judge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lnuvz1">
+          <text>"Manage,Execute"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bh62xw">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01lik7w">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tjpu0n">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ejcs7n">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0sti3zg">
+        <description>Hearing Panel Judge task permissions</description>
+        <inputEntry id="UnaryTests_18y2jq5">
+          <text>"reviewSpecificAccessRequestJudiciary"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gervzq">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0siovl9">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ylhrlg">
+          <text>"hearing-panel-judge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08aex54">
+          <text>"Read,Manage,Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1619ry4">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0b01nxs">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1v1u83r">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1q0qkfm">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0aus0ll">
+        <description>Lead Judge task permissions task permissions</description>
+        <inputEntry id="UnaryTests_0dlscni">
+          <text>"reviewSpecificAccessRequestLegalOps"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fgo2hg">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1z0b3w7">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0pzhs52">
+          <text>"lead-judge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fsvqkx">
+          <text>"Read,Own,Manage,Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_101qh5t">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1srpm54">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02hf6hr">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hqnwye">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13ktxbj">
+        <description>Case Manager task permissions task permissions</description>
+        <inputEntry id="UnaryTests_1sm7eag">
+          <text>"reviewSpecificAccessRequestLegalOps"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15wuljy">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18kgtml">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_115tfoo">
+          <text>"case-manager"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1htflco">
+          <text>"Read,Manage,Execute,Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13lkm16">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05rqncc">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02gbzbp">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0e3dg6v">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1p52wve">
+        <description>Challenged Access (judiciary) task permissions</description>
+        <inputEntry id="UnaryTests_1pi7aou">
+          <text>"processApplication"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qvaigk">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rtiriv">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hmm8zn">
+          <text>"challenged-access-judiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1z06xxq">
+          <text>"Read"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jw0nxk">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0g8gwtx">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fkmvg3">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0q2o8ru">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gjvz4l">
+        <description>Challenged Access (legal-operations) task permissions</description>
+        <inputEntry id="UnaryTests_18s2lpx">
+          <text>"processApplication"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uny2bh">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0di5vix">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hmulbm">
+          <text>"challenged-access-legal-ops"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1m6turf">
+          <text>"Manage"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hp62p2">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1peq9pg">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bxla5k">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xw771l">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_180mzuy">
+        <description>Challenged Access (admin) task permissions</description>
+        <inputEntry id="UnaryTests_1iui8cw">
+          <text>"processApplication"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0f6qqi8">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fflc61">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zwzbsy">
+          <text>"challenged-access-admin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ogdjtu">
+          <text>"Execute"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jhyykg">
+          <text>"ADMIN"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vbodqn">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1s31sbv">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mj701k">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_139ne5n">
+        <description>Challenged Access (judiciary) task permissions</description>
+        <inputEntry id="UnaryTests_0112lf4">
+          <text>"reviewSpecificAccessRequestJudiciary"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fe299u">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hikbpn">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13hcglf">
+          <text>"challenged-access-judiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pv6ab4">
+          <text>"Manage"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xsrukz">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01i6u25">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1of8keu">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1secubk">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kch55z">
+        <description>Challenged Access (legal-operations) task permissions</description>
+        <inputEntry id="UnaryTests_0lrfgc2">
+          <text>"reviewSpecificAccessRequestJudiciary"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07x6ok0">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10evl4k">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06gorl5">
+          <text>"challenged-access-legal-ops"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19pyrwq">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1g01m9i">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vjlevb">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01mmj4n">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lk19fr">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0w0544n">
+        <description>Challenged Access (admin) task permissions</description>
+        <inputEntry id="UnaryTests_0jmn54n">
+          <text>"reviewSpecificAccessRequestJudiciary"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0a5m6t5">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ac1bsk">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0j1ec07">
+          <text>"challenged-access-admin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i7s7v4">
+          <text>"Own,Manage"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0d3fbcx">
+          <text>"ADMIN"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ewdab7">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1uiezvr">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_183pbwo">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ngpfig">
+        <description>Challenged Access (judiciary) task permissions</description>
+        <inputEntry id="UnaryTests_02c9rpk">
+          <text>"reviewSpecificAccessRequestLegalOps"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_060l1ig">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1p2l2ur">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hc8yrn">
+          <text>"challenged-access-judiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17j9347">
+          <text>"Execute,Manage"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10db9sx">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hu9p8s">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06gjw2q">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0orjfrh">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jzy2tk">
+        <description>Challenged Access (legal-operations) task permissions</description>
+        <inputEntry id="UnaryTests_0nhp8l3">
+          <text>"reviewSpecificAccessRequestLegalOps"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_00kcn88">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hdzl48">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ly1k2s">
+          <text>"challenged-access-legal-ops"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cga4t5">
+          <text>"Read,Manage,Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15soxq3">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11rr31d">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01le5rw">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tfidpu">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ql7lde">
+        <description>Challenged Access (admin) task permissions</description>
+        <inputEntry id="UnaryTests_0g418sz">
+          <text>"reviewSpecificAccessRequestLegalOps"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17nck6j">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17ugdpw">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10thrlm">
+          <text>"challenged-access-admin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rxzy6k">
+          <text>"Read,Manage,Own,Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1o3mfa1">
+          <text>"ADMIN"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16rgoio">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rekk0i">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kz9w30">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1r3nz8w">
+        <description>Challenged Access (judiciary) task permissions</description>
+        <inputEntry id="UnaryTests_0d5gtri">
+          <text>"reviewSpecificAccessRequestAdmin"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1s6x0zw">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0k3sd6u">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13te783">
+          <text>"challenged-access-judiciary"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0uvy8ci">
+          <text>"Read,Manage,Execute,Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16qfxjx">
+          <text>"JUDICIAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1x076cn">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1j29e58">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bm793v">
           <text>false</text>
         </outputEntry>
       </rule>
