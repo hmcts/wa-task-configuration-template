@@ -321,7 +321,7 @@ else
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0y7llh2">
-        <description>Lead Judge task permissions</description>
+        <description>Specific Access Lead Judge task permissions</description>
         <inputEntry id="UnaryTests_0asgnjh">
           <text>"processApplication"</text>
         </inputEntry>
@@ -351,7 +351,7 @@ else
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0efh8xd">
-        <description>Case Manager task permissions</description>
+        <description>Specific Access Case Manager task permissions</description>
         <inputEntry id="UnaryTests_1nwdtfi">
           <text>"processApplication"</text>
         </inputEntry>
@@ -381,7 +381,7 @@ else
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1m8nao5">
-        <description>FTPA Judge task permissions</description>
+        <description>Specific Access FTPA Judge task permissions</description>
         <inputEntry id="UnaryTests_1b83szh">
           <text>"processApplication"</text>
         </inputEntry>
@@ -411,7 +411,7 @@ else
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0bzsq7p">
-        <description>Hearing Panel Judge task permissions</description>
+        <description>Specific Access Hearing Panel Judge task permissions</description>
         <inputEntry id="UnaryTests_1g1jifr">
           <text>"processApplication"</text>
         </inputEntry>
@@ -441,7 +441,7 @@ else
         </outputEntry>
       </rule>
       <rule id="DecisionRule_02rjpwi">
-        <description>Lead Judge task permissions</description>
+        <description>Specific Access Lead Judge task permissions</description>
         <inputEntry id="UnaryTests_1d7m5cg">
           <text>"reviewSpecificAccessRequestJudiciary"</text>
         </inputEntry>
@@ -471,7 +471,7 @@ else
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0ibd622">
-        <description>Case Manager task permissions</description>
+        <description>Specific Access Case Manager task permissions</description>
         <inputEntry id="UnaryTests_102l2ov">
           <text>"reviewSpecificAccessRequestJudiciary"</text>
         </inputEntry>
@@ -501,7 +501,7 @@ else
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1v2ot3a">
-        <description>FTPA Judge task permissions</description>
+        <description>Specific Access FTPA Judge task permissions</description>
         <inputEntry id="UnaryTests_0rj43p2">
           <text>"reviewSpecificAccessRequestJudiciary"</text>
         </inputEntry>
@@ -531,7 +531,7 @@ else
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0sti3zg">
-        <description>Hearing Panel Judge task permissions</description>
+        <description>Specific Access Hearing Panel Judge task permissions</description>
         <inputEntry id="UnaryTests_18y2jq5">
           <text>"reviewSpecificAccessRequestJudiciary"</text>
         </inputEntry>
@@ -561,7 +561,7 @@ else
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0aus0ll">
-        <description>Lead Judge task permissions task permissions</description>
+        <description>Specific Access Lead Judge task permissions task permissions</description>
         <inputEntry id="UnaryTests_0dlscni">
           <text>"reviewSpecificAccessRequestLegalOps"</text>
         </inputEntry>
@@ -591,7 +591,7 @@ else
         </outputEntry>
       </rule>
       <rule id="DecisionRule_13ktxbj">
-        <description>Case Manager task permissions task permissions</description>
+        <description>Specific Access Case Manager task permissions task permissions</description>
         <inputEntry id="UnaryTests_1sm7eag">
           <text>"reviewSpecificAccessRequestLegalOps"</text>
         </inputEntry>
