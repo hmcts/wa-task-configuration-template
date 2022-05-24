@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+  <suppress>
+    <notes>Doesn't apply to this project. Reference:
+      https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#remoting-httpinvoker
+    </notes>
+    <cve>CVE-2016-1000027</cve>
+  </suppress>
 </suppressions>
 
