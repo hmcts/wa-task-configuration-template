@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-cancellation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-cancellation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.9.0">
   <decision id="wa-task-cancellation-wa-wacasetype" name="Task cancellation DMN">
     <decisionTable id="DecisionTable_0z3jx1g" hitPolicy="COLLECT">
       <input id="Input_1" label="From State">
@@ -159,7 +159,7 @@
           <text></text>
         </outputEntry>
       </rule>
-       <rule id="DecisionRule_14qa8i1">
+      <rule id="DecisionRule_14qa8i1">
         <inputEntry id="UnaryTests_1ljmieg">
           <text></text>
         </inputEntry>
@@ -228,7 +228,7 @@
           <text></text>
         </outputEntry>
       </rule>
-       <rule id="DecisionRule_1ed9xds">
+      <rule id="DecisionRule_1ed9xds">
         <inputEntry id="UnaryTests_0j04gym">
           <text></text>
         </inputEntry>
@@ -274,7 +274,7 @@
           <text>"timeExtension"</text>
         </outputEntry>
       </rule>
-			 <rule id="DecisionRule_1n1syxe">
+      <rule id="DecisionRule_1n1syxe">
         <inputEntry id="UnaryTests_0gc2v8g">
           <text></text>
         </inputEntry>
@@ -295,6 +295,29 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_143gqzb">
           <text>"followUpOverdue"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08azukm">
+        <inputEntry id="UnaryTests_1ayce1q">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1h8fd5c">
+          <text>"UPDATE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14ofttj">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1g9nkku">
+          <text>"Reconfigure"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1s83ja0">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0p6yvli">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xg9fu9">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
