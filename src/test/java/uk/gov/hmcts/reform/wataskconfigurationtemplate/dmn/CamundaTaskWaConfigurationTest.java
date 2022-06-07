@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -181,7 +182,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedWorkType("hearing_work")
             .expectedRoleCategory("LEGAL_OPERATIONS")
             .expectedDescription("[Decide an application]"
-                                     + "(/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)")
+                                 + "(/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)")
             .expectedAdditionalPropertiesKey1("value1")
             .expectedAdditionalPropertiesKey2("value2")
             .expectedAdditionalPropertiesKey3("value3")
@@ -248,22 +249,52 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         "reviewSpecificAccessRequestJudiciary", "reviewSpecificAccessRequestLegalOps",
         "reviewSpecificAccessRequestAdmin"
     })
-    void when_taskId_then_return_assignmentId(String taskType) {
+    void should_return_request_value_when_role_assignment_id_exists_in_task_attributes(String taskType) {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        String roleAssignmentId = UUID.randomUUID().toString();
+        inputVariables.putValue("taskAttributes", Map.of(
+                "taskType", taskType,
+                "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
+            )
+        );
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
+            .collect(Collectors.toList());
+
+        assertThat(dmnResults.size(), is(1));
+
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "additionalProperties_roleAssignmentId",
+            "value", roleAssignmentId,
+            "Can reconfigure?", true
+        )));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "reviewSpecificAccessRequestJudiciary", "reviewSpecificAccessRequestLegalOps",
+        "reviewSpecificAccessRequestAdmin"
+    })
+    void should_return_dmn_value_when_role_assignment_id_is_not_exist_in_task_attributes(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
 
         inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
-        List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
+        List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
             .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
             .collect(Collectors.toList());
 
-        assertThat(workTypeResultList.size(), is(1));
+        assertThat(dmnResults.size(), is(1));
 
-        assertTrue(workTypeResultList.contains(Map.of(
+        assertTrue(dmnResults.contains(Map.of(
             "name", "additionalProperties_roleAssignmentId",
-            "value", "assignmentId",
+            "value", "roleAssignmentId",
             "Can reconfigure?", true
         )));
     }
