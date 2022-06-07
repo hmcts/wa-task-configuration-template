@@ -359,6 +359,57 @@ else ""</text>
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_160t0r9">
+        <inputEntry id="UnaryTests_0ex9m7x">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06vutyf">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h2h14r">
+          <text>"priorityDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nk8jbe">
+          <text>if caseData.nextHearingDate !=null then caseData.nextHearingDate else "2022-12-07"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rkbjrn">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fl1vhb">
+        <inputEntry id="UnaryTests_06h12s2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09acvua">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1w99mbd">
+          <text>"minorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0iyo4pw">
+          <text>500</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05pid1p">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1aibsuh">
+        <inputEntry id="UnaryTests_1mdluu0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05nmdna">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qrn2pq">
+          <text>"majorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0b5ts53">
+          <text>if caseData.urgent = "Yes" then 1000 else 5000</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0r59qwr">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
