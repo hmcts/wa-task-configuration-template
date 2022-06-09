@@ -14,6 +14,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.platform.commons.util.StringUtils;
 import uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTableBaseUnitTest;
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,7 +42,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(17));
+        assertThat(logic.getRules().size(), is(19));
     }
 
     @SuppressWarnings("checkstyle:indentation")
@@ -154,8 +156,11 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedAdditionalPropertiesKey2(null)
             .expectedAdditionalPropertiesKey3(null)
             .expectedAdditionalPropertiesKey4(null)
+            .expectedNextHearingId(null)
+            .expectedNextHearingDate(null)
             .build();
         String refusalOfEuLabel = "Refusal of a human rights claim";
+        String nextHearingDate = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ"));
         Scenario givenCaseDataIsPresentThenReturnNameAndValueScenario = Scenario.builder()
             .caseData(Map.of(
                 "appealType", "refusalOfHumanRights",
@@ -169,7 +174,9 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
                 "caseManagementCategory", Map.of(
                     "value", Map.of("code", "refusalOfHumanRights", "label", "Refusal of a human rights claim"),
                     "list_items", List.of(Map.of("code", "refusalOfHumanRights", "label", refusalOfEuLabel))
-                )
+                ),
+                "nextHearingId", "next Hearing Id",
+                "nextHearingDate", nextHearingDate
             ))
             .taskAttributes(Map.of("taskType", "processApplication"))
             .expectedCaseNameValue("some appellant given names some appellant family name")
@@ -186,6 +193,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedAdditionalPropertiesKey2("value2")
             .expectedAdditionalPropertiesKey3("value3")
             .expectedAdditionalPropertiesKey4("value4")
+            .expectedNextHearingId("next Hearing Id")
+            .expectedNextHearingDate(nextHearingDate)
             .build();
 
         return Stream.of(
@@ -328,6 +337,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         String expectedAdditionalPropertiesKey2;
         String expectedAdditionalPropertiesKey3;
         String expectedAdditionalPropertiesKey4;
+        String expectedNextHearingId;
+        String expectedNextHearingDate;
     }
 
     private List<Map<String, Object>> getExpectedValues(Scenario scenario) {
@@ -355,6 +366,9 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .ifPresent(key -> getExpectedValue(rules, "additionalProperties_key3", key));
         Optional.ofNullable(scenario.getExpectedAdditionalPropertiesKey4())
             .ifPresent(key -> getExpectedValue(rules, "additionalProperties_key4", key));
+
+        getExpectedValue(rules, "next_hearing_id", scenario.getExpectedNextHearingId());
+        getExpectedValue(rules, "next_hearing_date", scenario.getExpectedNextHearingDate());
         return rules;
     }
 
