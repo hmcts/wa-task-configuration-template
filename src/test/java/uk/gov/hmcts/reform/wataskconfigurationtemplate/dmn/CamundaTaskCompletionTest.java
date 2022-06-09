@@ -261,6 +261,15 @@ class CamundaTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
                 )
             ),
             Arguments.of(
+                "specificAccessRequest",
+                asList(
+                    Map.of(
+                        "taskType", "reviewSpecificAccessRequestLegalOps",
+                        "completionMode", "Auto"
+                    )
+                )
+            ),
+            Arguments.of(
                 "unknownEvent",
                 emptyList()
             )
