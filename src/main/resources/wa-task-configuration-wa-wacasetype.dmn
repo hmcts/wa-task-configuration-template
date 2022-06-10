@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.12.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
   <decision id="wa-task-configuration-wa-wacasetype" name="Task configuration DMN">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="RULE ORDER">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -370,7 +370,7 @@ else ""</text>
           <text>"next_hearing_id" </text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0dbj542">
-          <text>caseData.nextHearingId + ""</text>
+          <text>if caseData.nextHearingId != null then caseData.nextHearingId else ""</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1kp3g7l">
           <text>true</text>
@@ -387,7 +387,7 @@ else ""</text>
           <text>"next_hearing_date"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ycw69t">
-          <text>caseData.nextHearingDate + ""</text>
+          <text>if caseData.nextHearingDate != null then caseData.nextHearingDate else ""</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1oyay8a">
           <text>true</text>

@@ -157,8 +157,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedAdditionalPropertiesKey2(null)
             .expectedAdditionalPropertiesKey3(null)
             .expectedAdditionalPropertiesKey4(null)
-            .expectedNextHearingId(null)
-            .expectedNextHearingDate(null)
+            .expectedNextHearingId("")
+            .expectedNextHearingDate("")
             .build();
         String refusalOfEuLabel = "Refusal of a human rights claim";
         String nextHearingDate = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ"));
