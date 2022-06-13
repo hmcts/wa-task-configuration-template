@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.12.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.9.0">
   <decision id="wa-task-configuration-wa-wacasetype" name="Task configuration DMN">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="RULE ORDER">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -352,8 +352,9 @@ else ""</text>
         <outputEntry id="LiteralExpression_07fx34x">
           <text>"additionalProperties_roleAssignmentId"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0vg7l1v">
-          <text>"assignmentId"</text>
+        <outputEntry id="LiteralExpression_0vg7l1v" expressionLanguage="feel">
+          <text>if (taskAttributes != null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then taskAttributes.additionalProperties.roleAssignmentId
+else "roleAssignmentId"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1tvy5lm">
           <text>true</text>
