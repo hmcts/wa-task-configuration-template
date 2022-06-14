@@ -398,8 +398,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         Optional.ofNullable(scenario.getExpectedAdditionalPropertiesKey4())
             .ifPresent(key -> getExpectedValue(rules, "additionalProperties_key4", key));
 
-        getExpectedValue(rules, "next_hearing_id", scenario.getExpectedNextHearingId());
-        getExpectedValue(rules, "next_hearing_date", scenario.getExpectedNextHearingDate());
+        getExpectedValue(rules, "nextHearingId", scenario.getExpectedNextHearingId());
+        getExpectedValue(rules, "nextHearingDate", scenario.getExpectedNextHearingDate());
         return rules;
     }
 
