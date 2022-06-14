@@ -60,7 +60,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         Map<String, Object> caseData = new HashMap<>(); // allow null values
         caseData.put("appealType", appealType);
         inputVariables.putValue("caseData", caseData);
-        inputVariables.putValue("dueDate", "2022-01-01");
+        inputVariables.putValue("taskAttributes", Map.of("dueDateTime", "2023-01-01T14:00:00.000"));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -78,7 +78,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
             "name", "priorityDate",
-            "value", "2022-01-01",
+            "value", "2023-01-01T14:00:00.000",
             "Can reconfigure?", true
         )));
     }
@@ -208,14 +208,15 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         );
     }
 
-    void when_casaDate_hearingDate_then_return_expected_priority_Date(String appealType, String expectedAppealType) {
+    @Test
+    void when_casaDate_hearing_date_then_return_expected_priority_date() {
         Map<String, Object> caseData = new HashMap<>(); // allow null values
-        caseData.put("appealType", appealType);
+        caseData.put("appealType", "refusalOfHumanRights");
         caseData.put("nextHearingDate", "2023-01-01");
         caseData.put("urgent", "Yes");
         VariableMap inputVariables = new VariableMapImpl();
         inputVariables.putValue("caseData", caseData);
-        inputVariables.putValue("dueDate", "2022-01-01");
+        inputVariables.putValue("taskAttributes", Map.of("dueDateTime", "2023-01-01T14:00:00.000"));
 
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
@@ -239,20 +240,21 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         )));
     }
 
-    void when_no_casaDate_hearingDate_then_return_expected_priority_Date(String appealType, String expectedAppealType) {
+    @Test
+    void when_no_casaDate_hearingDate_then_return_expected_priority_Date() {
         VariableMap inputVariables = new VariableMapImpl();
         Map<String, Object> caseData = new HashMap<>(); // allow null values
-        caseData.put("appealType", appealType);
+        caseData.put("appealType", "refusalOfHumanRights");
         caseData.put("urgent", "No");
         inputVariables.putValue("caseData", caseData);
-        inputVariables.putValue("dueDate", "2022-01-01");
+        inputVariables.putValue("taskAttributes", Map.of("dueDateTime", "2023-01-01T14:00:00.000"));
 
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
             "name", "priorityDate",
-            "value", "2022-01-01",
+            "value", "2023-01-01T14:00:00.000",
             "Can reconfigure?", true
         )));
 
@@ -264,7 +266,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
             "name", "majorPriority",
-            "value", "1000",
+            "value", "5000",
             "Can reconfigure?", true
         )));
     }
