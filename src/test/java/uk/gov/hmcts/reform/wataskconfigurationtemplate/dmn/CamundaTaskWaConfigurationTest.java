@@ -288,6 +288,36 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         "reviewSpecificAccessRequestJudiciary", "reviewSpecificAccessRequestLegalOps",
         "reviewSpecificAccessRequestAdmin"
     })
+    void should_return_default_value_when_additional_properties_is_empty(String taskType) {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        inputVariables.putValue("taskAttributes", Map.of(
+                "taskType", taskType,
+                "additionalProperties", Map.of()
+            )
+        );
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
+            .collect(Collectors.toList());
+
+        assertThat(dmnResults.size(), is(1));
+
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "additionalProperties_roleAssignmentId",
+            "value", "roleAssignmentId",
+            "Can reconfigure?", true
+        )));
+    }
+
+
+    @ParameterizedTest
+    @CsvSource({
+        "reviewSpecificAccessRequestJudiciary", "reviewSpecificAccessRequestLegalOps",
+        "reviewSpecificAccessRequestAdmin"
+    })
     void should_return_dmn_value_when_role_assignment_id_is_not_exist_in_task_attributes(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
 

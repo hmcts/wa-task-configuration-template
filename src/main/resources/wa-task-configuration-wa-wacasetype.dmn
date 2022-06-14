@@ -352,8 +352,9 @@ else ""</text>
         <outputEntry id="LiteralExpression_07fx34x">
           <text>"additionalProperties_roleAssignmentId"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0vg7l1v">
-          <text>if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.additionalProperties != null) then taskAttributes.additionalProperties.roleAssignmentId else "roleAssignmentId"</text>
+        <outputEntry id="LiteralExpression_0vg7l1v" expressionLanguage="feel">
+          <text>if (taskAttributes != null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then taskAttributes.additionalProperties.roleAssignmentId
+else "roleAssignmentId"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1tvy5lm">
           <text>true</text>
