@@ -270,7 +270,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         assertTrue(dmnResults.contains(Map.of(
             "name", "additionalProperties_roleAssignmentId",
             "value", roleAssignmentId,
-            "Can reconfigure?", true
+            "canReconfigure", true
         )));
     }
 
@@ -299,7 +299,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         assertTrue(dmnResults.contains(Map.of(
             "name", "additionalProperties_roleAssignmentId",
             "value", "roleAssignmentId",
-            "Can reconfigure?", true
+            "canReconfigure", true
         )));
     }
 
