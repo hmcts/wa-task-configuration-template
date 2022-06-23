@@ -411,6 +411,40 @@ else "roleAssignmentId"</text>
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1otvcey">
+        <inputEntry id="UnaryTests_0r4yrob">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ne7h4o">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04rzhpv">
+          <text>"nextHearingId" </text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dbj542">
+          <text>if caseData.nextHearingId != null then caseData.nextHearingId else ""</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kp3g7l">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0k5a5fq">
+        <inputEntry id="UnaryTests_1fypq3p">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14uq2vt">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jzoyjj">
+          <text>"nextHearingDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ycw69t">
+          <text>if caseData.nextHearingDate != null then caseData.nextHearingDate else ""</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1oyay8a">
+          <text>true</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
