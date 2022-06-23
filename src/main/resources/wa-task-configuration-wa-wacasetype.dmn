@@ -19,7 +19,7 @@ null</text>
       </input>
       <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="307" />
       <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="2175" />
-      <output id="OutputClause_0tefly7" name="Can reconfigure?" typeRef="boolean" />
+      <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
       <rule id="DecisionRule_19opwhc">
         <inputEntry id="UnaryTests_11xjbt2">
           <text></text>
