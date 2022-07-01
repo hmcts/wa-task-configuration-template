@@ -229,7 +229,7 @@ def versions = [
   camunda         : '7.14.0',
   pitest          : '1.7.4',
   sonarPitest     : '0.5',
-  tomcat          : '9.0.63'
+  tomcat          : '9.0.64'
 
 ]
 
