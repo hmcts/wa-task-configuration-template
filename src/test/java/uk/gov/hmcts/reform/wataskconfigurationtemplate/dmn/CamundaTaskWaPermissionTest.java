@@ -37,18 +37,18 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "autoAssignable", false,
                         "name", "task-supervisor",
-                        "value", "Read,Refer,Manage,Cancel",
+                        "value", "Read,Refer,Manage,Cancel,Assign,Unassign,Unassignassign,Complete",
                         "caseAccessCategory", "categoryA"
                     ),
                     Map.of(
                         "name", "tribunal-caseworker",
-                        "value", "Read,Refer,Own,Manage,Cancel",
+                        "value", "Read,Refer,Completeown,Cancelown,Claim,Own",
                         "roleCategory", "LEGAL_OPERATIONS",
                         "autoAssignable", false
                     ),
                     Map.of(
                         "name", "senior-tribunal-caseworker",
-                        "value", "Read,Refer,Own,Manage,Cancel",
+                        "value", "Read,Refer,Complete,Claim,Unclaim,Unassignclaim,Execute",
                         "roleCategory", "LEGAL_OPERATIONS",
                         "autoAssignable", false
                     )
@@ -60,18 +60,18 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
                     Map.of(
                         "autoAssignable", false,
                         "name", "task-supervisor",
-                        "value", "Read,Refer,Manage,Cancel",
+                        "value", "Read,Refer,Manage,Cancel,Assign,Unassign,Unassignassign,Complete",
                         "caseAccessCategory", "categoryA"
                     ),
                     Map.of(
                         "name", "tribunal-caseworker",
-                        "value", "Read,Refer,Own,Manage,Cancel",
+                        "value", "Read,Refer,Completeown,Cancelown,Claim,Own",
                         "roleCategory", "LEGAL_OPERATIONS",
                         "autoAssignable", false
                     ),
                     Map.of(
                         "name", "senior-tribunal-caseworker",
-                        "value", "Read,Refer,Own,Manage,Cancel",
+                        "value", "Read,Refer,Complete,Claim,Unclaim,Unassignclaim,Execute",
                         "roleCategory", "LEGAL_OPERATIONS",
                         "autoAssignable", false
                     )
@@ -103,13 +103,13 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
         MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(List.of(
             Map.of(
                 "name", "task-supervisor",
-                "value", "Read,Refer,Manage,Cancel",
+                "value", "Read,Refer,Manage,Cancel,Assign,Unassign,Unassignassign,Complete",
                 "autoAssignable", false,
                 "caseAccessCategory", "categoryA"
             ),
             Map.of(
                 "name", "tribunal-caseworker",
-                "value", "Read,Refer,Execute",
+                "value", "Read,Refer,Completeown,Cancelown,Claim,Own",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "assignmentPriority", 2,
                 "autoAssignable", false,
@@ -117,7 +117,7 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
             ),
             Map.of(
                 "name", "senior-tribunal-caseworker",
-                "value", "Read,Refer,Execute",
+                "value", "Read,Refer,Complete,Claim,Unclaim,Unassignclaim,Execute",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "assignmentPriority", 2,
                 "autoAssignable", false,
@@ -187,7 +187,7 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
         MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(List.of(
             Map.of(
                 "name", "task-supervisor",
-                "value", "Read,Refer,Manage,Cancel",
+                "value", "Read,Refer,Manage,Cancel,Assign,Unassign,Unassignassign,Complete",
                 "autoAssignable", false,
                 "caseAccessCategory", "categoryA"
             ),
@@ -255,20 +255,20 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
         MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(List.of(
             Map.of(
                 "name", "task-supervisor",
-                "value", "Read,Refer,Manage,Cancel",
+                "value", "Read,Refer,Manage,Cancel,Assign,Unassign,Unassignassign,Complete",
                 "autoAssignable", false,
                 "caseAccessCategory", "categoryA"
             ),
             Map.of(
                 "name", "tribunal-caseworker",
-                "value", "Read,Refer,Own",
+                "value", "Read,Refer,Completeown,Cancelown,Claim,Own",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "assignmentPriority", 1,
                 "autoAssignable", true
             ),
             Map.of(
                 "name", "senior-tribunal-caseworker",
-                "value", "Read,Refer,Own",
+                "value", "Read,Refer,Complete,Claim,Unclaim,Unassignclaim,Execute",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "assignmentPriority", 1,
                 "autoAssignable", true
@@ -322,7 +322,7 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
         MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(List.of(
             Map.of(
                 "name", "task-supervisor",
-                "value", "Read,Refer,Manage,Cancel",
+                "value", "Read,Refer,Manage,Cancel,Assign,Unassign,Unassignassign,Complete",
                 "autoAssignable", false,
                 "caseAccessCategory", "categoryA"
             ),
