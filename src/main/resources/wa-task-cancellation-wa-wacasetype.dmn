@@ -320,6 +320,29 @@
           <text></text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0qlcky2">
+        <inputEntry id="UnaryTests_14q663q">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_091tudz">
+          <text>"makeAnApplication"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08kgh7g">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0rygdvw">
+          <text>"Warn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1adpj8i">
+          <text>"TA01"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0psgmjv">
+          <text>"There is an application task which might impact other active tasks"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xlvbm1">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>

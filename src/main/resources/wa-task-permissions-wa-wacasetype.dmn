@@ -920,6 +920,64 @@ else
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_09k7kw1">
+        <inputEntry id="UnaryTests_04425rt">
+          <text>"followUpOverdue"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01vadns">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1151izu">
+          <text>"categoryA,categoryB"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wlypx7">
+          <text>"tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jdfz6e">
+          <text>"Read,Refer,Execute"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1qo9wtg">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0p9a9e2">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ei7kmz">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xtvsqd">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wzgy63">
+        <inputEntry id="UnaryTests_0r70jqw">
+          <text>"followUpOverdue"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bu1159">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0knjhir">
+          <text>"categoryC,categoryD"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1e0ck9w">
+          <text>"senior-tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1n1hvgl">
+          <text>"Read,Refer,Execute"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fyg6ka">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02k0phn">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hqgzsj">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kjpkfz">
+          <text>false</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
