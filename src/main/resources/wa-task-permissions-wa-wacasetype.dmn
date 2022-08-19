@@ -37,7 +37,7 @@ else
           <text>"task-supervisor"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15maf8m">
-          <text>"Read,Manage,Cancel,Assign,Unassign,Unassignassign,Complete"</text>
+          <text>"Read,Manage,Cancel,Assign,Unassign,UnassignAssign,Complete"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1jrkhhy">
           <text></text>
@@ -67,7 +67,7 @@ else
           <text>"tribunal-caseworker"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_151ry1h">
-          <text>"Read,Completeown,Cancelown,Claim,Own"</text>
+          <text>"Read,Own,Manage,Cancel"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ut8d7p">
           <text>"LEGAL_OPERATIONS"</text>
@@ -97,7 +97,7 @@ else
           <text>"senior-tribunal-caseworker"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0z3dkq8">
-          <text>"Read,Complete,Claim,Unclaim,Unassignclaim,Execute"</text>
+          <text>"Read,Own,Manage,Cancel"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0iibmbw">
           <text>"LEGAL_OPERATIONS"</text>
@@ -126,7 +126,7 @@ else
           <text>"tribunal-caseworker"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_07oqyf2">
-          <text>"Read,Completeown,Cancelown,Claim,Own"</text>
+          <text>"Read,CompleteOwn,CancelOwn,Claim,Own"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0y7x76x">
           <text>"LEGAL_OPERATIONS"</text>
@@ -155,7 +155,7 @@ else
           <text>"senior-tribunal-caseworker"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ldu22q">
-          <text>"Read,Complete,Claim,Unclaim,Unassignclaim,Execute"</text>
+          <text>"Read,Complete,Claim,Unclaim,UnassignClaim,Execute,Cancel"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ese6q1">
           <text>"LEGAL_OPERATIONS"</text>
@@ -215,7 +215,7 @@ else
           <text>"tribunal-caseworker"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0gf28wd">
-          <text>"Read,Completeown,Cancelown,Claim,Own"</text>
+          <text>"Read,Own"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1otontm">
           <text>"LEGAL_OPERATIONS"</text>
@@ -245,7 +245,7 @@ else
           <text>"senior-tribunal-caseworker"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1jyqrdf">
-          <text>"Read,Complete,Claim,Unclaim,Unassignclaim,Execute"</text>
+          <text>"Read,Own"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0m7xtzd">
           <text>"LEGAL_OPERATIONS"</text>
