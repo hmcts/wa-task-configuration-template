@@ -280,6 +280,36 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         )));
     }
 
+    @Test
+    void when_no_casaDate_urgent_then_return_expected_major_priority() {
+        VariableMap inputVariables = new VariableMapImpl();
+        Map<String, Object> caseData = new HashMap<>(); // allow null values
+        caseData.put("appealType", "refusalOfHumanRights");
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("dueDateTime", "2023-01-01T14:00:00.000"));
+
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "priorityDate",
+            "value", "2023-01-01T14:00:00.000",
+            "canReconfigure", true
+        )));
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "minorPriority",
+            "value", "500",
+            "canReconfigure", true
+        )));
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "majorPriority",
+            "value", "5000",
+            "canReconfigure", true
+        )));
+    }
+
     @ParameterizedTest
     @CsvSource({
         "reviewSpecificAccessRequestJudiciary", "reviewSpecificAccessRequestLegalOps",

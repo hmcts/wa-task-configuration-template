@@ -405,7 +405,7 @@ else "roleAssignmentId"</text>
           <text>"majorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0b5ts53">
-          <text>if caseData.urgent = "Yes" then 1000 else 5000</text>
+          <text>if (caseData.urgent != null and caseData.urgent = "Yes") then 1000 else 5000</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0r59qwr">
           <text>true</text>
