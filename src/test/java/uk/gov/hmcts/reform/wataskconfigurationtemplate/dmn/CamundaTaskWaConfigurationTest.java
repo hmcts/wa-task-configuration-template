@@ -250,13 +250,44 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     }
 
     @Test
-    void when_no_casaDate_hearingDate_then_return_expected_priority_Date() {
+    void when_no_casaDate_hearingDate_but_dueDateTime_then_return_expected_priority_Date() {
         VariableMap inputVariables = new VariableMapImpl();
         Map<String, Object> caseData = new HashMap<>(); // allow null values
         caseData.put("appealType", "refusalOfHumanRights");
         caseData.put("urgent", "No");
         inputVariables.putValue("caseData", caseData);
         inputVariables.putValue("taskAttributes", Map.of("dueDateTime", "2023-01-01T14:00:00.000"));
+
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "priorityDate",
+            "value", "2023-01-01T14:00:00.000",
+            "canReconfigure", true
+        )));
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "minorPriority",
+            "value", "500",
+            "canReconfigure", true
+        )));
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "majorPriority",
+            "value", "5000",
+            "canReconfigure", true
+        )));
+    }
+
+    @Test
+    void when_no_casaDate_hearingDate_but_dueDate_then_return_expected_priority_Date() {
+        VariableMap inputVariables = new VariableMapImpl();
+        Map<String, Object> caseData = new HashMap<>(); // allow null values
+        caseData.put("appealType", "refusalOfHumanRights");
+        caseData.put("urgent", "No");
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("dueDate", "2023-01-01T14:00:00.000"));
 
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
@@ -334,7 +365,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         "reviewSpecificAccessRequestJudiciary", "reviewSpecificAccessRequestLegalOps",
         "reviewSpecificAccessRequestAdmin"
     })
-    void should_return_request_value_when_role_assignment_id_exists_in_task_attributes(String taskType) {
+    void should_return_request_value_when_role_assignment_id_exists_in_additional_properties_of_task_attributes(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
 
         String roleAssignmentId = UUID.randomUUID().toString();
@@ -342,6 +373,35 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
                 "taskType", taskType,
                 "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
             )
+        );
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
+            .collect(Collectors.toList());
+
+        assertThat(dmnResults.size(), is(1));
+
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "additionalProperties_roleAssignmentId",
+            "value", roleAssignmentId,
+            "canReconfigure", true
+        )));
+    }
+    @ParameterizedTest
+    @CsvSource({
+        "reviewSpecificAccessRequestJudiciary", "reviewSpecificAccessRequestLegalOps",
+        "reviewSpecificAccessRequestAdmin"
+    })
+    void should_return_request_value_when_role_assignment_id_exists_in_task_attributes(String taskType) {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        String roleAssignmentId = UUID.randomUUID().toString();
+        inputVariables.putValue("taskAttributes", Map.of(
+                                    "taskType", taskType,
+                                    "roleAssignmentId", roleAssignmentId
+                                )
         );
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
