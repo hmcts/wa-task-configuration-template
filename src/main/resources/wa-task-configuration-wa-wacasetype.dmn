@@ -404,7 +404,7 @@ else ""</text>
           <text>"majorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0b5ts53">
-          <text>if caseData.urgent = "Yes" then 1000 else 5000</text>
+          <text>if (caseData.urgent != null and caseData.urgent = "Yes") then 1000 else 5000</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0r59qwr">
           <text>true</text>
@@ -441,6 +441,74 @@ else ""</text>
           <text>if caseData.nextHearingDate != null then caseData.nextHearingDate else ""</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1oyay8a">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pxnm0c">
+        <inputEntry id="UnaryTests_0tkkbro">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ldcewd">
+          <text>"followUpOverdue"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1uy391d">
+          <text>"additionalProperties_key1"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kthxaf">
+          <text>"value1"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vye9va">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15qo31r">
+        <inputEntry id="UnaryTests_06341ch">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wkdhu5">
+          <text>"followUpOverdue"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10c4z8v">
+          <text>"additionalProperties_key2"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sbkchg">
+          <text>"value2"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0a92qr9">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_081gncx">
+        <inputEntry id="UnaryTests_1prh4qz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_188tegs">
+          <text>"followUpOverdue"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zchano">
+          <text>"additionalProperties_key3"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0su1pco">
+          <text>"value3"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0u455ya">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rmtuym">
+        <inputEntry id="UnaryTests_19at9x9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1i94t2v">
+          <text>"followUpOverdue"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0b36q2j">
+          <text>"additionalProperties_key4"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16w9qvg">
+          <text>"value4"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wnpptb">
           <text>true</text>
         </outputEntry>
       </rule>

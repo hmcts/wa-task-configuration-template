@@ -43,7 +43,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(22));
+        assertThat(logic.getRules().size(), is(26));
     }
 
     @SuppressWarnings("checkstyle:indentation")
@@ -255,6 +255,36 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         Map<String, Object> caseData = new HashMap<>(); // allow null values
         caseData.put("appealType", "refusalOfHumanRights");
         caseData.put("urgent", "No");
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("dueDateTime", "2023-01-01T14:00:00.000"));
+
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "priorityDate",
+            "value", "2023-01-01T14:00:00.000",
+            "canReconfigure", true
+        )));
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "minorPriority",
+            "value", "500",
+            "canReconfigure", true
+        )));
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "majorPriority",
+            "value", "5000",
+            "canReconfigure", true
+        )));
+    }
+
+    @Test
+    void when_no_casaDate_urgent_then_return_expected_major_priority() {
+        VariableMap inputVariables = new VariableMapImpl();
+        Map<String, Object> caseData = new HashMap<>(); // allow null values
+        caseData.put("appealType", "refusalOfHumanRights");
         inputVariables.putValue("caseData", caseData);
         inputVariables.putValue("taskAttributes", Map.of("dueDateTime", "2023-01-01T14:00:00.000"));
 
