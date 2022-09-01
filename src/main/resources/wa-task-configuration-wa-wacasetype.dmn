@@ -513,6 +513,23 @@ else "roleAssignmentId"</text>
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1pfe344">
+        <inputEntry id="UnaryTests_0jryr4g">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1w36abk">
+          <text>"reviewAppealSkeletonArgument"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0myz862">
+          <text>"roleCategory"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11ofxr3">
+          <text>"CTSC"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zueupu">
+          <text>true</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
