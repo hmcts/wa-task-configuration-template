@@ -486,6 +486,30 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         )));
     }
 
+    @ParameterizedTest
+    @CsvSource({
+        "processApplication", "reviewAppealSkeletonArgument"
+    })
+    void when_taskId_then_return_work_type(String taskType) {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.containsValue("workType"))
+            .collect(Collectors.toList());
+
+        assertThat(workTypeResultList.size(), is(1));
+
+        assertTrue(workTypeResultList.contains(Map.of(
+            "name", "workType",
+            "value", "hearing_work",
+            "canReconfigure", true
+        )));
+    }
+
     @Value
     @Builder
     private static class Scenario {

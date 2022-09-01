@@ -978,6 +978,36 @@ else
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0z07qrf">
+        <description>CTSC Role category</description>
+        <inputEntry id="UnaryTests_1qv2pkf">
+          <text>"reviewAppealSkeletonArgument"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0t16o71">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04etvq9">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_143qqdy">
+          <text>"ctsc"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ii098a">
+          <text>"Read,Own,Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jlioc8">
+          <text>"CTSC"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1td4g42">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_006eecp">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1p1dr1q">
+          <text>false</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>

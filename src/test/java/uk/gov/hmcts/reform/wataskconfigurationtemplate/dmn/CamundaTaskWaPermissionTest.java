@@ -385,10 +385,34 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
     }
 
     @Test
+    void given_reviewAppealSkeletonArgument_taskType_when_evaluate_dmn_then_it_returns_expected_rule() {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "reviewAppealSkeletonArgument"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(List.of(
+            Map.of(
+                "name", "task-supervisor",
+                "value", "Read,Refer,Manage,Cancel",
+                "autoAssignable", false,
+                "caseAccessCategory", "categoryA"
+            ),
+            Map.of(
+                "name", "ctsc",
+                "value", "Read,Own,Cancel",
+                "roleCategory", "CTSC",
+                "assignmentPriority", 2,
+                "autoAssignable", false
+            )
+        )));
+    }
+
+    @Test
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(32));
+        assertThat(logic.getRules().size(), is(33));
 
     }
 }
