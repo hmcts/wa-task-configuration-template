@@ -131,6 +131,40 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_16i6htb">
+        <inputEntry id="UnaryTests_0elhyk1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14rm6xb">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pxotd7">
+          <text>dueDate</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fq9nph">
+          <text> date("2017-03-10")</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1aglp22">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0znj7lo">
+        <inputEntry id="UnaryTests_081ct94">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wljl7b">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ud0hya">
+          <text>dueDateTime</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1awfc4n">
+          <text> time("16:00")</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08trego">
+          <text></text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_1c6ndy4">
         <inputEntry id="UnaryTests_03bd6ck">
           <text></text>
