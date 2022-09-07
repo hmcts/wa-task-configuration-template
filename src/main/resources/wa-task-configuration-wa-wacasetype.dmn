@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.12.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.8.1">
   <decision id="wa-task-configuration-wa-wacasetype" name="Task configuration DMN">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="RULE ORDER">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -129,6 +129,40 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
         </outputEntry>
         <outputEntry id="LiteralExpression_1xff2m8">
           <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16i6htb">
+        <inputEntry id="UnaryTests_0elhyk1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14rm6xb">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pxotd7">
+          <text>dueDate</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fq9nph">
+          <text> date("2017-03-10")</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1aglp22">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0znj7lo">
+        <inputEntry id="UnaryTests_081ct94">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wljl7b">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ud0hya">
+          <text>dueDateTime</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1awfc4n">
+          <text> time("16:00")</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08trego">
+          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1c6ndy4">
@@ -419,7 +453,7 @@ else "roleAssignmentId"</text>
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_04rzhpv">
-          <text>"nextHearingId" </text>
+          <text>"nextHearingId"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0dbj542">
           <text>if caseData.nextHearingId != null then caseData.nextHearingId else ""</text>
