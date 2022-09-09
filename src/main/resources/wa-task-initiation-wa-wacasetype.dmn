@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.5.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.9.0">
   <decision id="wa-task-initiation-wa-wacasetype" name="Task initiation DMN">
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" camunda:inputVariable="eventId">
@@ -202,6 +202,84 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0yoh9gf">
           <text>"followUpOverdue"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1babmnh">
+        <inputEntry id="UnaryTests_0lvyzf3">
+          <text>"dummyEventForMultipleCategories"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tgyyep">
+          <text>"DONE"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1m353jf">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1337kde">
+          <text>"dummyActivity"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0llvjmu">
+          <text>"Dummy Activity"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0te5yy9">
+          <text>if (directionDueDate != null and directionDueDate != "") then (date(directionDueDate) - date(now)).days else 0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rfy6kk">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1n8b3k8">
+          <text>"caseProgression,followUpOverdue"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1quzq4s">
+        <inputEntry id="UnaryTests_0uphw82">
+          <text>"dummySubmitAppeal"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qlxfsf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18u6117">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wasvfn">
+          <text>"checkFeeStatus"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1d883tp">
+          <text>"check fee status"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_049lf0n">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1emwccm">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0q4yayi">
+          <text>"caseProgression,followUpOverdue"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jix9p2">
+        <inputEntry id="UnaryTests_051zx88">
+          <text>"makeAnApplication"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10w9wmx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g6mhnj">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0h1q314">
+          <text>"processDummyApplication"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1b73utu">
+          <text>"processDummyApplication"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ohmnt3">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0l8cp4c">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hhj2vw">
+          <text>"caseProgression,followUpOverdue"</text>
         </outputEntry>
       </rule>
     </decisionTable>

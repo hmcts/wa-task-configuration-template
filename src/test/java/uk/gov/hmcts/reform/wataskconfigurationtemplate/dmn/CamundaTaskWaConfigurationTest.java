@@ -14,6 +14,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.platform.commons.util.StringUtils;
 import uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTableBaseUnitTest;
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,7 +43,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(17));
+        assertThat(logic.getRules().size(), is(26));
     }
 
     @SuppressWarnings("checkstyle:indentation")
@@ -60,19 +62,26 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         Map<String, Object> caseData = new HashMap<>(); // allow null values
         caseData.put("appealType", appealType);
         inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("dueDateTime", "2023-01-01T14:00:00.000"));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
             "name", "appealType",
             "value", expectedAppealType,
-            "Can reconfigure?", true
+            "canReconfigure", true
         )));
 
         assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
             "name", "caseManagementCategory",
             "value", expectedAppealType,
-            "Can reconfigure?", true
+            "canReconfigure", true
+        )));
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "priorityDate",
+            "value", "2023-01-01T14:00:00.000",
+            "canReconfigure", true
         )));
     }
 
@@ -115,9 +124,9 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         for (int i = 0; i < caseManagementCategories.size(); i++) {
             Map<String, Object> caseManagementCategory = caseManagementCategories.get(i);
-            VariableMap inputVariables = new VariableMapImpl();
             Map<String, Object> caseData = new HashMap<>(); // allow null values
             caseData.put("caseManagementCategory", caseManagementCategory);
+            VariableMap inputVariables = new VariableMapImpl();
             inputVariables.putValue("caseData", caseData);
 
             DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
@@ -125,7 +134,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
                 "name", "caseManagementCategory",
                 "value", expectedCaseManagementCategories.get(i),
-                "Can reconfigure?", true
+                "canReconfigure", true
             )));
         }
     }
@@ -155,8 +164,14 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedAdditionalPropertiesKey2(null)
             .expectedAdditionalPropertiesKey3(null)
             .expectedAdditionalPropertiesKey4(null)
+            .expectedPriorityDate("")
+            .expectedMinorPriority("500")
+            .expectedMajorPriority("5000")
+            .expectedNextHearingId("")
+            .expectedNextHearingDate("")
             .build();
         String refusalOfEuLabel = "Refusal of a human rights claim";
+        String nextHearingDate = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ"));
         Scenario givenCaseDataIsPresentThenReturnNameAndValueScenario = Scenario.builder()
             .caseData(Map.of(
                 "appealType", "refusalOfHumanRights",
@@ -170,7 +185,9 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
                 "caseManagementCategory", Map.of(
                     "value", Map.of("code", "refusalOfHumanRights", "label", "Refusal of a human rights claim"),
                     "list_items", List.of(Map.of("code", "refusalOfHumanRights", "label", refusalOfEuLabel))
-                )
+                ),
+                "nextHearingId", "next Hearing Id",
+                "nextHearingDate", nextHearingDate
             ))
             .taskAttributes(Map.of("taskType", "processApplication"))
             .expectedCaseNameValue("some appellant given names some appellant family name")
@@ -187,12 +204,110 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedAdditionalPropertiesKey2("value2")
             .expectedAdditionalPropertiesKey3("value3")
             .expectedAdditionalPropertiesKey4("value4")
+            .expectedPriorityDate(nextHearingDate)
+            .expectedMinorPriority("500")
+            .expectedMajorPriority("5000")
+            .expectedNextHearingId("next Hearing Id")
+            .expectedNextHearingDate(nextHearingDate)
             .build();
 
         return Stream.of(
             givenCaseDataIsMissedThenDefaultToTaylorHouseScenario,
             givenCaseDataIsPresentThenReturnNameAndValueScenario
         );
+    }
+
+    @Test
+    void when_casaDate_hearing_date_then_return_expected_priority_date() {
+        Map<String, Object> caseData = new HashMap<>(); // allow null values
+        caseData.put("appealType", "refusalOfHumanRights");
+        caseData.put("nextHearingDate", "2023-01-01");
+        caseData.put("urgent", "Yes");
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("dueDateTime", "2023-01-01T14:00:00.000"));
+
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "priorityDate",
+            "value", "2023-01-01",
+            "canReconfigure", true
+        )));
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "minorPriority",
+            "value", "500",
+            "canReconfigure", true
+        )));
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "majorPriority",
+            "value", "1000",
+            "canReconfigure", true
+        )));
+    }
+
+    @Test
+    void when_no_casaDate_hearingDate_then_return_expected_priority_Date() {
+        VariableMap inputVariables = new VariableMapImpl();
+        Map<String, Object> caseData = new HashMap<>(); // allow null values
+        caseData.put("appealType", "refusalOfHumanRights");
+        caseData.put("urgent", "No");
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("dueDateTime", "2023-01-01T14:00:00.000"));
+
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "priorityDate",
+            "value", "2023-01-01T14:00:00.000",
+            "canReconfigure", true
+        )));
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "minorPriority",
+            "value", "500",
+            "canReconfigure", true
+        )));
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "majorPriority",
+            "value", "5000",
+            "canReconfigure", true
+        )));
+    }
+
+    @Test
+    void when_no_casaDate_urgent_then_return_expected_major_priority() {
+        VariableMap inputVariables = new VariableMapImpl();
+        Map<String, Object> caseData = new HashMap<>(); // allow null values
+        caseData.put("appealType", "refusalOfHumanRights");
+        inputVariables.putValue("caseData", caseData);
+        inputVariables.putValue("taskAttributes", Map.of("dueDateTime", "2023-01-01T14:00:00.000"));
+
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "priorityDate",
+            "value", "2023-01-01T14:00:00.000",
+            "canReconfigure", true
+        )));
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "minorPriority",
+            "value", "500",
+            "canReconfigure", true
+        )));
+
+        assertTrue(dmnDecisionTableResult.getResultList().contains(Map.of(
+            "name", "majorPriority",
+            "value", "5000",
+            "canReconfigure", true
+        )));
     }
 
     @ParameterizedTest
@@ -216,7 +331,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         assertTrue(workTypeResultList.contains(Map.of(
             "name", "workType",
             "value", "access_requests",
-            "Can reconfigure?", true
+            "canReconfigure", true
         )));
     }
 
@@ -240,7 +355,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         assertTrue(workTypeResultList.contains(Map.of(
             "name", "roleCategory",
             "value", "LEGAL_OPERATIONS",
-            "Can reconfigure?", true
+            "canReconfigure", true
         )));
     }
 
@@ -270,7 +385,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         assertTrue(dmnResults.contains(Map.of(
             "name", "additionalProperties_roleAssignmentId",
             "value", roleAssignmentId,
-            "Can reconfigure?", true
+            "canReconfigure", true
         )));
     }
 
@@ -299,7 +414,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         assertTrue(dmnResults.contains(Map.of(
             "name", "additionalProperties_roleAssignmentId",
             "value", "roleAssignmentId",
-            "Can reconfigure?", true
+            "canReconfigure", true
         )));
     }
 
@@ -325,7 +440,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         assertTrue(dmnResults.contains(Map.of(
             "name", "additionalProperties_roleAssignmentId",
             "value", "roleAssignmentId",
-            "Can reconfigure?", true
+            "canReconfigure", true
         )));
     }
 
@@ -346,7 +461,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         assertTrue(workTypeResultList.contains(Map.of(
             "name", "roleCategory",
             "value", "ADMIN",
-            "Can reconfigure?", true
+            "canReconfigure", true
         )));
     }
 
@@ -367,7 +482,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         assertTrue(workTypeResultList.contains(Map.of(
             "name", "roleCategory",
             "value", "JUDICIAL",
-            "Can reconfigure?", true
+            "canReconfigure", true
         )));
     }
 
@@ -389,6 +504,11 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         String expectedAdditionalPropertiesKey2;
         String expectedAdditionalPropertiesKey3;
         String expectedAdditionalPropertiesKey4;
+        String expectedPriorityDate;
+        String expectedMinorPriority;
+        String expectedMajorPriority;
+        String expectedNextHearingId;
+        String expectedNextHearingDate;
     }
 
     private List<Map<String, Object>> getExpectedValues(Scenario scenario) {
@@ -416,6 +536,13 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .ifPresent(key -> getExpectedValue(rules, "additionalProperties_key3", key));
         Optional.ofNullable(scenario.getExpectedAdditionalPropertiesKey4())
             .ifPresent(key -> getExpectedValue(rules, "additionalProperties_key4", key));
+
+        getExpectedValue(rules, "priorityDate", scenario.getExpectedPriorityDate());
+        getExpectedValue(rules, "minorPriority", scenario.getExpectedMinorPriority());
+        getExpectedValue(rules, "majorPriority", scenario.getExpectedMajorPriority());
+
+        getExpectedValue(rules, "nextHearingId", scenario.getExpectedNextHearingId());
+        getExpectedValue(rules, "nextHearingDate", scenario.getExpectedNextHearingDate());
         return rules;
     }
 
@@ -423,7 +550,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         Map<String, Object> rule = new HashMap<>();
         rule.put("name", name);
         rule.put("value", value);
-        rule.put("Can reconfigure?", true);
+        rule.put("canReconfigure", true);
         rules.add(rule);
     }
 

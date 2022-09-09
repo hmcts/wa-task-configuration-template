@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.9.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.8.1">
   <decision id="wa-task-configuration-wa-wacasetype" name="Task configuration DMN">
-    <decisionTable id="DecisionTable_14cx079" hitPolicy="COLLECT">
+    <decisionTable id="DecisionTable_14cx079" hitPolicy="RULE ORDER">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
         <inputExpression id="LiteralExpression_0mra7c4" typeRef="string">
           <text></text>
@@ -10,7 +10,7 @@
       <input id="InputClause_00c59gm" label="Task type" biodi:width="405" camunda:inputVariable="taskType">
         <inputExpression id="LiteralExpression_1ngi22k" typeRef="string">
           <text>if(taskAttributes != null and taskAttributes.taskType != null) then
-            taskAttributes. taskType
+            taskAttributes.taskType
 else if(taskType != null) then
            taskType
 else
@@ -19,10 +19,7 @@ null</text>
       </input>
       <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="307" />
       <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="2175" />
-      <output id="OutputClause_0tefly7" name="Can reconfigure?" typeRef="boolean" />
-      <output id="OutputClause_0s34636" label="Dummy Property" name="dummyProperty" typeRef="string" biodi:width="346" />
-      <output id="OutputClause_09bd1dn" label="Oguz Akin" name="oguzAkin" typeRef="integer" biodi:width="399" />
-      <output id="OutputClause_14a4qnz" label="Task Type" name="taskType" typeRef="string" />
+      <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
       <rule id="DecisionRule_19opwhc">
         <inputEntry id="UnaryTests_11xjbt2">
           <text></text>
@@ -37,21 +34,7 @@ null</text>
           <text>caseData.appellantGivenNames + " " + caseData.appellantFamilyName</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15e9efr">
-          <text>false</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0n6evxw">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1bx9hwp">
-          <text>44</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1h91t1y">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0oagl97">
@@ -70,20 +53,6 @@ null</text>
         <outputEntry id="LiteralExpression_1v64bbw">
           <text>true</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1w2dpae">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1jqhpvm">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1fq5ax6">
-          <text></text>
-        </outputEntry>
       </rule>
       <rule id="DecisionRule_0r3u9cf">
         <inputEntry id="UnaryTests_1bqxdqr">
@@ -100,20 +69,6 @@ null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0u5nl8j">
           <text>true</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_10jzz79">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0k62kp9">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0c2cyp4">
-          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_06fd9qz">
@@ -132,20 +87,6 @@ null</text>
         <outputEntry id="LiteralExpression_0hgkay6">
           <text>true</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0vvj9lp">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_05imypf">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0mn1p3q">
-          <text></text>
-        </outputEntry>
       </rule>
       <rule id="DecisionRule_1oirne1">
         <inputEntry id="UnaryTests_04xtpdu">
@@ -162,20 +103,6 @@ null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_19ps3fq">
           <text>true</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0dhu7dv">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0zon5yy">
-          <text>55</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0j3eidj">
-          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_03afipt">
@@ -203,20 +130,6 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
         <outputEntry id="LiteralExpression_1xff2m8">
           <text>true</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0q2libj">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0c9m050">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_168l6xf">
-          <text></text>
-        </outputEntry>
       </rule>
       <rule id="DecisionRule_1c6ndy4">
         <inputEntry id="UnaryTests_03bd6ck">
@@ -233,20 +146,6 @@ null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_10ejz01">
           <text>true</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0risys4">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1czqr9n">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0gkgj57">
-          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0wejcqf">
@@ -265,20 +164,6 @@ null</text>
         <outputEntry id="LiteralExpression_1eqbopk">
           <text>true</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0bh1jw1">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1t74ouw">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0uhcdsh">
-          <text></text>
-        </outputEntry>
       </rule>
       <rule id="DecisionRule_17aefjp">
         <inputEntry id="UnaryTests_0nvfb8p">
@@ -295,20 +180,6 @@ null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_01l3oah">
           <text>true</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0dvgmeg">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0l0u22f">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1niwqa1">
-          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0zoqqep">
@@ -327,20 +198,6 @@ null</text>
         <outputEntry id="LiteralExpression_1k0epgp">
           <text>true</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0hv7xa4">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0pxxord">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1w9d5g3">
-          <text></text>
-        </outputEntry>
       </rule>
       <rule id="DecisionRule_1hf4swa">
         <inputEntry id="UnaryTests_0fi3t3h">
@@ -357,20 +214,6 @@ null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ao02ae">
           <text>true</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0351q13">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_19m8zxk">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0b7oak1">
-          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0de2xyi">
@@ -430,20 +273,6 @@ else ""</text>
         <outputEntry id="LiteralExpression_1tgrwyy">
           <text>true</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1eh46ux">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_19yk6h0">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1jt7lss">
-          <text></text>
-        </outputEntry>
       </rule>
       <rule id="DecisionRule_0o5yerq">
         <inputEntry id="UnaryTests_0s5crry">
@@ -460,23 +289,6 @@ null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0bt0pet">
           <text>true</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0f2lse4">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1rshlg6">
-          <text>if(taskAttributes != null and taskAttributes.oguzAkin != null) then
-            taskAttributes. oguzAkin
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1602lau">
-          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0tybj5a">
@@ -495,20 +307,6 @@ null</text>
         <outputEntry id="LiteralExpression_0bsyu9c">
           <text>true</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_07dfhmm">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0kitwoz">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0v4o0gb">
-          <text></text>
-        </outputEntry>
       </rule>
       <rule id="DecisionRule_00ooorq">
         <inputEntry id="UnaryTests_1a9cmfg">
@@ -525,20 +323,6 @@ null</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05ui7jd">
           <text>true</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_05juckk">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0pxooq8">
-          <text></text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0ufvugb">
-          <text></text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_11hnaic">
@@ -557,23 +341,6 @@ null</text>
         <outputEntry id="LiteralExpression_0ma7s98">
           <text>true</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1euls6w">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0sw0ijh">
-          <text>if(taskAttributes != null and taskAttributes.oguzAkin != null) then
-            taskAttributes. oguzAkin
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0qu7h9h">
-          <text>"processApplication"</text>
-        </outputEntry>
       </rule>
       <rule id="DecisionRule_1hlb86c">
         <inputEntry id="UnaryTests_1b8j8ju">
@@ -586,25 +353,164 @@ null</text>
           <text>"additionalProperties_roleAssignmentId"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0vg7l1v" expressionLanguage="feel">
-          <text>if (taskAttributes != null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then taskAttributes.additionalProperties.roleAssignmentId
+          <text>if (taskAttributes != null and taskAttributes.roleAssignmentId != null) then taskAttributes.roleAssignmentId else if (taskAttributes != null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then taskAttributes.additionalProperties.roleAssignmentId
 else "roleAssignmentId"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1tvy5lm">
           <text>true</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1js19ey">
-          <text>if(taskAttributes != null and 
-taskAttributes.taskType != null and 
-taskAttributes.dummyProperty != null) then
-            taskAttributes. dummyProperty
-else
-null</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_00b0sca">
+      </rule>
+      <rule id="DecisionRule_160t0r9">
+        <inputEntry id="UnaryTests_0ex9m7x">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06vutyf">
           <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h2h14r">
+          <text>"priorityDate"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0o2uovm">
+        <outputEntry id="LiteralExpression_0nk8jbe">
+          <text>if (caseData != null and caseData.nextHearingDate !=null) then caseData.nextHearingDate else if (taskAttributes != null and taskAttributes.dueDate !=null) then taskAttributes.dueDate else if (taskAttributes != null and taskAttributes.dueDateTime !=null) then taskAttributes.dueDateTime else ""</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rkbjrn">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fl1vhb">
+        <inputEntry id="UnaryTests_06h12s2">
           <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09acvua">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1w99mbd">
+          <text>"minorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0iyo4pw">
+          <text>500</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05pid1p">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1aibsuh">
+        <inputEntry id="UnaryTests_1mdluu0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05nmdna">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qrn2pq">
+          <text>"majorPriority"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0b5ts53">
+          <text>if (caseData.urgent != null and caseData.urgent = "Yes") then 1000 else 5000</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0r59qwr">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1otvcey">
+        <inputEntry id="UnaryTests_0r4yrob">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ne7h4o">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04rzhpv">
+          <text>"nextHearingId"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dbj542">
+          <text>if caseData.nextHearingId != null then caseData.nextHearingId else ""</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kp3g7l">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0k5a5fq">
+        <inputEntry id="UnaryTests_1fypq3p">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14uq2vt">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jzoyjj">
+          <text>"nextHearingDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ycw69t">
+          <text>if caseData.nextHearingDate != null then caseData.nextHearingDate else ""</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1oyay8a">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pxnm0c">
+        <inputEntry id="UnaryTests_0tkkbro">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ldcewd">
+          <text>"followUpOverdue"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1uy391d">
+          <text>"additionalProperties_key1"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kthxaf">
+          <text>"value1"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vye9va">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15qo31r">
+        <inputEntry id="UnaryTests_06341ch">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wkdhu5">
+          <text>"followUpOverdue"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10c4z8v">
+          <text>"additionalProperties_key2"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sbkchg">
+          <text>"value2"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0a92qr9">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_081gncx">
+        <inputEntry id="UnaryTests_1prh4qz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_188tegs">
+          <text>"followUpOverdue"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zchano">
+          <text>"additionalProperties_key3"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0su1pco">
+          <text>"value3"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0u455ya">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rmtuym">
+        <inputEntry id="UnaryTests_19at9x9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1i94t2v">
+          <text>"followUpOverdue"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0b36q2j">
+          <text>"additionalProperties_key4"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16w9qvg">
+          <text>"value4"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wnpptb">
+          <text>true</text>
         </outputEntry>
       </rule>
     </decisionTable>
