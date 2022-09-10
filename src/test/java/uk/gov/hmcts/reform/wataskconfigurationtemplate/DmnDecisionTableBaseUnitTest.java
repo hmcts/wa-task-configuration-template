@@ -29,6 +29,7 @@ public abstract class DmnDecisionTableBaseUnitTest {
     }
 
     public DmnDecisionTableResult evaluateDmnTable(Map<String, Object> variables) {
-        return dmnEngine.evaluateDecisionTable(decision, variables);
+        DmnDecisionTableResult dmnDecisionRuleResults = dmnEngine.evaluateDecisionTable(decision, variables);
+        return dmnDecisionRuleResults;
     }
 }
