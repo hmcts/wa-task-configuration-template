@@ -6,7 +6,6 @@ import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.impl.VariableMapImpl;
-import org.camunda.feel.syntaxtree.ZonedTime;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -38,7 +37,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(30));
+        assertThat(logic.getRules().size(), is(32));
     }
 
     @SuppressWarnings("checkstyle:indentation")
@@ -137,19 +136,20 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     @ParameterizedTest
     @MethodSource("nameAndValueScenarioProvider")
     void when_caseData_then_return_expected_name_and_value_rows(Scenario scenario) {
+        System.out.println(scenario.getScenarioName());
         VariableMap inputVariables = new VariableMapImpl();
         inputVariables.putValue("caseData", scenario.caseData);
         inputVariables.putValue("taskAttributes", scenario.taskAttributes);
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
-        System.out.println(dmnDecisionTableResult);
         assertThat(dmnDecisionTableResult.getResultList(), is(getExpectedValues(scenario)));
     }
 
     private static Stream<Scenario> nameAndValueScenarioProvider() {
         String expectedDueDate = ZonedDateTime.now().plusDays(2)
-            .format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + "T16:00";
+            .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         Scenario givenCaseDataIsMissedThenDefaultToTaylorHouseScenario = Scenario.builder()
+            .scenarioName("test3")
             .caseData(emptyMap())
             .expectedCaseNameValue(null)
             .expectedAppealTypeValue("")
@@ -167,12 +167,13 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedMajorPriority("5000")
             .expectedNextHearingId("")
             .expectedNextHearingDate("")
-            .expectedDueDate(null)
-            .expectedDueDateTime(null)
+            .expectedDueDates(Map.of("dueDate", expectedDueDate + "T16:00"))
+            .expectedDueDateTimes(Map.of("dueDateTime", "16:00"))
             .build();
         String refusalOfEuLabel = "Refusal of a human rights claim";
         String nextHearingDate = ZonedDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ"));
         Scenario givenCaseDataIsPresentThenReturnNameAndValueScenario = Scenario.builder()
+            .scenarioName("test2")
             .caseData(Map.of(
                 "appealType", "refusalOfHumanRights",
                 "appellantGivenNames", "some appellant given names",
@@ -199,7 +200,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedWorkType("hearing_work")
             .expectedRoleCategory("LEGAL_OPERATIONS")
             .expectedDescription("[Decide an application]"
-                                 + "(/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)")
+                                     + "(/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)")
             .expectedAdditionalPropertiesKey1("value1")
             .expectedAdditionalPropertiesKey2("value2")
             .expectedAdditionalPropertiesKey3("value3")
@@ -209,10 +210,15 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedMajorPriority("5000")
             .expectedNextHearingId("next Hearing Id")
             .expectedNextHearingDate(nextHearingDate)
-            .expectedDueDate(expectedDueDate)
+            .expectedDueDates(Map.of(
+                "defaultDueDate", expectedDueDate + "T16:00",
+                "dueDate", expectedDueDate + "T18:00"
+            ))
+            .expectedDueDateTimes(Map.of("defaultDueDateTime", "16:00"))
             .build();
 
         Scenario givenDueDateAndTimeScenario = Scenario.builder()
+            .scenarioName("test1")
             .caseData(emptyMap())
             .taskAttributes(Map.of("taskType", "followUpOverdue"))
             .expectedCaseNameValue(null)
@@ -222,16 +228,19 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedLocationNameValue("Taylor House")
             .expectedCaseManagementCategoryValue("")
             .expectedDescription("")
-            .expectedAdditionalPropertiesKey1("value1")
-            .expectedAdditionalPropertiesKey2("value2")
-            .expectedAdditionalPropertiesKey3("value3")
-            .expectedAdditionalPropertiesKey4("value4")
             .expectedPriorityDate("")
             .expectedMinorPriority("500")
             .expectedMajorPriority("5000")
             .expectedNextHearingId("")
             .expectedNextHearingDate("")
-            .expectedDueDateTime("16:00")
+            .expectedAdditionalPropertiesKey1("value1")
+            .expectedAdditionalPropertiesKey2("value2")
+            .expectedAdditionalPropertiesKey3("value3")
+            .expectedAdditionalPropertiesKey4("value4")
+            .expectedDueDates(Map.of("defaultDueDate", expectedDueDate + "T16:00",
+                                     "dueDate", expectedDueDate + "T00:00"
+            ))
+            .expectedDueDateTimes(Map.of("defaultDueDateTime", "16:00", "dueDateTime", "18:00"))
             .build();
 
         return Stream.of(
@@ -393,9 +402,9 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         String roleAssignmentId = UUID.randomUUID().toString();
         inputVariables.putValue("taskAttributes", Map.of(
-                "taskType", taskType,
-                "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
-            )
+                                    "taskType", taskType,
+                                    "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
+                                )
         );
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
@@ -422,9 +431,9 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         VariableMap inputVariables = new VariableMapImpl();
 
         inputVariables.putValue("taskAttributes", Map.of(
-                "taskType", taskType,
-                "additionalProperties", Map.of()
-            )
+                                    "taskType", taskType,
+                                    "additionalProperties", Map.of()
+                                )
         );
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
@@ -513,6 +522,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     @Value
     @Builder
     private static class Scenario {
+
+        String scenarioName;
         Map<String, Object> caseData;
         Map<String, Object> taskAttributes;
         String expectedCaseNameValue;
@@ -533,8 +544,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         String expectedMajorPriority;
         String expectedNextHearingId;
         String expectedNextHearingDate;
-        String expectedDueDate;
-        String expectedDueDateTime;
+        Map<String, String> expectedDueDates;
+        Map<String, String> expectedDueDateTimes;
     }
 
     private List<Map<String, Object>> getExpectedValues(Scenario scenario) {
@@ -572,10 +583,18 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         getExpectedValue(rules, "nextHearingId", scenario.getExpectedNextHearingId());
         getExpectedValue(rules, "nextHearingDate", scenario.getExpectedNextHearingDate());
-        Optional.ofNullable(scenario.getExpectedDueDate())
+        Optional.ofNullable(scenario.getExpectedDueDates().get("defaultDueDate"))
             .ifPresent(key -> getExpectedValue(rules, "dueDate", key));
-        Optional.ofNullable(scenario.getExpectedDueDateTime())
+
+        Optional.ofNullable(scenario.getExpectedDueDateTimes().get("defaultDueDateTime"))
             .ifPresent(key -> getExpectedValue(rules, "dueDateTime", key));
+
+        Optional.ofNullable(scenario.getExpectedDueDates().get("dueDate"))
+            .ifPresent(key -> getExpectedValue(rules, "dueDate", key));
+
+        Optional.ofNullable(scenario.getExpectedDueDateTimes().get("dueDateTime"))
+            .ifPresent(key -> getExpectedValue(rules, "dueDateTime", key));
+
         return rules;
     }
 
