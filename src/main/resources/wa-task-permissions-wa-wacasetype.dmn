@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.12.0">
   <decision id="wa-task-permissions-wa-wacasetype" name="Permissions DMN">
     <decisionTable id="DecisionTable_1pr5oic" hitPolicy="RULE ORDER">
       <input id="InputClause_1t6frhu" label="Task Type" camunda:inputVariable="taskType">
@@ -109,6 +109,36 @@ else
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0prq1ic">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wc8k1n">
+        <description>Judge task permissions</description>
+        <inputEntry id="UnaryTests_015b7t0">
+          <text>"r1"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ff3b26">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16psu0y">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fatyrq">
+          <text>"judge"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09kcvvg">
+          <text>"Read,Claim,CompleteOwn"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ox1g7k">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13s8m83">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gwzi8d">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19kfgrz">
           <text>false</text>
         </outputEntry>
       </rule>
