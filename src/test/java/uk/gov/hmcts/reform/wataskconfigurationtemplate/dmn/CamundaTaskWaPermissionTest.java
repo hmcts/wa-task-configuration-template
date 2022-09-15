@@ -135,7 +135,7 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
                 "value", "Own",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "assignmentPriority", 1,
-                "autoAssignable", false
+                "autoAssignable", true
             ),
             Map.of(
                 "name", "ftpa-judge",
