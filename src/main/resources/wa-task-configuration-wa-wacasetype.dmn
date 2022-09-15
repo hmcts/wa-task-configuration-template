@@ -285,7 +285,7 @@ else ""</text>
           <text>"additionalProperties_key1"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0yye4zp">
-          <text>"value1"</text>
+          <text>if (taskAttributes != null and taskAttributes.key1 != null) then taskAttributes.key1 else "value1"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0bt0pet">
           <text>true</text>
@@ -302,7 +302,7 @@ else ""</text>
           <text>"additionalProperties_key2"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1m9hxl6">
-          <text>"value2"</text>
+          <text>if (taskAttributes != null and taskAttributes.key2 != null) then taskAttributes.key2 else "value2"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0bsyu9c">
           <text>true</text>
@@ -319,7 +319,7 @@ else ""</text>
           <text>"additionalProperties_key3"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1090ndb">
-          <text>"value3"</text>
+          <text>if (taskAttributes != null and taskAttributes.key3 != null) then taskAttributes.key3 else "value3"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05ui7jd">
           <text>true</text>
@@ -336,7 +336,7 @@ else ""</text>
           <text>"additionalProperties_key4"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zhelg7">
-          <text>"value4"</text>
+          <text>if (taskAttributes != null and taskAttributes.key4 != null) then taskAttributes.key4 else "value4"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ma7s98">
           <text>true</text>
@@ -353,7 +353,7 @@ else ""</text>
           <text>"additionalProperties_roleAssignmentId"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0vg7l1v" expressionLanguage="feel">
-          <text>if (taskAttributes != null and taskAttributes.roleAssignmentId != null) then taskAttributes.additionalProperties.roleAssignmentId else if (taskAttributes != null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then taskAttributes.additionalProperties.roleAssignmentId
+          <text>if (taskAttributes != null and taskAttributes.roleAssignmentId != null) then taskAttributes.roleAssignmentId else if (taskAttributes != null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then taskAttributes.additionalProperties.roleAssignmentId
 else "roleAssignmentId"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1tvy5lm">
@@ -456,7 +456,7 @@ else "roleAssignmentId"</text>
           <text>"additionalProperties_key1"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1kthxaf">
-          <text>"value1"</text>
+          <text>if (taskAttributes != null and taskAttributes.key1 != null) then taskAttributes.key1 else "value1"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vye9va">
           <text>true</text>
@@ -473,7 +473,7 @@ else "roleAssignmentId"</text>
           <text>"additionalProperties_key2"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0sbkchg">
-          <text>"value2"</text>
+          <text>if (taskAttributes != null and taskAttributes.key2 != null) then taskAttributes.key2 else "value2"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0a92qr9">
           <text>true</text>
@@ -490,7 +490,7 @@ else "roleAssignmentId"</text>
           <text>"additionalProperties_key3"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0su1pco">
-          <text>"value3"</text>
+          <text>if (taskAttributes != null and taskAttributes.key3 != null) then taskAttributes.key3 else "value3"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0u455ya">
           <text>true</text>
@@ -507,7 +507,7 @@ else "roleAssignmentId"</text>
           <text>"additionalProperties_key4"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16w9qvg">
-          <text>"value4"</text>
+          <text>if (taskAttributes != null and taskAttributes.key4 != null) then taskAttributes.key4 else "value4"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0wnpptb">
           <text>true</text>
