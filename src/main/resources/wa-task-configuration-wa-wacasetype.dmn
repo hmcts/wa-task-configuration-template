@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.12.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.9.0">
   <decision id="wa-task-configuration-wa-wacasetype" name="Task configuration DMN">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="RULE ORDER">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -136,7 +136,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1a8bdg5">
-          <text>"processApplication"</text>
+          <text>"processApplication","reviewAppealSkeletonArgument"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tv7w74">
           <text>"workType"</text>
@@ -510,6 +510,23 @@ else "roleAssignmentId"</text>
           <text>if (taskAttributes != null and taskAttributes.key4 != null) then taskAttributes.key4 else "value4"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0wnpptb">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pfe344">
+        <inputEntry id="UnaryTests_0jryr4g">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1w36abk">
+          <text>"reviewAppealSkeletonArgument"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0myz862">
+          <text>"roleCategory"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11ofxr3">
+          <text>"CTSC"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zueupu">
           <text>true</text>
         </outputEntry>
       </rule>
