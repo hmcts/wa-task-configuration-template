@@ -43,7 +43,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(26));
+        assertThat(logic.getRules().size(), is(27));
     }
 
     @SuppressWarnings("checkstyle:indentation")
@@ -211,9 +211,55 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedNextHearingDate(nextHearingDate)
             .build();
 
+        Scenario givenTaskAttributesForAdditionalPropertiesThenReturnNameAndValueScenario = Scenario.builder()
+            .caseData(Map.of(
+                "appealType", "refusalOfHumanRights",
+                "appellantGivenNames", "some appellant given names",
+                "appellantFamilyName", "some appellant family name",
+                "caseManagementLocation", Map.of(
+                    "region", "some other region",
+                    "baseLocation", "some other location"
+                ),
+                "staffLocation", "some other location name",
+                "caseManagementCategory", Map.of(
+                    "value", Map.of("code", "refusalOfHumanRights", "label", "Refusal of a human rights claim"),
+                    "list_items", List.of(Map.of("code", "refusalOfHumanRights", "label", refusalOfEuLabel))
+                ),
+                "nextHearingId", "next Hearing Id",
+                "nextHearingDate", nextHearingDate
+            ))
+            .taskAttributes(Map.of("taskType", "processApplication",
+                                   "key1", "someValue1",
+                                   "key2", "someValue2",
+                                   "key3", "someValue3",
+                                   "key4", "someValue4"
+            ))
+            .expectedCaseNameValue("some appellant given names some appellant family name")
+            .expectedAppealTypeValue("Human rights")
+            .expectedRegionValue("some other region")
+            .expectedLocationValue("some other location")
+            .expectedLocationNameValue("some other location name")
+            .expectedCaseManagementCategoryValue("Human rights")
+            .expectedWorkType("hearing_work")
+            .expectedRoleCategory("LEGAL_OPERATIONS")
+            .expectedDescription("[Decide an application]"
+                                     + "(/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)")
+            .expectedAdditionalPropertiesKey1("someValue1")
+            .expectedAdditionalPropertiesKey2("someValue2")
+            .expectedAdditionalPropertiesKey3("someValue3")
+            .expectedAdditionalPropertiesKey4("someValue4")
+            .expectedPriorityDate(nextHearingDate)
+            .expectedMinorPriority("500")
+            .expectedMajorPriority("5000")
+            .expectedNextHearingId("next Hearing Id")
+            .expectedNextHearingDate(nextHearingDate)
+            .build();
+
+
         return Stream.of(
             givenCaseDataIsMissedThenDefaultToTaylorHouseScenario,
-            givenCaseDataIsPresentThenReturnNameAndValueScenario
+            givenCaseDataIsPresentThenReturnNameAndValueScenario,
+            givenTaskAttributesForAdditionalPropertiesThenReturnNameAndValueScenario
         );
     }
 
@@ -484,6 +530,38 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "value", "JUDICIAL",
             "canReconfigure", true
         )));
+    }
+
+    @Test
+    void when_taskId_is_review_appeal_skeleton_argument_then_return_correct_values() {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "reviewAppealSkeletonArgument"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.containsValue("workType"))
+            .collect(Collectors.toList());
+
+        assertThat(workTypeResultList.size(), is(1));
+
+        assertTrue(workTypeResultList.contains(Map.of(
+            "name", "workType",
+            "value", "hearing_work",
+            "canReconfigure", true
+        )));
+
+        List<Map<String, Object>> roleCategoryResultList = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.containsValue("roleCategory"))
+            .collect(Collectors.toList());
+
+        assertTrue(roleCategoryResultList.contains(Map.of(
+            "name", "roleCategory",
+            "value", "CTSC",
+            "canReconfigure", true
+        )));
+
     }
 
     @Value
