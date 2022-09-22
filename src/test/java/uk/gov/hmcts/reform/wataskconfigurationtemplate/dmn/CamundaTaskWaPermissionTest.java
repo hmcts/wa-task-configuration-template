@@ -394,7 +394,7 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
         MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(List.of(
             Map.of(
                 "name", "task-supervisor",
-                "value", "Read,Refer,Manage,Cancel",
+                "value", "Read,Manage,Cancel,Assign,Unassign,Complete",
                 "autoAssignable", false,
                 "caseAccessCategory", "categoryA"
             ),
