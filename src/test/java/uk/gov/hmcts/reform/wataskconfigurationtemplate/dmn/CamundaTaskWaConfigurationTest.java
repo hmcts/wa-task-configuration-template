@@ -16,7 +16,13 @@ import uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTableBaseUnitT
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -200,7 +206,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedWorkType("hearing_work")
             .expectedRoleCategory("LEGAL_OPERATIONS")
             .expectedDescription("[Decide an application]"
-                                 + "(/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)")
+                                     + "(/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)")
             .expectedAdditionalPropertiesKey1("value1")
             .expectedAdditionalPropertiesKey2("value2")
             .expectedAdditionalPropertiesKey3("value3")
@@ -244,7 +250,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .build();
 
         Scenario givenTaskAttributesForAdditionalPropertiesThenReturnNameAndValueScenario = Scenario.builder()
-                .scenarioName("test3")
+            .scenarioName("test3")
             .caseData(Map.of(
                 "appealType", "refusalOfHumanRights",
                 "appellantGivenNames", "some appellant given names",
@@ -287,9 +293,9 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedNextHearingId("next Hearing Id")
             .expectedNextHearingDate(nextHearingDate)
             .expectedDueDates(Map.of(
-                        "defaultDueDate", expectedDueDate + "T16:00",
-                        "dueDate", expectedDueDate + "T18:00"
-                ))
+                "defaultDueDate", expectedDueDate + "T16:00",
+                "dueDate", expectedDueDate + "T18:00"
+            ))
             .expectedDueDateTimes(Map.of("defaultDueDateTime", "16:00"))
             .build();
 
@@ -454,9 +460,9 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         String roleAssignmentId = UUID.randomUUID().toString();
         inputVariables.putValue("taskAttributes", Map.of(
-                "taskType", taskType,
-                "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
-            )
+                                    "taskType", taskType,
+                                    "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
+                                )
         );
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
@@ -483,9 +489,9 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         VariableMap inputVariables = new VariableMapImpl();
 
         inputVariables.putValue("taskAttributes", Map.of(
-                "taskType", taskType,
-                "additionalProperties", Map.of()
-            )
+                                    "taskType", taskType,
+                                    "additionalProperties", Map.of()
+                                )
         );
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
