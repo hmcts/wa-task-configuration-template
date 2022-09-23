@@ -291,6 +291,11 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedMajorPriority("5000")
             .expectedNextHearingId("next Hearing Id")
             .expectedNextHearingDate(nextHearingDate)
+            .expectedDueDates(Map.of(
+                "defaultDueDate", expectedDueDate + "T16:00",
+                "dueDate", expectedDueDate + "T18:00"
+            ))
+            .expectedDueDateTimes(Map.of("defaultDueDateTime", "16:00"))
             .build();
 
 
@@ -465,6 +470,9 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "taskType", taskType,
                 "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
             )
+                                    "taskType", taskType,
+                                    "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
+                                )
         );
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
