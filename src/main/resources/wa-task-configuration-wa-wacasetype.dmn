@@ -371,7 +371,7 @@ else "roleAssignmentId"</text>
           <text>"priorityDate"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0nk8jbe">
-          <text>if (caseData != null and caseData.nextHearingDate !=null) then caseData.nextHearingDate else if (taskAttributes != null and taskAttributes.dueDateTime !=null) then taskAttributes.dueDateTime else ""</text>
+          <text>if (caseData != null and caseData.nextHearingDate !=null) then caseData.nextHearingDate else if (taskAttributes != null and taskAttributes.dueDate !=null) then taskAttributes.dueDate else if (taskAttributes != null and taskAttributes.dueDateTime !=null) then taskAttributes.dueDateTime else ""</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0rkbjrn">
           <text>true</text>
