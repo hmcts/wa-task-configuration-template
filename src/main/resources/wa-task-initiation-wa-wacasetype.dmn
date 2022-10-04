@@ -282,6 +282,84 @@
           <text>"caseProgression,followUpOverdue"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1fvfgbe">
+        <inputEntry id="UnaryTests_0txopgj">
+          <text>"submitAppeal"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uquytw">
+          <text>"appealSubmitted"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_138tstw">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1o5frek">
+          <text>"inspectAppeal"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05nze1z">
+          <text>"Inspect Appeal"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xsh83z">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pou6r9">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0buvxea">
+          <text>"caseProgression"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0fmhy4c">
+        <inputEntry id="UnaryTests_1b9k1ze">
+          <text>"createMultipleTasks"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rannq2">
+          <text>"appealCreated"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0eoct1o">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0qq3h07">
+          <text>"firstTask"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ien2td">
+          <text>"First task"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1f8c7e2">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dgs9e4">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sjtl1l">
+          <text>"caseProgression"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0048aaz">
+        <inputEntry id="UnaryTests_07o5x2q">
+          <text>"createMultipleTasks"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0p79qk4">
+          <text>"appealCreated"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0oflb14">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0la8qvn">
+          <text>"secondTask"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08fg33p">
+          <text>"Second task"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0m4z07r">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16vz4ue">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17pw0yw">
+          <text>"caseProgression"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
