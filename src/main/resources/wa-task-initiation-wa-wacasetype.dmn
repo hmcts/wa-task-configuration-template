@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.9.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.8.1">
   <decision id="wa-task-initiation-wa-wacasetype" name="Task initiation DMN">
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" camunda:inputVariable="eventId">
@@ -280,6 +280,32 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1hhj2vw">
           <text>"caseProgression,followUpOverdue"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0aa0y05">
+        <inputEntry id="UnaryTests_0f0jpr4">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ztkvw5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0v60sia">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cn2b82">
+          <text>"calculateDueDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1n0fpau">
+          <text>"calculateDueDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1e8nsqt">
+          <text>0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mmtxla">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_057xfsv">
+          <text>"caseProgression"</text>
         </outputEntry>
       </rule>
     </decisionTable>

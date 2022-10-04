@@ -632,6 +632,125 @@ else "roleAssignmentId"</text>
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_04vk8kf">
+        <inputEntry id="UnaryTests_1skyh4a">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0l0cxh5">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0814o14">
+          <text>"dueDateOrigin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1696r64">
+          <text>date and time(date(now() + duration("P1D")), time("16:00"))</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ji8esm">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0nv39z7">
+        <inputEntry id="UnaryTests_1c9ckp7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19l6a6f">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19mkixk">
+          <text>"dueDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wla9na">
+          <text>6</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hcy9yp">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nnll65">
+        <inputEntry id="UnaryTests_1neafl1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ukzen4">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1i2v8e9">
+          <text>"dueDateNonWorkingCalendar"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06p7ojm">
+          <text>"https://www.gov.uk/bank-holidays/england-and-wales.json"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xyii1f">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mqwdqd">
+        <inputEntry id="UnaryTests_0q9wg1n">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03g69ay">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dvo5ph">
+          <text>"dueDateNonWorkingDaysOfWeek"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xahey9">
+          <text>"FRIDAY"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15qlzmx">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0qualkj">
+        <inputEntry id="UnaryTests_0k4j4c4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19fjerk">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ag9im0">
+          <text>"dueDateTime"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sap0ul">
+          <text>time("16:00")</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11tgi6v">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ibivsm">
+        <inputEntry id="UnaryTests_1opfqbp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ylv4eu">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bhp6ti">
+          <text>"dueDateSkipNonWorkingDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07epc3s">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mh5ali">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1uhseg2">
+        <inputEntry id="UnaryTests_02hkdzo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ku5vap">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mg20ne">
+          <text>"dueDateMustBeWorkingDaywhichdays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1w8fcng">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hf8k18">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
