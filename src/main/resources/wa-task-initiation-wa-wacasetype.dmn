@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.9.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
   <decision id="wa-task-initiation-wa-wacasetype" name="Task initiation DMN">
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" camunda:inputVariable="eventId">
@@ -279,6 +279,32 @@
           <text>2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1hhj2vw">
+          <text>"caseProgression,followUpOverdue"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0b6pu3z">
+        <inputEntry id="UnaryTests_11dxpog">
+          <text>"requestTaskId"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lll2eh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xvp66b">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0eiiz9a">
+          <text>"processRequestTaskId"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_022flw8">
+          <text>"process request task id"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0er686d">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_040pjsu">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lru3i4">
           <text>"caseProgression,followUpOverdue"</text>
         </outputEntry>
       </rule>

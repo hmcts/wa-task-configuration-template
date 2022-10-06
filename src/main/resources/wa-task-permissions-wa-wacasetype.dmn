@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.9.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.8.1">
   <decision id="wa-task-permissions-wa-wacasetype" name="Permissions DMN">
     <decisionTable id="DecisionTable_1pr5oic" hitPolicy="RULE ORDER">
       <input id="InputClause_1t6frhu" label="Task Type" camunda:inputVariable="taskType">
@@ -1005,6 +1005,36 @@ else
           <text>2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1p1dr1q">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hbs9hv">
+        <description>Tribunal caseworker task permissions</description>
+        <inputEntry id="UnaryTests_1qlepy2">
+          <text>"processRequestTaskId"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1llbb2x">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09eu6hn">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18dvdcw">
+          <text>"tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0v69x0i">
+          <text>"Read,Refer,Execute"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19u15om">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_018rq7r">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hbihyf">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0839pdf">
           <text>false</text>
         </outputEntry>
       </rule>
