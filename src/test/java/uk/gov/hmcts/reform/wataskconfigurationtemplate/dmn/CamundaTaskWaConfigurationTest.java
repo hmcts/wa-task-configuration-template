@@ -361,7 +361,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         "reviewSpecificAccessRequestJudiciary", "reviewSpecificAccessRequestLegalOps",
         "reviewSpecificAccessRequestAdmin"
     })
-    void when_taskId_then_return_Access_requests(String taskType) {
+    void when_given_task_type_then_return_review_specific_access_requests(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
 
         inputVariables.putValue("taskAttributes", Map.of("taskId","1234",
@@ -381,24 +381,14 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "canReconfigure", true
         )));
 
-        List<Map<String, Object>> descriptionResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("description"))
-            .collect(Collectors.toList());
-
-        if ("reviewSpecificAccessRequestLegalOps".equals(taskType)) {
-            assertTrue(descriptionResultList.contains(Map.of(
-                "name", "description",
-                "value", "1234",
-                "canReconfigure", true
-            )));
-        }
+        assertDescriptionField(taskType, dmnDecisionTableResult);
     }
 
     @ParameterizedTest
     @CsvSource({
         "processApplication", "reviewSpecificAccessRequestLegalOps"
     })
-    void when_taskId_then_return_Legal_Operations(String taskType) {
+    void when_given_task_type_then_return_Legal_Operations(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
 
         inputVariables.putValue("taskAttributes",
@@ -419,17 +409,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "canReconfigure", true
         )));
 
-        List<Map<String, Object>> descriptionResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("description"))
-            .collect(Collectors.toList());
-
-        if ("reviewSpecificAccessRequestLegalOps".equals(taskType)) {
-            assertTrue(descriptionResultList.contains(Map.of(
-                "name", "description",
-                "value", "1234",
-                "canReconfigure", true
-            )));
-        }
+        assertDescriptionField(taskType, dmnDecisionTableResult);
     }
 
     @ParameterizedTest
@@ -462,17 +442,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "canReconfigure", true
         )));
 
-        List<Map<String, Object>> descriptionResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("description"))
-            .collect(Collectors.toList());
-
-        if ("reviewSpecificAccessRequestLegalOps".equals(taskType)) {
-            assertTrue(descriptionResultList.contains(Map.of(
-                "name", "description",
-                "value", "1234",
-                "canReconfigure", true
-            )));
-        }
+        assertDescriptionField(taskType, dmnDecisionTableResult);
     }
 
     @ParameterizedTest
@@ -504,17 +474,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "canReconfigure", true
         )));
 
-        List<Map<String, Object>> descriptionResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("description"))
-            .collect(Collectors.toList());
-
-        if ("reviewSpecificAccessRequestLegalOps".equals(taskType)) {
-            assertTrue(descriptionResultList.contains(Map.of(
-                "name", "description",
-                "value", "1234",
-                "canReconfigure", true
-            )));
-        }
+        assertDescriptionField(taskType, dmnDecisionTableResult);
     }
 
 
@@ -543,22 +503,25 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "canReconfigure", true
         )));
 
-        List<Map<String, Object>> descriptionResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("description"))
-            .collect(Collectors.toList());
+        assertDescriptionField(taskType, dmnDecisionTableResult);
+    }
 
+    private void assertDescriptionField(String taskType, DmnDecisionTableResult dmnDecisionTableResult) {
         if ("reviewSpecificAccessRequestLegalOps".equals(taskType)) {
+            List<Map<String, Object>> descriptionResultList = dmnDecisionTableResult.getResultList().stream()
+                .filter((r) -> r.containsValue("description"))
+                .collect(Collectors.toList());
+            assertThat(descriptionResultList.size(), is(1));
             assertTrue(descriptionResultList.contains(Map.of(
                 "name", "description",
                 "value", "1234",
                 "canReconfigure", true
             )));
         }
-
     }
 
     @Test
-    void when_taskId_then_return_Admin() {
+    void when_given_task_type_then_return_admin_role_category() {
         VariableMap inputVariables = new VariableMapImpl();
 
         inputVariables.putValue("taskAttributes", Map.of("taskType", "reviewSpecificAccessRequestAdmin"));
@@ -579,7 +542,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     }
 
     @Test
-    void when_taskId_then_return_Judical() {
+    void when_given_task_type_then_return_judicial_role_category() {
         VariableMap inputVariables = new VariableMapImpl();
 
         inputVariables.putValue("taskAttributes", Map.of("taskType", "reviewSpecificAccessRequestJudiciary"));
@@ -626,48 +589,6 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         assertTrue(roleCategoryResultList.contains(Map.of(
             "name", "roleCategory",
             "value", "CTSC",
-            "canReconfigure", true
-        )));
-
-    }
-
-    @Test
-    void when_taskId_is_process_request_task_id_then_return_correct_values() {
-        VariableMap inputVariables = new VariableMapImpl();
-
-        inputVariables.putValue("taskAttributes", Map.of("taskType", "processRequestTaskId","taskId","123"));
-
-        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
-
-        List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("workType"))
-            .collect(Collectors.toList());
-
-        assertThat(workTypeResultList.size(), is(1));
-
-        assertTrue(workTypeResultList.contains(Map.of(
-            "name", "workType",
-            "value", "hearing_work",
-            "canReconfigure", true
-        )));
-
-        List<Map<String, Object>> descriptionResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("description"))
-            .collect(Collectors.toList());
-
-        assertTrue(descriptionResultList.contains(Map.of(
-            "name", "description",
-            "value", "123",
-            "canReconfigure", true
-        )));
-
-        List<Map<String, Object>> roleCategoryResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("roleCategory"))
-            .collect(Collectors.toList());
-
-        assertTrue(roleCategoryResultList.contains(Map.of(
-            "name", "roleCategory",
-            "value", "LEGAL_OPERATIONS",
             "canReconfigure", true
         )));
 
