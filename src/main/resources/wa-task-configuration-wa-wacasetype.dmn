@@ -268,7 +268,7 @@ else if (taskAttributes != null and taskAttributes.taskType != null and taskAttr
 else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewAddendumHomeOfficeEvidence" or taskType != null and taskType = "reviewAddendumHomeOfficeEvidence") then "[Review evidence](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/markEvidenceAsReviewed)"
 else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewAddendumAppellantEvidence" or taskType != null and taskType = "reviewAddendumAppellantEvidence") then "[Review evidence](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/markEvidenceAsReviewed)"
 else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewAddendumEvidence" or taskType != null and taskType = "reviewAddendumEvidence") then "[Review evidence](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/markEvidenceAsReviewed)"
-else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewSpecificAccessRequestLegalOps") then taskAttributes.taskId
+else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewSpecificAccessRequestLegalOps" and taskAttributes.taskId != null) then taskAttributes.taskId
 else ""</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1tgrwyy">
