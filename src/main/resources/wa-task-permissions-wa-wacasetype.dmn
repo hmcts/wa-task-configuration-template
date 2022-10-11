@@ -37,7 +37,7 @@ else
           <text>"task-supervisor"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_15maf8m">
-          <text>"Read,Manage,Cancel"</text>
+          <text>"Read,Manage,Cancel,Assign,Unassign,Complete"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1jrkhhy">
           <text></text>
@@ -126,7 +126,7 @@ else
           <text>"tribunal-caseworker"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_07oqyf2">
-          <text>"Read,Execute"</text>
+          <text>"Read,CompleteOwn,CancelOwn,Claim,Own"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0y7x76x">
           <text>"LEGAL_OPERATIONS"</text>
@@ -155,7 +155,7 @@ else
           <text>"senior-tribunal-caseworker"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ldu22q">
-          <text>"Read,Execute"</text>
+          <text>"Read,Complete,Claim,Unclaim,UnassignClaim,Execute,UnassignAssign,UnclaimAssign"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ese6q1">
           <text>"LEGAL_OPERATIONS"</text>
@@ -665,7 +665,7 @@ else
           <text>"challenged-access-legal-ops"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1m6turf">
-          <text>"Manage"</text>
+          <text>"Manage,Assign,Unassign,Complete,Own"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0hp62p2">
           <text>"LEGAL_OPERATIONS"</text>
@@ -695,7 +695,7 @@ else
           <text>"challenged-access-admin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ogdjtu">
-          <text>"Execute"</text>
+          <text>"Execute,Assign"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1jhyykg">
           <text>"ADMIN"</text>
