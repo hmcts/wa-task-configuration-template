@@ -598,6 +598,23 @@ else "roleAssignmentId"</text>
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1jtth4t">
+        <inputEntry id="UnaryTests_1m2tygf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15odjnu">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0txr8g0">
+          <text>"dueDateTime"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gl7dik">
+          <text>time("20:00")</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_133x7rz">
+          <text>true</text>
+        </outputEntry>
+      </rule>
       <rule id="DecisionRule_0egegfu">
         <inputEntry id="UnaryTests_0wgzvjt">
           <text></text>
@@ -609,10 +626,10 @@ else "roleAssignmentId"</text>
           <text>"dueDateOrigin"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0qyx6p5">
-          <text>date and time(date(now() + duration("P2D")), time("18:00"))</text>
+          <text>date and time(date("2022-10-13"), time("18:00"))</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_12t4xiq">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0s496vt">
@@ -626,10 +643,10 @@ else "roleAssignmentId"</text>
           <text>"dueDateIntervalDays"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1y30r5t">
-          <text>2</text>
+          <text>8</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_11vy57j">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1w0jblp">
@@ -646,7 +663,7 @@ else "roleAssignmentId"</text>
           <text>"https://www.gov.uk/bank-holidays/england-and-wales.json"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_03okabe">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1cdp4ti">
@@ -660,27 +677,10 @@ else "roleAssignmentId"</text>
           <text>"dueDateNonWorkingDaysOfWeek"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0cl62ys">
-          <text>"THURSDAY"</text>
+          <text>"SATURDAY, SUNDAY"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_016asye">
-          <text></text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1jtth4t">
-        <inputEntry id="UnaryTests_1m2tygf">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_15odjnu">
-          <text>"calculateDueDate"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0txr8g0">
-          <text>"dueDateTime"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1gl7dik">
-          <text>time("20:00")</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_133x7rz">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_194c9ll">
@@ -697,7 +697,7 @@ else "roleAssignmentId"</text>
           <text>true</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0n6j12x">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1ou7u42">
@@ -714,7 +714,7 @@ else "roleAssignmentId"</text>
           <text>true</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18pqj96">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
     </decisionTable>
