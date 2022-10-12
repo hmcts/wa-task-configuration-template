@@ -6,6 +6,7 @@ import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.impl.VariableMapImpl;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -148,7 +149,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         inputVariables.putValue("taskAttributes", scenario.taskAttributes);
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
-        assertThat(dmnDecisionTableResult.getResultList(), is(getExpectedValues(scenario)));
+        System.out.println(dmnDecisionTableResult.getResultList());
+        Assertions.assertEquals(dmnDecisionTableResult.getResultList(), getExpectedValues(scenario));
     }
 
     private static Stream<Scenario> nameAndValueScenarioProvider() {
@@ -293,43 +295,25 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         Scenario givenDueDateOriginScenario = Scenario.builder()
             .scenarioName("calculateDueDate")
             .caseData(Map.of(
-                "appealType", "refusalOfHumanRights",
-                "appellantGivenNames", "some appellant given names",
-                "appellantFamilyName", "some appellant family name",
-                "caseManagementLocation", Map.of(
-                    "region", "some other region",
-                    "baseLocation", "some other location"
-                ),
-                "staffLocation", "some other location name",
-                "caseManagementCategory", Map.of(
-                    "value", Map.of("code", "refusalOfHumanRights", "label", "Refusal of a human rights claim"),
-                    "list_items", List.of(Map.of("code", "refusalOfHumanRights", "label", refusalOfEuLabel))
-                ),
-                "nextHearingId", "next Hearing Id",
-                "nextHearingDate", nextHearingDate
             ))
             .taskAttributes(Map.of("taskType", "calculateDueDate"))
-            .expectedCaseNameValue("some appellant given names some appellant family name")
-            .expectedAppealTypeValue("Human rights")
-            .expectedRegionValue("some other region")
-            .expectedLocationValue("some other location")
-            .expectedLocationNameValue("some other location name")
-            .expectedCaseManagementCategoryValue("Human rights")
+            .expectedCaseNameValue(null)
+            .expectedAppealTypeValue("")
+            .expectedRegionValue("1")
+            .expectedLocationValue("765324")
+            .expectedLocationNameValue("Taylor House")
+            .expectedCaseManagementCategoryValue("")
             .expectedDescription("")
-            .expectedAdditionalPropertiesKey1(null)
-            .expectedAdditionalPropertiesKey2(null)
-            .expectedAdditionalPropertiesKey3(null)
-            .expectedAdditionalPropertiesKey4(null)
-            .expectedPriorityDate(nextHearingDate)
+            .expectedPriorityDate("")
             .expectedMinorPriority("500")
             .expectedMajorPriority("5000")
-            .expectedNextHearingId("next Hearing Id")
-            .expectedNextHearingDate(nextHearingDate)
+            .expectedNextHearingId("")
+            .expectedNextHearingDate("")
+            .expectedDueDateTime("20:00")
             .expectedDueDateOrigin("2022-10-13T18:00")
-            .expectedDueDateIntervalDays(2)
+            .expectedDueDateIntervalDays(8)
             .expectedDueDateNonWorkingCalendar("https://www.gov.uk/bank-holidays/england-and-wales.json")
             .expectedDueDateNonWorkingDaysOfWeek("SATURDAY, SUNDAY")
-            .expectedDueDateTime("20:00")
             .expectedDueDateSkipNonWorkingDays(true)
             .expectedDueDateMustBeWorkingDay(true)
             .build();
