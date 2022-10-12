@@ -6,7 +6,6 @@ import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.impl.VariableMapImpl;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -30,7 +29,6 @@ import java.util.stream.Stream;
 import static java.util.Collections.emptyMap;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTable.WA_TASK_CONFIGURATION_WA_WACASETYPE;
 
@@ -149,8 +147,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         inputVariables.putValue("taskAttributes", scenario.taskAttributes);
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
-        System.out.println(dmnDecisionTableResult.getResultList());
-        Assertions.assertEquals(dmnDecisionTableResult.getResultList(), getExpectedValues(scenario));
+        assertThat(dmnDecisionTableResult.getResultList(), is(getExpectedValues(scenario)));
     }
 
     private static Stream<Scenario> nameAndValueScenarioProvider() {
@@ -312,11 +309,11 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedNextHearingDate("")
             .expectedDueDateTime("20:00")
             .expectedDueDateOrigin("2022-10-13T18:00")
-            .expectedDueDateIntervalDays(8)
+            .expectedDueDateIntervalDays("8")
             .expectedDueDateNonWorkingCalendar("https://www.gov.uk/bank-holidays/england-and-wales.json")
-            .expectedDueDateNonWorkingDaysOfWeek("SATURDAY, SUNDAY")
-            .expectedDueDateSkipNonWorkingDays(true)
-            .expectedDueDateMustBeWorkingDay(true)
+            .expectedDueDateNonWorkingDaysOfWeek("SATURDAY,SUNDAY")
+            .expectedDueDateSkipNonWorkingDays("true")
+            .expectedDueDateMustBeWorkingDay("true")
             .build();
 
 
@@ -658,11 +655,11 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         String expectedDueDate;
         String expectedDueDateTime;
         String expectedDueDateOrigin;
-        Integer expectedDueDateIntervalDays;
+        String expectedDueDateIntervalDays;
         String expectedDueDateNonWorkingCalendar;
         String expectedDueDateNonWorkingDaysOfWeek;
-        Boolean expectedDueDateSkipNonWorkingDays;
-        Boolean expectedDueDateMustBeWorkingDay;
+        String expectedDueDateSkipNonWorkingDays;
+        String expectedDueDateMustBeWorkingDay;
     }
 
     private List<Map<String, Object>> getExpectedValues(Scenario scenario) {

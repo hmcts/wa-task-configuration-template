@@ -677,7 +677,7 @@ else "roleAssignmentId"</text>
           <text>"dueDateNonWorkingDaysOfWeek"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0cl62ys">
-          <text>"SATURDAY, SUNDAY"</text>
+          <text>"SATURDAY,SUNDAY"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_016asye">
           <text>true</text>
