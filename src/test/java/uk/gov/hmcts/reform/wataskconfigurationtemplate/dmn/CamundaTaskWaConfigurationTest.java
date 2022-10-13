@@ -205,7 +205,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedWorkType("hearing_work")
             .expectedRoleCategory("LEGAL_OPERATIONS")
             .expectedDescription("[Decide an application]"
-                                     + "(/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)")
+                                 + "(/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)")
             .expectedAdditionalPropertiesKey1("value1")
             .expectedAdditionalPropertiesKey2("value2")
             .expectedAdditionalPropertiesKey3("value3")
@@ -424,10 +424,11 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         "reviewSpecificAccessRequestJudiciary", "reviewSpecificAccessRequestLegalOps",
         "reviewSpecificAccessRequestAdmin"
     })
-    void when_taskId_then_return_Access_requests(String taskType) {
+    void when_given_task_type_then_return_review_specific_access_requests(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
 
-        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
+        inputVariables.putValue("taskAttributes", Map.of("taskId","1234",
+            "taskType", taskType));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -442,16 +443,20 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "value", "access_requests",
             "canReconfigure", true
         )));
+
+        assertDescriptionField(taskType, dmnDecisionTableResult);
     }
 
     @ParameterizedTest
     @CsvSource({
         "processApplication", "reviewSpecificAccessRequestLegalOps"
     })
-    void when_taskId_then_return_Legal_Operations(String taskType) {
+    void when_given_task_type_then_return_Legal_Operations(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
 
-        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
+        inputVariables.putValue("taskAttributes",
+            Map.of("taskId", "1234",
+                "taskType", taskType));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -466,6 +471,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "value", "LEGAL_OPERATIONS",
             "canReconfigure", true
         )));
+
+        assertDescriptionField(taskType, dmnDecisionTableResult);
     }
 
     @ParameterizedTest
@@ -478,9 +485,10 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         String roleAssignmentId = UUID.randomUUID().toString();
         inputVariables.putValue("taskAttributes", Map.of(
-                                    "taskType", taskType,
-                                    "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
-                                )
+            "taskId", "1234",
+            "taskType", taskType,
+                "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
+            )
         );
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
@@ -496,6 +504,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "value", roleAssignmentId,
             "canReconfigure", true
         )));
+
+        assertDescriptionField(taskType, dmnDecisionTableResult);
     }
 
     @ParameterizedTest
@@ -507,9 +517,10 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         VariableMap inputVariables = new VariableMapImpl();
 
         inputVariables.putValue("taskAttributes", Map.of(
-                                    "taskType", taskType,
-                                    "additionalProperties", Map.of()
-                                )
+                "taskId", "1234",
+                "taskType", taskType,
+                "additionalProperties", Map.of()
+            )
         );
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
@@ -525,6 +536,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "value", "roleAssignmentId",
             "canReconfigure", true
         )));
+
+        assertDescriptionField(taskType, dmnDecisionTableResult);
     }
 
 
@@ -536,7 +549,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void should_return_dmn_value_when_role_assignment_id_is_not_exist_in_task_attributes(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
 
-        inputVariables.putValue("taskAttributes", Map.of("taskType", taskType));
+        inputVariables.putValue("taskAttributes", Map.of("taskId","1234",
+            "taskType", taskType));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -551,10 +565,26 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "value", "roleAssignmentId",
             "canReconfigure", true
         )));
+
+        assertDescriptionField(taskType, dmnDecisionTableResult);
+    }
+
+    private void assertDescriptionField(String taskType, DmnDecisionTableResult dmnDecisionTableResult) {
+        if ("reviewSpecificAccessRequestLegalOps".equals(taskType)) {
+            List<Map<String, Object>> descriptionResultList = dmnDecisionTableResult.getResultList().stream()
+                .filter((r) -> r.containsValue("description"))
+                .collect(Collectors.toList());
+            assertThat(descriptionResultList.size(), is(1));
+            assertTrue(descriptionResultList.contains(Map.of(
+                "name", "description",
+                "value", "1234",
+                "canReconfigure", true
+            )));
+        }
     }
 
     @Test
-    void when_taskId_then_return_Admin() {
+    void when_given_task_type_then_return_admin_role_category() {
         VariableMap inputVariables = new VariableMapImpl();
 
         inputVariables.putValue("taskAttributes", Map.of("taskType", "reviewSpecificAccessRequestAdmin"));
@@ -575,7 +605,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     }
 
     @Test
-    void when_taskId_then_return_Judical() {
+    void when_given_task_type_then_return_judicial_role_category() {
         VariableMap inputVariables = new VariableMapImpl();
 
         inputVariables.putValue("taskAttributes", Map.of("taskType", "reviewSpecificAccessRequestJudiciary"));
