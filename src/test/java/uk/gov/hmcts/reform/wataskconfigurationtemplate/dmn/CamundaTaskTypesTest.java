@@ -30,32 +30,32 @@ class CamundaTaskTypesTest extends DmnDecisionTableBaseUnitTest {
     static Stream<Arguments> scenarioProvider() {
         List<Map<String, String>> taskTypes = List.of(
             Map.of(
-                "Task Type Id", "processApplication",
-                "Task Type Name", "Process Application"
+                "taskTypeId", "processApplication",
+                "taskTypeName", "Process Application"
             ),
             Map.of(
-                "Task Type Id", "reviewAppealSkeletonArgument",
-                "Task Type Name", "Review Appeal Skeleton Argument"
+                "taskTypeId", "reviewAppealSkeletonArgument",
+                "taskTypeName", "Review Appeal Skeleton Argument"
             ),
             Map.of(
-                "Task Type Id", "decideOnTimeExtension",
-                "Task Type Name", "Decide On Time Extension"
+                "taskTypeId", "decideOnTimeExtension",
+                "taskTypeName", "Decide On Time Extension"
             ),
             Map.of(
-                "Task Type Id", "followUpOverdueCaseBuilding",
-                "Task Type Name", "Follow-up overdue case building"
+                "taskTypeId", "followUpOverdueCaseBuilding",
+                "taskTypeName", "Follow-up overdue case building"
             ),
             Map.of(
-                "Task Type Id", "attendCma",
-                "Task Type Name", "Attend Cma"
+                "taskTypeId", "attendCma",
+                "taskTypeName", "Attend Cma"
             ),
             Map.of(
-                "Task Type Id", "reviewRespondentResponse",
-                "Task Type Name", "Review Respondent Response"
+                "taskTypeId", "reviewRespondentResponse",
+                "taskTypeName", "Review Respondent Response"
             ),
             Map.of(
-                "Task Type Id", "followUpOverdueRespondentEvidence",
-                "Task Type Name", "Follow-up overdue respondent evidence"
+                "taskTypeId", "followUpOverdueRespondentEvidence",
+                "taskTypeName", "Follow-up overdue respondent evidence"
             )
         );
         return Stream.of(
