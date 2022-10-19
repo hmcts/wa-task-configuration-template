@@ -21,6 +21,10 @@ public enum DmnDecisionTable {
     WA_TASK_INITIATION_WA_WACASETYPE(
         "wa-task-initiation-wa-wacasetype",
         "wa-task-initiation-wa-wacasetype.dmn"
+    ),
+    WA_TASK_TYPES_WA_WACASETYPE(
+        "wa-task-types-wa-wacasetype",
+        "wa-task-types-wa-wacasetype.dmn"
     );
 
     @JsonValue
