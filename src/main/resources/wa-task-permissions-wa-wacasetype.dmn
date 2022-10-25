@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.8.1">
   <decision id="wa-task-permissions-wa-wacasetype" name="Permissions DMN">
     <decisionTable id="DecisionTable_1pr5oic" hitPolicy="RULE ORDER">
       <input id="InputClause_1t6frhu" label="Task Type" camunda:inputVariable="taskType">
@@ -114,7 +114,7 @@ else
       </rule>
       <rule id="DecisionRule_0xwt5yu">
         <inputEntry id="UnaryTests_18pne00">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_09g3r7q">
           <text></text>
@@ -143,7 +143,7 @@ else
       </rule>
       <rule id="DecisionRule_05a8clg">
         <inputEntry id="UnaryTests_0e0on6v">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1pwt0dk">
           <text></text>
@@ -323,7 +323,7 @@ else
       <rule id="DecisionRule_0y7llh2">
         <description>Specific Access Lead Judge task permissions</description>
         <inputEntry id="UnaryTests_0asgnjh">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0o2rbq3">
           <text></text>
@@ -353,7 +353,7 @@ else
       <rule id="DecisionRule_0efh8xd">
         <description>Specific Access Case Manager task permissions</description>
         <inputEntry id="UnaryTests_1nwdtfi">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0qqpjwx">
           <text></text>
@@ -383,7 +383,7 @@ else
       <rule id="DecisionRule_1m8nao5">
         <description>Specific Access FTPA Judge task permissions</description>
         <inputEntry id="UnaryTests_1b83szh">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1drytx7">
           <text></text>
@@ -413,7 +413,7 @@ else
       <rule id="DecisionRule_0bzsq7p">
         <description>Specific Access Hearing Panel Judge task permissions</description>
         <inputEntry id="UnaryTests_1g1jifr">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1dwx6pq">
           <text></text>
@@ -623,7 +623,7 @@ else
       <rule id="DecisionRule_1p52wve">
         <description>Challenged Access (judiciary) task permissions</description>
         <inputEntry id="UnaryTests_1pi7aou">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1qvaigk">
           <text></text>
@@ -653,7 +653,7 @@ else
       <rule id="DecisionRule_1gjvz4l">
         <description>Challenged Access (legal-operations) task permissions</description>
         <inputEntry id="UnaryTests_18s2lpx">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0uny2bh">
           <text></text>
@@ -683,7 +683,7 @@ else
       <rule id="DecisionRule_180mzuy">
         <description>Challenged Access (admin) task permissions</description>
         <inputEntry id="UnaryTests_1iui8cw">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0f6qqi8">
           <text></text>

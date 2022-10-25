@@ -215,8 +215,6 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedMajorPriority("5000")
             .expectedNextHearingId("next Hearing Id")
             .expectedNextHearingDate(nextHearingDate)
-            .expectedDueDate(expectedDueDate + "T18:00")
-            .expectedDueDateTime(null)
             .build();
 
         Scenario givenDueDateAndTimeScenario = Scenario.builder()
@@ -286,7 +284,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedMajorPriority("5000")
             .expectedNextHearingId("next Hearing Id")
             .expectedNextHearingDate(nextHearingDate)
-            .expectedDueDate(expectedDueDate + "T18:00")
+            .expectedDueDate(null)
             .expectedDueDateTime(null)
             .build();
 

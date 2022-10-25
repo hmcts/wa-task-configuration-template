@@ -136,7 +136,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1a8bdg5">
-          <text>"processApplication","reviewAppealSkeletonArgument"</text>
+          <text>"processApplication","reviewAppealSkeletonArgument","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tv7w74">
           <text>"workType"</text>
@@ -170,7 +170,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_05lncbx">
-          <text>"processApplication","reviewSpecificAccessRequestLegalOps","processRequestTaskId"</text>
+          <text>"processApplication","reviewSpecificAccessRequestLegalOps","processRequestTaskId","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0h44xpe">
           <text>"roleCategory"</text>
@@ -227,7 +227,9 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1wx4v4p">
-          <text>if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "processApplication" or taskType != null and taskType = "processApplication")
+          <text>if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "followUpOverdueRespondentEvidence" or taskType != null and taskType = "followUpOverdueRespondentEvidence")
+then "[Dummy Activity](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/dummyActivity)"
+else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "processApplication" or taskType != null and taskType = "processApplication")
 then "[Decide an application](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)"
 else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewTheAppeal" or taskType != null and taskType = "reviewTheAppeal")
 then "[Request respondent evidence](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/requestRespondentEvidence)"
@@ -280,7 +282,7 @@ else ""</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0iy5xeu">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1i8kwjh">
           <text>"additionalProperties_key1"</text>
@@ -297,7 +299,7 @@ else ""</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1fx1dt8">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_068uuoq">
           <text>"additionalProperties_key2"</text>
@@ -314,7 +316,7 @@ else ""</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0l40dey">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0a37919">
           <text>"additionalProperties_key3"</text>
@@ -331,7 +333,7 @@ else ""</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_106xmn2">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1owcrj9">
           <text>"additionalProperties_key4"</text>
@@ -570,7 +572,7 @@ else "roleAssignmentId"</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_14rm6xb">
-          <text>"processApplication"</text>
+          <text>"followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0pxotd7">
           <text>"dueDate"</text>
