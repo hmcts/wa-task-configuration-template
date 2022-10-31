@@ -594,6 +594,114 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
     }
 
+    @Test
+    void when_taskId_is_inspect_appeal_then_return_correct_values() {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "inspectAppeal"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.containsValue("workType"))
+            .collect(Collectors.toList());
+
+        assertThat(workTypeResultList.size(), is(1));
+
+        assertTrue(workTypeResultList.contains(Map.of(
+            "name", "workType",
+            "value", "decision_making_work",
+            "canReconfigure", true
+        )));
+
+        List<Map<String, Object>> roleCategoryResultList = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.containsValue("roleCategory"))
+            .collect(Collectors.toList());
+
+        assertTrue(roleCategoryResultList.contains(Map.of(
+            "name", "roleCategory",
+            "value", "LEGAL_OPERATIONS",
+            "canReconfigure", true
+        )));
+
+    }
+
+    @Test
+    void when_taskId_is_first_task_then_return_correct_values() {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "firstTask"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.containsValue("workType"))
+            .collect(Collectors.toList());
+
+        assertThat(workTypeResultList.size(), is(1));
+
+        assertTrue(workTypeResultList.contains(Map.of(
+            "name", "workType",
+            "value", "hearing_work",
+            "canReconfigure", true
+        )));
+
+    }
+
+    @Test
+    void when_taskId_is_second_task_then_return_correct_values() {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "secondTask"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.containsValue("roleCategory"))
+            .collect(Collectors.toList());
+
+        assertThat(workTypeResultList.size(), is(1));
+
+        assertTrue(workTypeResultList.contains(Map.of(
+            "name", "roleCategory",
+            "value", "ADMIN",
+            "canReconfigure", true
+        )));
+
+    }
+
+    @Test
+    void when_taskId_is_decide_on_time_extension_then_return_correct_values() {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "decideOnTimeExtension"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.containsValue("workType"))
+            .collect(Collectors.toList());
+
+        assertThat(workTypeResultList.size(), is(1));
+
+        assertTrue(workTypeResultList.contains(Map.of(
+            "name", "workType",
+            "value", "decision_making_work",
+            "canReconfigure", true
+        )));
+
+        List<Map<String, Object>> roleCategoryResultList = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.containsValue("roleCategory"))
+            .collect(Collectors.toList());
+
+        assertTrue(roleCategoryResultList.contains(Map.of(
+            "name", "roleCategory",
+            "value", "LEGAL_OPERATIONS",
+            "canReconfigure", true
+        )));
+
+    }
+
     @Value
     @Builder
     private static class Scenario {
