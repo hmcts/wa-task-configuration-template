@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.wataskconfigurationtemplate.dmn;
 
+import org.apache.commons.lang3.StringUtils;
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
@@ -35,7 +36,11 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
         VariableMap inputVariables = new VariableMapImpl();
         inputVariables.putValue("eventId", eventId);
         inputVariables.putValue("postEventState", postEventState);
-        inputVariables.putValue("appealType", appealType);
+        if (StringUtils.isNotBlank(appealType)) {
+            inputVariables.putValue("additionalData", Map.of(
+                "Data", Map.of("appealType", appealType)
+            ));
+        }
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -45,6 +50,18 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
     public static Stream<Arguments> scenarioProvider() {
 
         return Stream.of(
+            Arguments.of(
+                "sendDirection", "", "protection",
+                List.of(
+                    Map.of(
+                    "taskId", "followUpNonStandardDirection",
+                    "name", "Follow-up non-standard direction",
+                    "workingDaysAllowed", 2,
+                    "delayDuration", 0,
+                    "processCategories", "caseProgression"
+                )
+                )
+            ),
             Arguments.of(
                 "CREATE", "TODO", "anything",
                 List.of(
@@ -191,7 +208,7 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(13));
+        assertThat(logic.getRules().size(), is(15));
 
     }
 }
