@@ -531,6 +531,108 @@ else "roleAssignmentId"</text>
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_159rsdu">
+        <inputEntry id="UnaryTests_1b54cds">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01xztkd">
+          <text>"inspectAppeal"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tm5vay">
+          <text>"workType"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cey61a">
+          <text>"decision_making_work"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14oneef">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0pkfp0i">
+        <inputEntry id="UnaryTests_071k57l">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14bavxa">
+          <text>"inspectAppeal"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02d0m3l">
+          <text>"roleCategory"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1p3nnqd">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vqlg9u">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15y97gk">
+        <inputEntry id="UnaryTests_0ubpuww">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0g6gfli">
+          <text>"firstTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1p3t3pl">
+          <text>"workType"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17ncbeh">
+          <text>"hearing_work"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03bdyys">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02no96i">
+        <inputEntry id="UnaryTests_1t2tkay">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nq3yzj">
+          <text>"secondTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hbdamv">
+          <text>"roleCategory"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hbw44h">
+          <text>"ADMIN"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07s079a">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0gwkosl">
+        <inputEntry id="UnaryTests_1s31get">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tsonsb">
+          <text>"decideOnTimeExtension"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1s5jay7">
+          <text>"workType"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07mxfpe">
+          <text>"decision_making_work"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ysfecl">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1h3n7ir">
+        <inputEntry id="UnaryTests_1kh9xyu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0bl8uxa">
+          <text>"decideOnTimeExtension"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vo8bdo">
+          <text>"roleCategory"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14b5ee0">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vthyul">
+          <text>true</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
