@@ -714,7 +714,7 @@ else "roleAssignmentId"</text>
           <text>"dueDateMustBeWorkingDay"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_098xufi">
-          <text>true</text>
+          <text>"Next"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18pqj96">
           <text>true</text>

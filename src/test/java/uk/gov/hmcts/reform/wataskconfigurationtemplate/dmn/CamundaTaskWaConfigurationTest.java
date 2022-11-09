@@ -311,7 +311,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedDueDateNonWorkingCalendar("https://www.gov.uk/bank-holidays/england-and-wales.json")
             .expectedDueDateNonWorkingDaysOfWeek("SATURDAY,SUNDAY")
             .expectedDueDateSkipNonWorkingDays("true")
-            .expectedDueDateMustBeWorkingDay("true")
+            .expectedDueDateMustBeWorkingDay("Next")
             .build();
 
 
