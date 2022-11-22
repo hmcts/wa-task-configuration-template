@@ -486,9 +486,6 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "taskType", taskType,
                 "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
             )
-                                    "taskType", taskType,
-                                    "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
-                                )
         );
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
