@@ -343,6 +343,121 @@
           <text></text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1lhmz7f">
+        <inputEntry id="UnaryTests_0zimdbz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19o7s0y">
+          <text>"removeAppealFromOnline"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10v5wak">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0q6ckkk">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0j42c28">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_12w2f2y">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hrl34b">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0cvxcep">
+        <inputEntry id="UnaryTests_1y23lyo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17svwy2">
+          <text>"applyNocDecision"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_037n18m">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vvrjqo">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ncp4n8">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tlg5er">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gifuqk">
+          <text>"followUpOverdue"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rsofeu">
+        <inputEntry id="UnaryTests_0dfazdp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19fhi3y">
+          <text>"withdrawAppeal"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0flk9mx">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0oxddq5">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dmxesl">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0x6z9qm">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ebj62q">
+          <text>"caseProgression"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1vwlp69">
+        <inputEntry id="UnaryTests_09833m6">
+          <text>"awaitingRespondentEvidence"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rwb07k">
+          <text>"uploadHomeOfficeBundle"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fn95wv">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vnjw0t">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ar13ji">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1p2n1p2">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gd31re">
+          <text>"followUpOverdue"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1guzypv">
+        <inputEntry id="UnaryTests_1n3g5ie">
+          <text>"awaitingReasonsForAppeal"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g1cc7g">
+          <text>"submitReasonsForAppeal"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ah5t17">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1c4vo81">
+          <text>"Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mfk4dd">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xi8ame">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_038kekv">
+          <text>"timeExtension"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
