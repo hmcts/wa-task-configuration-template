@@ -924,6 +924,40 @@ else "roleAssignmentId"</text>
           <text></text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_10592tu">
+        <inputEntry id="UnaryTests_0n1uk95">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1i5zui1">
+          <text>"multipleCalendarsDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13a2ktm">
+          <text>"workType"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00nchhp">
+          <text>"decision_making_work"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ri5rpz">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fbx9qn">
+        <inputEntry id="UnaryTests_0w3iy0w">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_123jww1">
+          <text>"multipleCalendarsDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01pvajt">
+          <text>"roleCategory"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10uyb06">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tbd3d6">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
