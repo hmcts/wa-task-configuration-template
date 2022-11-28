@@ -867,7 +867,7 @@ else "roleAssignmentId"</text>
           <text>"dueDateNonWorkingCalendar"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0m1ki17">
-          <text>"https://www.gov.uk/bank-holidays/england-and-wales.json, https://raw.githubusercontent.com/hmcts/wa-task-management-api/RWA-1768-calendar-for-test/src/test/resources/override-working-day-calendar.json"</text>
+          <text>"https://www.gov.uk/bank-holidays/england-and-wales.json, https://raw.githubusercontent.com/hmcts/wa-task-management-api/master/src/test/resources/override-working-day-calendar.json"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0rzxj8i">
           <text>true</text>
