@@ -56,6 +56,10 @@ class CamundaTaskTypesTest extends DmnDecisionTableBaseUnitTest {
             Map.of(
                 "taskTypeId", "followUpOverdueRespondentEvidence",
                 "taskTypeName", "Follow-up overdue respondent evidence"
+            ),
+            Map.of(
+                "taskTypeId", "FOLLOWUPOVERDUERESPONDENTEVIDENCE",
+                "taskTypeName", "Follow-up overdue respondent evidence"
             )
         );
         return Stream.of(
@@ -82,7 +86,7 @@ class CamundaTaskTypesTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
         assertThat(logic.getInputs().size(), is(1));
         assertThat(logic.getOutputs().size(), is(2));
-        assertThat(logic.getRules().size(), is(7));
+        assertThat(logic.getRules().size(), is(8));
 
     }
 }

@@ -86,6 +86,17 @@
           <text>"Follow-up overdue respondent evidence"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0xbos4c">
+        <inputEntry id="UnaryTests_0b0sejo">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0awn6yl">
+          <text>"FOLLOWUPOVERDUERESPONDENTEVIDENCE"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0v06mnn">
+          <text>"Follow-up overdue respondent evidence"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
