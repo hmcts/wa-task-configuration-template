@@ -144,7 +144,7 @@ else
       </rule>
       <rule id="DecisionRule_0xwt5yu">
         <inputEntry id="UnaryTests_18pne00">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_09g3r7q">
           <text></text>
@@ -173,7 +173,7 @@ else
       </rule>
       <rule id="DecisionRule_05a8clg">
         <inputEntry id="UnaryTests_0e0on6v">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1pwt0dk">
           <text></text>
@@ -353,7 +353,7 @@ else
       <rule id="DecisionRule_0y7llh2">
         <description>Specific Access Lead Judge task permissions</description>
         <inputEntry id="UnaryTests_0asgnjh">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0o2rbq3">
           <text></text>
@@ -383,7 +383,7 @@ else
       <rule id="DecisionRule_0efh8xd">
         <description>Specific Access Case Manager task permissions</description>
         <inputEntry id="UnaryTests_1nwdtfi">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0qqpjwx">
           <text></text>
@@ -413,7 +413,7 @@ else
       <rule id="DecisionRule_1m8nao5">
         <description>Specific Access FTPA Judge task permissions</description>
         <inputEntry id="UnaryTests_1b83szh">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1drytx7">
           <text></text>
@@ -443,7 +443,7 @@ else
       <rule id="DecisionRule_0bzsq7p">
         <description>Specific Access Hearing Panel Judge task permissions</description>
         <inputEntry id="UnaryTests_1g1jifr">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1dwx6pq">
           <text></text>
@@ -653,7 +653,7 @@ else
       <rule id="DecisionRule_1p52wve">
         <description>Challenged Access (judiciary) task permissions</description>
         <inputEntry id="UnaryTests_1pi7aou">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1qvaigk">
           <text></text>
@@ -683,7 +683,7 @@ else
       <rule id="DecisionRule_1gjvz4l">
         <description>Challenged Access (legal-operations) task permissions</description>
         <inputEntry id="UnaryTests_18s2lpx">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0uny2bh">
           <text></text>
@@ -713,7 +713,7 @@ else
       <rule id="DecisionRule_180mzuy">
         <description>Challenged Access (admin) task permissions</description>
         <inputEntry id="UnaryTests_1iui8cw">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0f6qqi8">
           <text></text>
@@ -1357,6 +1357,125 @@ else
           <text>1</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_09id1u6">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00stqpq">
+        <inputEntry id="UnaryTests_1fidvc6">
+          <text>"checkFeeStatus"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1h5on9u">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0chrda9">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_128goox">
+          <text>"tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18kv0q2">
+          <text>"Read,Execute"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zaa54q">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17xwlzi">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1uxdab5">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0w4gxyy">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_07d29pz">
+        <description>Calculate due date</description>
+        <inputEntry id="UnaryTests_1is7mga">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fs4dcm">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02ceaeb">
+          <text>"categoryA"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16lnd08">
+          <text>"case-manager"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0j0agc6">
+          <text>"Read,Manage,Execute,Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16p2g7j">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1of3din">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15n1yf4">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vhxqmc">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0092jqc">
+        <description>Calculate due date</description>
+        <inputEntry id="UnaryTests_1ob8bvc">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qmbw9m">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_137bcfl">
+          <text>"categoryA"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rrjo8z">
+          <text>"tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0x00dx3">
+          <text>"Read,Execute"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ilmyj5">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06isc0i">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_111hssr">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0jhr9p3">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0up8d5o">
+        <description>Calculate due date</description>
+        <inputEntry id="UnaryTests_0kc9bjm">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1d3d8rv">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0b08tyh">
+          <text>"categoryA"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_050okrc">
+          <text>"senior-tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13nmdx2">
+          <text>"Read,Own"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dtt0dj">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17bhnqv">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_12qiku2">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gg7vvi">
           <text>false</text>
         </outputEntry>
       </rule>
