@@ -136,7 +136,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1a8bdg5">
-          <text>"processApplication","reviewAppealSkeletonArgument"</text>
+          <text>"processApplication","reviewAppealSkeletonArgument","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tv7w74">
           <text>"workType"</text>
@@ -170,7 +170,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_05lncbx">
-          <text>"processApplication","reviewSpecificAccessRequestLegalOps","processRequestTaskId"</text>
+          <text>"processApplication","reviewSpecificAccessRequestLegalOps","processRequestTaskId","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0h44xpe">
           <text>"roleCategory"</text>
@@ -227,7 +227,9 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text>"description"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1wx4v4p">
-          <text>if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "processApplication" or taskType != null and taskType = "processApplication")
+          <text>if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "followUpOverdueRespondentEvidence" or taskType != null and taskType = "followUpOverdueRespondentEvidence")
+then "[Dummy Activity](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/dummyActivity)"
+else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "processApplication" or taskType != null and taskType = "processApplication")
 then "[Decide an application](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)"
 else if (taskAttributes != null and taskAttributes.taskType != null and taskAttributes.taskType = "reviewTheAppeal" or taskType != null and taskType = "reviewTheAppeal")
 then "[Request respondent evidence](/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/requestRespondentEvidence)"
@@ -280,7 +282,7 @@ else ""</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0iy5xeu">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1i8kwjh">
           <text>"additionalProperties_key1"</text>
@@ -297,7 +299,7 @@ else ""</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1fx1dt8">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_068uuoq">
           <text>"additionalProperties_key2"</text>
@@ -314,7 +316,7 @@ else ""</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0l40dey">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0a37919">
           <text>"additionalProperties_key3"</text>
@@ -331,7 +333,7 @@ else ""</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_106xmn2">
-          <text>"processApplication"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1owcrj9">
           <text>"additionalProperties_key4"</text>
@@ -358,6 +360,74 @@ else ""</text>
 else "roleAssignmentId"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1tvy5lm">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pxnm0c">
+        <inputEntry id="UnaryTests_0tkkbro">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ldcewd">
+          <text>"followUpOverdue"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1uy391d">
+          <text>"additionalProperties_key1"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kthxaf">
+          <text>if (taskAttributes != null and taskAttributes.key1 != null) then taskAttributes.key1 else "value1"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vye9va">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_15qo31r">
+        <inputEntry id="UnaryTests_06341ch">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wkdhu5">
+          <text>"followUpOverdue"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10c4z8v">
+          <text>"additionalProperties_key2"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sbkchg">
+          <text>if (taskAttributes != null and taskAttributes.key2 != null) then taskAttributes.key2 else "value2"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0a92qr9">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_081gncx">
+        <inputEntry id="UnaryTests_1prh4qz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_188tegs">
+          <text>"followUpOverdue"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zchano">
+          <text>"additionalProperties_key3"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0su1pco">
+          <text>if (taskAttributes != null and taskAttributes.key3 != null) then taskAttributes.key3 else "value3"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0u455ya">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rmtuym">
+        <inputEntry id="UnaryTests_19at9x9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1i94t2v">
+          <text>"followUpOverdue"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0b36q2j">
+          <text>"additionalProperties_key4"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16w9qvg">
+          <text>if (taskAttributes != null and taskAttributes.key4 != null) then taskAttributes.key4 else "value4"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wnpptb">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -446,74 +516,6 @@ else "roleAssignmentId"</text>
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_1pxnm0c">
-        <inputEntry id="UnaryTests_0tkkbro">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0ldcewd">
-          <text>"followUpOverdue"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_1uy391d">
-          <text>"additionalProperties_key1"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1kthxaf">
-          <text>if (taskAttributes != null and taskAttributes.key1 != null) then taskAttributes.key1 else "value1"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1vye9va">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_15qo31r">
-        <inputEntry id="UnaryTests_06341ch">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1wkdhu5">
-          <text>"followUpOverdue"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_10c4z8v">
-          <text>"additionalProperties_key2"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0sbkchg">
-          <text>if (taskAttributes != null and taskAttributes.key2 != null) then taskAttributes.key2 else "value2"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0a92qr9">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_081gncx">
-        <inputEntry id="UnaryTests_1prh4qz">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_188tegs">
-          <text>"followUpOverdue"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0zchano">
-          <text>"additionalProperties_key3"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0su1pco">
-          <text>if (taskAttributes != null and taskAttributes.key3 != null) then taskAttributes.key3 else "value3"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0u455ya">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_1rmtuym">
-        <inputEntry id="UnaryTests_19at9x9">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1i94t2v">
-          <text>"followUpOverdue"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0b36q2j">
-          <text>"additionalProperties_key4"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_16w9qvg">
-          <text>if (taskAttributes != null and taskAttributes.key4 != null) then taskAttributes.key4 else "value4"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0wnpptb">
-          <text>true</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1pfe344">
         <inputEntry id="UnaryTests_0jryr4g">
           <text></text>
@@ -528,6 +530,193 @@ else "roleAssignmentId"</text>
           <text>"CTSC"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zueupu">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1acwzul">
+        <inputEntry id="UnaryTests_162sqcw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0abumsf">
+          <text>"followUpOverdue"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19rm5oj">
+          <text>"dueDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jfxihq">
+          <text>date and time(date(now() + duration("P2D")), time("00:00"))</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ua29dr">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0znj7lo">
+        <inputEntry id="UnaryTests_081ct94">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wljl7b">
+          <text>"followUpOverdue"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ud0hya">
+          <text>"dueDateTime"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1awfc4n">
+          <text>time("16:00")</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08trego">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16i6htb">
+        <inputEntry id="UnaryTests_0elhyk1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14rm6xb">
+          <text>"followUpOverdueRespondentEvidence"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0pxotd7">
+          <text>"dueDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fq9nph">
+          <text>date and time(date(now() + duration("P2D")), time("18:00"))</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1aglp22">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0flhbe1">
+        <inputEntry id="UnaryTests_1e7d9rt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0foeapa">
+          <text>"checkFeeStatus"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h6pry3">
+          <text>"dueDateTime"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_022gwqt">
+          <text>time("16:00")</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0iv9ifz">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jtth4t">
+        <inputEntry id="UnaryTests_1m2tygf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15odjnu">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0txr8g0">
+          <text>"dueDateTime"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gl7dik">
+          <text>time("20:00")</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_133x7rz">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0egegfu">
+        <inputEntry id="UnaryTests_0wgzvjt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09b2inu">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0h4wsvv">
+          <text>"dueDateOrigin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qyx6p5">
+          <text>date and time(date("2022-10-13"), time("18:00"))</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_12t4xiq">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0s496vt">
+        <inputEntry id="UnaryTests_097dd78">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14mi5k9">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dg6wzl">
+          <text>"dueDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1y30r5t">
+          <text>8</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11vy57j">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1w0jblp">
+        <inputEntry id="UnaryTests_16eonpy">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nwhjxh">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17cb4gi">
+          <text>"dueDateNonWorkingCalendar"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qlnc8s">
+          <text>"https://www.gov.uk/bank-holidays/england-and-wales.json"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03okabe">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cdp4ti">
+        <inputEntry id="UnaryTests_00qp85h">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f7tqey">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xtij4l">
+          <text>"dueDateNonWorkingDaysOfWeek"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cl62ys">
+          <text>"SATURDAY,SUNDAY"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_016asye">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_194c9ll">
+        <inputEntry id="UnaryTests_1jot57u">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0787f40">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0x1gvm3">
+          <text>"dueDateSkipNonWorkingDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0m7ees2">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0n6j12x">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ou7u42">
+        <inputEntry id="UnaryTests_167o6c0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rg6tpp">
+          <text>"calculateDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1r7ho1f">
+          <text>"dueDateMustBeWorkingDay"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_098xufi">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18pqj96">
           <text>true</text>
         </outputEntry>
       </rule>
