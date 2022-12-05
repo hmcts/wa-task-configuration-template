@@ -1479,6 +1479,35 @@ else
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_07p07f4">
+        <inputEntry id="UnaryTests_0i6fgro">
+          <text>"multipleCalendarsDueDate"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07hqwlh">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00nypno">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nldxjw">
+          <text>"tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0q07nbx">
+          <text>"Read,Execute"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_075kwat">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hsoq83">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1otbexi">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vrckww">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
