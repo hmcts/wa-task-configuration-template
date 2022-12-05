@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.9.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.12.0">
   <decision id="wa-task-configuration-wa-wacasetype" name="Task configuration DMN">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="RULE ORDER">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -820,6 +820,142 @@ else "roleAssignmentId"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1vthyul">
           <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1if0by3">
+        <inputEntry id="UnaryTests_1t05ect">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_006g01y">
+          <text>"multipleCalendarsDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0a0i9er">
+          <text>"dueDateOrigin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07pdpd6">
+          <text>date and time(date("2022-12-23"), time("18:00"))</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1njwgpm">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_057c3pb">
+        <inputEntry id="UnaryTests_1voy6bh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17uwjb6">
+          <text>"multipleCalendarsDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xocjnv">
+          <text>"dueDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05rg3oz">
+          <text>5</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07h6o1x">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_037r1ie">
+        <inputEntry id="UnaryTests_1bsn7cs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_073mw9p">
+          <text>"multipleCalendarsDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_115d8i6">
+          <text>"dueDateNonWorkingCalendar"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0m1ki17">
+          <text>"https://www.gov.uk/bank-holidays/england-and-wales.json, https://raw.githubusercontent.com/hmcts/wa-task-management-api/master/src/test/resources/override-working-day-calendar.json"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rzxj8i">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0k2f3g4">
+        <inputEntry id="UnaryTests_049y3js">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yogwil">
+          <text>"multipleCalendarsDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1efdczo">
+          <text>"dueDateSkipNonWorkingDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hwokmx">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xwo4vb">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_164u08t">
+        <inputEntry id="UnaryTests_02vaswg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0af1i6y">
+          <text>"multipleCalendarsDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fi5kts">
+          <text>"dueDateMustBeWorkingDay"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ibcsh6">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fyzujm">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19e9l8t">
+        <inputEntry id="UnaryTests_0nznthr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xrbxkw">
+          <text>"multipleCalendarsDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0glmdx1">
+          <text>"dueDateTime"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1njcird">
+          <text>time("18:00")</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1akau9j">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10592tu">
+        <inputEntry id="UnaryTests_0n1uk95">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1i5zui1">
+          <text>"multipleCalendarsDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13a2ktm">
+          <text>"workType"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00nchhp">
+          <text>"decision_making_work"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ri5rpz">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fbx9qn">
+        <inputEntry id="UnaryTests_0w3iy0w">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_123jww1">
+          <text>"multipleCalendarsDueDate"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01pvajt">
+          <text>"roleCategory"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10uyb06">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tbd3d6">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
