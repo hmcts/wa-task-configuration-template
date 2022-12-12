@@ -24,5 +24,9 @@
     <packageUrl regex="true">^pkg:maven/org\.yaml/snakeyaml@.*$</packageUrl>
     <cve>CVE-2022-38752</cve>
   </suppress>
+  <suppress until ="2023-12-31">
+    <notes>Wait for updates on dependencies</notes>
+    <cve>CVE-2021-37533</cve>
+  </suppress>
 </suppressions>
 
