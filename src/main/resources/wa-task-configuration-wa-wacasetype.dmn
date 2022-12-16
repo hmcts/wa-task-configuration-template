@@ -606,7 +606,7 @@ else "roleAssignmentId"</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_15odjnu">
-          <text>"calculateDueDate"</text>
+          <text>"calculateDueDate","mustBeWorkingDayDefault","multipleMustBeWorkingDays"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0txr8g0">
           <text>"dueDateTime"</text>
@@ -623,7 +623,7 @@ else "roleAssignmentId"</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_09b2inu">
-          <text>"calculateDueDate"</text>
+          <text>"calculateDueDate","mustBeWorkingDayDefault","multipleMustBeWorkingDays"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0h4wsvv">
           <text>"dueDateOrigin"</text>
@@ -674,7 +674,7 @@ else "roleAssignmentId"</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1f7tqey">
-          <text>"calculateDueDate"</text>
+          <text>"calculateDueDate","mustBeWorkingDayDefault","multipleMustBeWorkingDays"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xtij4l">
           <text>"dueDateNonWorkingDaysOfWeek"</text>
@@ -714,7 +714,7 @@ else "roleAssignmentId"</text>
           <text>"dueDateMustBeWorkingDay"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_098xufi">
-          <text>true</text>
+          <text>"Next"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18pqj96">
           <text>true</text>
@@ -901,7 +901,7 @@ else "roleAssignmentId"</text>
           <text>"dueDateMustBeWorkingDay"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ibcsh6">
-          <text>true</text>
+          <text>"Next"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0fyzujm">
           <text>true</text>
@@ -921,7 +921,7 @@ else "roleAssignmentId"</text>
           <text>time("18:00")</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1akau9j">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_10592tu">
@@ -929,7 +929,7 @@ else "roleAssignmentId"</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1i5zui1">
-          <text>"multipleCalendarsDueDate"</text>
+          <text>"multipleCalendarsDueDate","mustBeWorkingDayDefault","multipleMustBeWorkingDays"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_13a2ktm">
           <text>"workType"</text>
@@ -938,7 +938,7 @@ else "roleAssignmentId"</text>
           <text>"decision_making_work"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ri5rpz">
-          <text></text>
+          <text>true</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1fbx9qn">
@@ -946,7 +946,7 @@ else "roleAssignmentId"</text>
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_123jww1">
-          <text>"multipleCalendarsDueDate"</text>
+          <text>"multipleCalendarsDueDate","mustBeWorkingDayDefault","multipleMustBeWorkingDays"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_01pvajt">
           <text>"roleCategory"</text>
@@ -955,7 +955,92 @@ else "roleAssignmentId"</text>
           <text>"LEGAL_OPERATIONS"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1tbd3d6">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0d956iq">
+        <inputEntry id="UnaryTests_0e3xhka">
           <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05vk2zx">
+          <text>"mustBeWorkingDayDefault","multipleMustBeWorkingDays"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fru3bc">
+          <text>"dueDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1g955f1">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0te1tys">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0eg81dw">
+        <inputEntry id="UnaryTests_1i9j6vs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gv0633">
+          <text>"mustBeWorkingDayDefault","multipleMustBeWorkingDays"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_082fky9">
+          <text>"dueDateSkipNonWorkingDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nk3h7p">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0eqxrro">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0stivve">
+        <inputEntry id="UnaryTests_1epemay">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cpzty2">
+          <text>"multipleMustBeWorkingDays"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16qbbys">
+          <text>"dueDateMustBeWorkingDay"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_007pnlx">
+          <text>"No"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rfq4vs">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hzde4y">
+        <inputEntry id="UnaryTests_1imq5ki">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ug5wpv">
+          <text>"multipleMustBeWorkingDays"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_10bvdis">
+          <text>"dueDateMustBeWorkingDay"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0o49fpi">
+          <text>"Previous"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xapfpv">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xlznra">
+        <inputEntry id="UnaryTests_0bbstir">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12fkz61">
+          <text>"multipleMustBeWorkingDays"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1alohr0">
+          <text>"dueDateMustBeWorkingDay"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nqasd5">
+          <text>"Next"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1t2ny34">
+          <text>true</text>
         </outputEntry>
       </rule>
     </decisionTable>
