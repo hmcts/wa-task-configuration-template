@@ -1392,7 +1392,7 @@ else
       <rule id="DecisionRule_07d29pz">
         <description>Calculate due date</description>
         <inputEntry id="UnaryTests_1is7mga">
-          <text>"calculateDueDate"</text>
+          <text>"calculateDueDate","mustBeWorkingDayDefault"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0fs4dcm">
           <text></text>
@@ -1422,7 +1422,7 @@ else
       <rule id="DecisionRule_0092jqc">
         <description>Calculate due date</description>
         <inputEntry id="UnaryTests_1ob8bvc">
-          <text>"calculateDueDate"</text>
+          <text>"calculateDueDate","mustBeWorkingDayDefault","multipleMustBeWorkingDays"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0qmbw9m">
           <text></text>
@@ -1452,7 +1452,7 @@ else
       <rule id="DecisionRule_0up8d5o">
         <description>Calculate due date</description>
         <inputEntry id="UnaryTests_0kc9bjm">
-          <text>"calculateDueDate"</text>
+          <text>"calculateDueDate","mustBeWorkingDayDefault","multipleMustBeWorkingDays"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1d3d8rv">
           <text></text>
