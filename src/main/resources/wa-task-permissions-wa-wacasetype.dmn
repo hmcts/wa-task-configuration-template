@@ -1206,7 +1206,7 @@ else
           <text>"JUDICIAL"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1cu438b">
-          <text></text>
+          <text>"SKILL:ABC01:performance-test-skill-1,SKILL:ABC01:performance-test-skill-2"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_18b6mae">
           <text>1</text>
