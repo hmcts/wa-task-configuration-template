@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.9.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.3.0">
   <decision id="wa-task-initiation-wa-wacasetype" name="Task initiation DMN">
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" camunda:inputVariable="eventId">
@@ -53,6 +53,7 @@
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" />
       <output id="OutputClause_0i6c6c2" label="Working Days Allowed" name="workingDaysAllowed" typeRef="integer" />
       <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
+      <output id="OutputClause_1b861fs" label="Task Type" name="taskType" typeRef="string" />
       <rule id="DecisionRule_1fenvxm">
         <inputEntry id="UnaryTests_09nq8bu">
           <text>"CREATE"</text>
@@ -86,6 +87,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1m76a0d">
           <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_138fevf">
+          <text>"processApplication"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0vq8eyq">
@@ -122,6 +126,9 @@
         <outputEntry id="LiteralExpression_1bodtr6">
           <text>"caseProgression"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0uk9y18">
+          <text>"reviewAppealSkeletonArgument"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_046wm6a">
         <inputEntry id="UnaryTests_02g9rgn">
@@ -156,6 +163,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0zy6a6s">
           <text>"timeExtension"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_073lvog">
+          <text>"decideOnTimeExtension"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_10q7721">
@@ -192,6 +202,9 @@
         <outputEntry id="LiteralExpression_0m9jin9">
           <text>"followUpOverdue"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1tk1lcp">
+          <text>"followUpOverdueCaseBuilding"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0odg0q4">
         <inputEntry id="UnaryTests_0x449ig">
@@ -226,6 +239,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1oy20uf">
           <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0a55urq">
+          <text>"attendCma"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1tpr9e2">
@@ -262,6 +278,9 @@
         <outputEntry id="LiteralExpression_0lum3zd">
           <text>"caseProgression"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_09wudyv">
+          <text>"reviewRespondentResponse"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0i6qihx">
         <inputEntry id="UnaryTests_03alruf">
@@ -296,6 +315,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0yoh9gf">
           <text>"followUpOverdue"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05hqcl0">
+          <text>"followUpOverdueRespondentEvidence"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1babmnh">
@@ -332,6 +354,9 @@
         <outputEntry id="LiteralExpression_1n8b3k8">
           <text>"caseProgression,followUpOverdue"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0r9734y">
+          <text>"dummyActivity"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1quzq4s">
         <inputEntry id="UnaryTests_0uphw82">
@@ -366,6 +391,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0q4yayi">
           <text>"caseProgression,followUpOverdue"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0onpa8a">
+          <text>"checkFeeStatus"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1jix9p2">
@@ -402,6 +430,9 @@
         <outputEntry id="LiteralExpression_1hhj2vw">
           <text>"caseProgression,followUpOverdue"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_036asut">
+          <text>"processDummyApplication"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1fvfgbe">
         <inputEntry id="UnaryTests_0txopgj">
@@ -436,6 +467,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0buvxea">
           <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0eb6c3f">
+          <text>"inspectAppeal"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0fmhy4c">
@@ -472,6 +506,9 @@
         <outputEntry id="LiteralExpression_0sjtl1l">
           <text>"caseProgression"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1i4zozk">
+          <text>"firstTask"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0048aaz">
         <inputEntry id="UnaryTests_07o5x2q">
@@ -506,6 +543,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_17pw0yw">
           <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15qlfji">
+          <text>"secondTask"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0bztwf7">
@@ -542,6 +582,9 @@
         <outputEntry id="LiteralExpression_064nnj4">
           <text>"caseProgression"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0xfw9l1">
+          <text>"reviewRespondentEvidence"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0d9rx8g">
         <inputEntry id="UnaryTests_0tsqtzt">
@@ -576,6 +619,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_14lavxf">
           <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1qln9dp">
+          <text>"followUpNonStandardDirection"</text>
         </outputEntry>
       </rule>
     </decisionTable>
