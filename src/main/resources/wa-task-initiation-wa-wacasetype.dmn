@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.9.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.8.1">
   <decision id="wa-task-initiation-wa-wacasetype" name="Task initiation DMN">
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" camunda:inputVariable="eventId">
@@ -51,6 +51,7 @@
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" />
       <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" />
+      <output id="OutputClause_0y33lta" label="Delay Until" name="delayUntil" typeRef="json" biodi:width="491" />
       <output id="OutputClause_0i6c6c2" label="Working Days Allowed" name="workingDaysAllowed" typeRef="integer" />
       <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
       <rule id="DecisionRule_1fenvxm">
@@ -79,6 +80,9 @@
           <text>"Process Application"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1x6roa1">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1qq4xvp">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1td2bt7">
@@ -116,6 +120,9 @@
         <outputEntry id="LiteralExpression_1jdthqq">
           <text></text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0la6jgo">
+          <text></text>
+        </outputEntry>
         <outputEntry id="LiteralExpression_0tr1ig7">
           <text>2</text>
         </outputEntry>
@@ -149,6 +156,9 @@
           <text>"Decide On Time Extension"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0tpiw26">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0h2lzyr">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_16urfvv">
@@ -186,6 +196,9 @@
         <outputEntry id="LiteralExpression_16vucs8">
           <text>if (directionDueDate != null and directionDueDate != "") then (date(directionDueDate) - date(now)).days else 0</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1tgz98j">
+          <text></text>
+        </outputEntry>
         <outputEntry id="LiteralExpression_17t1pof">
           <text>2</text>
         </outputEntry>
@@ -219,6 +232,9 @@
           <text>"Attend Cma"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0xnoa0r">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dcykoq">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1umafvm">
@@ -256,6 +272,9 @@
         <outputEntry id="LiteralExpression_14a2upo">
           <text></text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1rb4hpy">
+          <text></text>
+        </outputEntry>
         <outputEntry id="LiteralExpression_11qiura">
           <text>2</text>
         </outputEntry>
@@ -290,6 +309,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1u0h529">
           <text>if (directionDueDate != null and directionDueDate != "") then (date(directionDueDate) - date(now)).days else 0</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wnfu0g">
+          <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_184ro7i">
           <text>2</text>
@@ -326,6 +348,9 @@
         <outputEntry id="LiteralExpression_0te5yy9">
           <text>if (directionDueDate != null and directionDueDate != "") then (date(directionDueDate) - date(now)).days else 0</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1qkwrus">
+          <text></text>
+        </outputEntry>
         <outputEntry id="LiteralExpression_0rfy6kk">
           <text>2</text>
         </outputEntry>
@@ -361,6 +386,9 @@
         <outputEntry id="LiteralExpression_049lf0n">
           <text>0</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0jgwcxs">
+          <text></text>
+        </outputEntry>
         <outputEntry id="LiteralExpression_1emwccm">
           <text>2</text>
         </outputEntry>
@@ -394,6 +422,9 @@
           <text>"processDummyApplication"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ohmnt3">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wf8flh">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0l8cp4c">
@@ -431,6 +462,9 @@
         <outputEntry id="LiteralExpression_1xsh83z">
           <text></text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1o0lwu7">
+          <text></text>
+        </outputEntry>
         <outputEntry id="LiteralExpression_1pou6r9">
           <text>2</text>
         </outputEntry>
@@ -464,6 +498,9 @@
           <text>"First task"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1f8c7e2">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wdwial">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0dgs9e4">
@@ -501,6 +538,9 @@
         <outputEntry id="LiteralExpression_0m4z07r">
           <text></text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0cj0roz">
+          <text></text>
+        </outputEntry>
         <outputEntry id="LiteralExpression_16vz4ue">
           <text></text>
         </outputEntry>
@@ -534,6 +574,9 @@
           <text>"Review Respondent Evidence"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0ptvut4">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sd194e">
           <text></text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1l6a704">
@@ -571,11 +614,177 @@
         <outputEntry id="LiteralExpression_0dzoi86">
           <text>if (directionDueDate != null and directionDueDate != "") then (date(directionDueDate) - date(now)).days else 0</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1kr9v8l">
+          <text></text>
+        </outputEntry>
         <outputEntry id="LiteralExpression_0lh4r22">
           <text>2</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_14lavxf">
           <text>"caseProgression"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1w8ctpy">
+        <inputEntry id="UnaryTests_14h8h9g">
+          <text>"delayUntilDate"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rx8ipa">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_166jswq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_183qx99">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ysxpzc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1clt3ba">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0oxiod5">
+          <text>"delayUntilDateTask"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rr25vm">
+          <text>"Delay until date Task"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_12zywqk">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0650sex">
+          <text>{"delayUntil":date and time(date(now()), time("18:00")),
+"delayUntilTime":time("16:00")
+}</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1f9d6a3">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mjj5r7">
+          <text>"caseProgression"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tzx09o">
+        <inputEntry id="UnaryTests_0gvb5ep">
+          <text>"delayUntilTime"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1d76m8l">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13btezu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01auhuk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17wxwd0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1m8nral">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0s5siu3">
+          <text>"delayUntiltimeTask"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0am9cb1">
+          <text>"Delay until time Task"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1372ydm">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14v920k">
+          <text>{
+"delayUntilTime":time("16:00")
+}</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mutchy">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07h0yfw">
+          <text>"caseProgression"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0cuhwgx">
+        <inputEntry id="UnaryTests_1kv7qsy">
+          <text>"delayUntilDateTime"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04ykepc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_092qyc7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03cfhjh">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07kqa8r">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fskbbx">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_159m4h4">
+          <text>"delayUntilDateTimeTask"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1w634jn">
+          <text>"Delay until date time Task"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rbfsyk">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_074dlf0">
+          <text>{"delayUntil":date and time(date(now() + duration("P2D")), time("18:00"))
+}</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1e94gft">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rznrbg">
+          <text>"caseProgression"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_145l4f4">
+        <inputEntry id="UnaryTests_1h8uhdo">
+          <text>"delayUntilInterval"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mhm1jc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0p2ef17">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vst1lc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06fu932">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s9731f">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1h3udwo">
+          <text>"delayUntilIntervalTask"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19w3t2u">
+          <text>"Delay until interval Task"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1sswnwz">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pra6bs">
+          <text>{"delayUntilOrigin":"2022-12-23T18:00",
+"delayUntilIntervalDays":4,
+"delayUntilNonWorkingCalendar":"https://www.gov.uk/bank-holidays/england-and-wales.json",
+"delayUntilNonWorkingDaysOfWeek":"SATURDAY,SUNDAY",
+"delayUntilSkipNonWorkingDays":true,
+"delayUntilMustBeWorkingDay":"No"
+}</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fs5n0i">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lylibc">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
