@@ -51,9 +51,10 @@
       <output id="Output_1" label="Task Id" name="taskId" typeRef="string" />
       <output id="OutputClause_0p5fhhd" label="Name" name="name" typeRef="string" />
       <output id="OutputClause_165p3r3" label="Delay Duration" name="delayDuration" typeRef="integer" />
-      <output id="OutputClause_0y33lta" label="Delay Until" name="delayUntil" typeRef="json" biodi:width="491" />
+      <output id="OutputClause_0y33lta" label="Delay Until" name="delayUntil" typeRef="json" biodi:width="645" />
       <output id="OutputClause_0i6c6c2" label="Working Days Allowed" name="workingDaysAllowed" typeRef="integer" />
       <output id="OutputClause_10rno4c" label="Process Categories Identifiers" name="processCategories" typeRef="string" biodi:width="300" />
+      <output id="OutputClause_1b861fs" label="Task Type" name="taskType" typeRef="string" />
       <rule id="DecisionRule_1fenvxm">
         <inputEntry id="UnaryTests_09nq8bu">
           <text>"CREATE"</text>
@@ -90,6 +91,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1m76a0d">
           <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_138fevf">
+          <text>"processApplication"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0vq8eyq">
@@ -129,6 +133,9 @@
         <outputEntry id="LiteralExpression_1bodtr6">
           <text>"caseProgression"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0uk9y18">
+          <text>"reviewAppealSkeletonArgument"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_046wm6a">
         <inputEntry id="UnaryTests_02g9rgn">
@@ -166,6 +173,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0zy6a6s">
           <text>"timeExtension"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_073lvog">
+          <text>"decideOnTimeExtension"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_10q7721">
@@ -205,6 +215,9 @@
         <outputEntry id="LiteralExpression_0m9jin9">
           <text>"followUpOverdue"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1tk1lcp">
+          <text>"followUpOverdueCaseBuilding"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0odg0q4">
         <inputEntry id="UnaryTests_0x449ig">
@@ -242,6 +255,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_1oy20uf">
           <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0a55urq">
+          <text>"attendCma"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1tpr9e2">
@@ -281,6 +297,9 @@
         <outputEntry id="LiteralExpression_0lum3zd">
           <text>"caseProgression"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_09wudyv">
+          <text>"reviewRespondentResponse"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0i6qihx">
         <inputEntry id="UnaryTests_03alruf">
@@ -318,6 +337,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0yoh9gf">
           <text>"followUpOverdue"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05hqcl0">
+          <text>"followUpOverdueRespondentEvidence"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1babmnh">
@@ -357,6 +379,9 @@
         <outputEntry id="LiteralExpression_1n8b3k8">
           <text>"caseProgression,followUpOverdue"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0r9734y">
+          <text>"dummyActivity"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1quzq4s">
         <inputEntry id="UnaryTests_0uphw82">
@@ -394,6 +419,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0q4yayi">
           <text>"caseProgression,followUpOverdue"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0onpa8a">
+          <text>"checkFeeStatus"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1jix9p2">
@@ -433,6 +461,9 @@
         <outputEntry id="LiteralExpression_1hhj2vw">
           <text>"caseProgression,followUpOverdue"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_036asut">
+          <text>"processDummyApplication"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_1fvfgbe">
         <inputEntry id="UnaryTests_0txopgj">
@@ -470,6 +501,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0buvxea">
           <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0eb6c3f">
+          <text>"inspectAppeal"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0fmhy4c">
@@ -509,6 +543,9 @@
         <outputEntry id="LiteralExpression_0sjtl1l">
           <text>"caseProgression"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1i4zozk">
+          <text>"firstTask"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0048aaz">
         <inputEntry id="UnaryTests_07o5x2q">
@@ -546,6 +583,9 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_17pw0yw">
           <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15qlfji">
+          <text>"secondTask"</text>
         </outputEntry>
       </rule>
       <rule id="DecisionRule_0bztwf7">
@@ -585,6 +625,9 @@
         <outputEntry id="LiteralExpression_064nnj4">
           <text>"caseProgression"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0xfw9l1">
+          <text>"reviewRespondentEvidence"</text>
+        </outputEntry>
       </rule>
       <rule id="DecisionRule_0d9rx8g">
         <inputEntry id="UnaryTests_0tsqtzt">
@@ -623,155 +666,163 @@
         <outputEntry id="LiteralExpression_14lavxf">
           <text>"caseProgression"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_1qln9dp">
+          <text>"followUpNonStandardDirection"</text>
+        </outputEntry>
       </rule>
-      <rule id="DecisionRule_1w8ctpy">
-        <inputEntry id="UnaryTests_14h8h9g">
+      <rule id="DecisionRule_0o26xgl">
+        <inputEntry id="UnaryTests_1vyqvp5">
           <text>"delayUntilDate"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0rx8ipa">
+        <inputEntry id="UnaryTests_0getrtm">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_166jswq">
+        <inputEntry id="UnaryTests_1hdfy8r">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_183qx99">
+        <inputEntry id="UnaryTests_0w21k1s">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0ysxpzc">
+        <inputEntry id="UnaryTests_0hj9b57">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1clt3ba">
+        <inputEntry id="UnaryTests_0c5zmrl">
           <text></text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0oxiod5">
+        <outputEntry id="LiteralExpression_1r6u4ws">
           <text>"delayUntilDateTask"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0rr25vm">
+        <outputEntry id="LiteralExpression_1a8yr9v">
           <text>"Delay until date Task"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_12zywqk">
+        <outputEntry id="LiteralExpression_10dz9oh">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0650sex">
+        <outputEntry id="LiteralExpression_1mrpfhw">
           <text>{"delayUntil":date and time(date(now()), time("18:00")),
-"delayUntilTime":time("16:00")
-}</text>
+"delayUntilTime":time("16:00")}</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1f9d6a3">
+        <outputEntry id="LiteralExpression_1amwxoj">
           <text>2</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0mjj5r7">
+        <outputEntry id="LiteralExpression_0zy051e">
           <text>"caseProgression"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_03dyp5j">
+          <text>"delayUntilDateTask"</text>
+        </outputEntry>
       </rule>
-      <rule id="DecisionRule_0tzx09o">
-        <inputEntry id="UnaryTests_0gvb5ep">
+      <rule id="DecisionRule_07e5hth">
+        <inputEntry id="UnaryTests_1ofpfsz">
           <text>"delayUntilTime"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1d76m8l">
+        <inputEntry id="UnaryTests_1kedr9l">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_13btezu">
+        <inputEntry id="UnaryTests_1rul8ti">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_01auhuk">
+        <inputEntry id="UnaryTests_03s933b">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_17wxwd0">
+        <inputEntry id="UnaryTests_0sku6lp">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1m8nral">
+        <inputEntry id="UnaryTests_0x4k022">
           <text></text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0s5siu3">
+        <outputEntry id="LiteralExpression_1676os8">
           <text>"delayUntiltimeTask"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0am9cb1">
+        <outputEntry id="LiteralExpression_061pfbz">
           <text>"Delay until time Task"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1372ydm">
+        <outputEntry id="LiteralExpression_13j6b6m">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_14v920k">
-          <text>{
-"delayUntilTime":time("16:00")
-}</text>
+        <outputEntry id="LiteralExpression_024pdry">
+          <text>{"delayUntilTime":time("16:00")}</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0mutchy">
+        <outputEntry id="LiteralExpression_0w5clqt">
           <text>2</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_07h0yfw">
+        <outputEntry id="LiteralExpression_1gruza1">
           <text>"caseProgression"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_0q4ezas">
+          <text>"delayUntiltimeTask"</text>
+        </outputEntry>
       </rule>
-      <rule id="DecisionRule_0cuhwgx">
-        <inputEntry id="UnaryTests_1kv7qsy">
+      <rule id="DecisionRule_147lack">
+        <inputEntry id="UnaryTests_0v2ymri">
           <text>"delayUntilDateTime"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_04ykepc">
+        <inputEntry id="UnaryTests_1hm93s1">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_092qyc7">
+        <inputEntry id="UnaryTests_1s7k2gc">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_03cfhjh">
+        <inputEntry id="UnaryTests_1og56x8">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_07kqa8r">
+        <inputEntry id="UnaryTests_1qhxrso">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_1fskbbx">
+        <inputEntry id="UnaryTests_083qkhp">
           <text></text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_159m4h4">
+        <outputEntry id="LiteralExpression_0lw2us9">
           <text>"delayUntilDateTimeTask"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1w634jn">
+        <outputEntry id="LiteralExpression_18667ly">
           <text>"Delay until date time Task"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1rbfsyk">
+        <outputEntry id="LiteralExpression_14vjomt">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_074dlf0">
-          <text>{"delayUntil":date and time(date(now() + duration("P2D")), time("18:00"))
-}</text>
+        <outputEntry id="LiteralExpression_0i3phr0">
+          <text>{"delayUntil":date and time(date(now() + duration("P2D")), time("18:00"))}</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1e94gft">
+        <outputEntry id="LiteralExpression_0fdq3et">
           <text>2</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1rznrbg">
+        <outputEntry id="LiteralExpression_1ffral8">
           <text>"caseProgression"</text>
         </outputEntry>
+        <outputEntry id="LiteralExpression_188mfde">
+          <text>"delayUntilDateTimeTask"</text>
+        </outputEntry>
       </rule>
-      <rule id="DecisionRule_145l4f4">
-        <inputEntry id="UnaryTests_1h8uhdo">
+      <rule id="DecisionRule_0swafur">
+        <inputEntry id="UnaryTests_1nfw18d">
           <text>"delayUntilInterval"</text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0mhm1jc">
+        <inputEntry id="UnaryTests_1tvcn0e">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0p2ef17">
+        <inputEntry id="UnaryTests_0j4sg24">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0vst1lc">
+        <inputEntry id="UnaryTests_0qfc5mm">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_06fu932">
+        <inputEntry id="UnaryTests_06k1qhi">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0s9731f">
+        <inputEntry id="UnaryTests_14uxkow">
           <text></text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_1h3udwo">
+        <outputEntry id="LiteralExpression_1h1s1il">
           <text>"delayUntilIntervalTask"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_19w3t2u">
+        <outputEntry id="LiteralExpression_0y19gzd">
           <text>"Delay until interval Task"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1sswnwz">
+        <outputEntry id="LiteralExpression_0lqcq6c">
           <text></text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1pra6bs">
+        <outputEntry id="LiteralExpression_14tbas8">
           <text>{"delayUntilOrigin":"2022-12-23T18:00",
 "delayUntilIntervalDays":4,
 "delayUntilNonWorkingCalendar":"https://www.gov.uk/bank-holidays/england-and-wales.json",
@@ -780,11 +831,14 @@
 "delayUntilMustBeWorkingDay":"No"
 }</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1fs5n0i">
-          <text></text>
+        <outputEntry id="LiteralExpression_0e1q7o8">
+          <text>2</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0lylibc">
-          <text></text>
+        <outputEntry id="LiteralExpression_0485ukl">
+          <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04pl4st">
+          <text>"delayUntilIntervalTask"</text>
         </outputEntry>
       </rule>
     </decisionTable>
