@@ -214,6 +214,51 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
                     )
                 )
             )
+            ,
+            Arguments.of(
+                "delayUntilDate",
+                List.of(
+                    Map.of(
+                        "taskId", "firstTask",
+                        "name", "First task",
+                        "processCategories", "caseProgression",
+                        "taskType", "firstTask"
+                    )
+                )
+            ),
+            Arguments.of(
+                "delayUntilTime",
+                List.of(
+                    Map.of(
+                        "taskId", "firstTask",
+                        "name", "First task",
+                        "processCategories", "caseProgression",
+                        "taskType", "firstTask"
+                    )
+                )
+            ),
+            Arguments.of(
+                "delayUntilDateTime",
+                List.of(
+                    Map.of(
+                        "taskId", "firstTask",
+                        "name", "First task",
+                        "processCategories", "caseProgression",
+                        "taskType", "firstTask"
+                    )
+                )
+            ),
+            Arguments.of(
+                "delayUntilInterval",
+                List.of(
+                    Map.of(
+                        "taskId", "firstTask",
+                        "name", "First task",
+                        "processCategories", "caseProgression",
+                        "taskType", "firstTask"
+                    )
+                )
+            )
 
         );
     }
