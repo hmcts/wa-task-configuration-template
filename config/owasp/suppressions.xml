@@ -68,5 +68,19 @@
     </notes>
     <cve>CVE-2022-45688</cve>
   </suppress>
+  <suppress until ="2023-04-11">
+    <notes><![CDATA[
+   file name: spring-aop-5.3.24.jar
+   ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.springframework/spring\-aop@.*$</packageUrl>
+    <cve>CVE-2023-20860</cve>
+  </suppress>
+  <suppress until ="2023-04-11">
+    <notes><![CDATA[
+   file name: spring-aop-5.3.24.jar
+   ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.springframework/spring\-aop@.*$</packageUrl>
+    <cve>CVE-2023-20861</cve>
+  </suppress>
 </suppressions>
 
