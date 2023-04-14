@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.6.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.8.1">
   <decision id="wa-task-permissions-wa-wacasetype" name="Permissions DMN">
     <decisionTable id="DecisionTable_1pr5oic" hitPolicy="RULE ORDER">
       <input id="InputClause_1t6frhu" label="Task Type" camunda:inputVariable="taskType">
@@ -1506,6 +1506,216 @@ else
         </outputEntry>
         <outputEntry id="LiteralExpression_0vrckww">
           <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0suvaw3">
+        <description>functional test2</description>
+        <inputEntry id="UnaryTests_03ns7am">
+          <text>"functionalTestTask2"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xtehsm">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xikolk">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pzh7m8">
+          <text>"tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11iukzl">
+          <text>"Read,Execute"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dzbw8d">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fgt1kl">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i2t24x">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19vmtmi">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01j0rry">
+        <description>functional test 1</description>
+        <inputEntry id="UnaryTests_1rdsfti">
+          <text>"functionalTestTask1"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_072q5br">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ou5ztf">
+          <text>"categoryA"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0st2bfb">
+          <text>"tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1qznkq7">
+          <text>"Read,Execute"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03szdx3">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dhnkmh">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0feq1i0">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ka4hfx">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1pu3eih">
+        <description>functional test 1</description>
+        <inputEntry id="UnaryTests_0zd8vfc">
+          <text>"functionalTestTask1"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03bj8w4">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ucwu1y">
+          <text>"categoryA"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fbsjeo">
+          <text>"case-manager"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0u2tsa8">
+          <text>"Read,Manage,Unassign,Assign,Complete,Execute,Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1we15la">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17knwgz">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cnk29n">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ck94c1">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1kcqgnb">
+        <description>functional test 1</description>
+        <inputEntry id="UnaryTests_0qqw2zl">
+          <text>"functionalTestTask1"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19ygkl5">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tfxg2u">
+          <text>"categoryA"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ufkfes">
+          <text>"senior-tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ohfqiw">
+          <text>"Read,Own"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11yabap">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wbhbh5">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0et8n11">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15zwooo">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_059sw3e">
+        <description>end To End Task</description>
+        <inputEntry id="UnaryTests_0txvy2c">
+          <text>"endToEndTask"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01233by">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0rsp53v">
+          <text>"categoryA"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hr9d4k">
+          <text>"tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0shmj27">
+          <text>"Read,Execute"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06ugxwb">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0r1flew">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bf3ksz">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1miff7n">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mf905y">
+        <description>end To End Task</description>
+        <inputEntry id="UnaryTests_16d6vyy">
+          <text>"endToEndTask"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1j4ed3q">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03hppwc">
+          <text>"categoryA"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ha2hpd">
+          <text>"case-manager"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0uv60hj">
+          <text>"Read,Manage,Unassign,Assign,Complete,Execute,Cancel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1elvoyi">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zms0xn">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hz09hd">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0u72fvu">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10bj8r7">
+        <description>end To End Task</description>
+        <inputEntry id="UnaryTests_1y9nc5m">
+          <text>"endToEndTask"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vcsrfo">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09gekb1">
+          <text>"categoryA"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0j0zqr3">
+          <text>"senior-tribunal-caseworker"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nc5n58">
+          <text>"Read,Own"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1c117aw">
+          <text>"LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mj4b4e">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1obumxc">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0me7c8j">
+          <text>false</text>
         </outputEntry>
       </rule>
     </decisionTable>
