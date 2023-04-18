@@ -121,7 +121,7 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
             ),
             Map.of(
                 "name", "tribunal-caseworker",
-                "value", "Read,CompleteOwn,CancelOwn,Claim,Own",
+                "value", "Read,CompleteOwn,CancelOwn,Claim,Own,Manage",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "assignmentPriority", 2,
                 "autoAssignable", false,
@@ -144,7 +144,7 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
             ),
             Map.of(
                 "name", "case-manager",
-                "value", "Own",
+                "value", "Own,Claim",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "assignmentPriority", 1,
                 "autoAssignable", true
@@ -158,7 +158,7 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
             ),
             Map.of(
                 "name", "hearing-panel-judge",
-                "value", "Manage",
+                "value", "Manage,Unassign,Assign,Complete",
                 "roleCategory", "JUDICIAL",
                 "assignmentPriority", 1,
                 "autoAssignable", false
@@ -188,7 +188,6 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
 
     }
 
-    @SuppressWarnings("checkstyle:indentation")
     @Test
     void given_reviewSpecificAccessRequestJudiciary_taskType_when_evaluate_dmn_then_it_returns_expected_rule() {
         VariableMap inputVariables = new VariableMapImpl();
@@ -217,13 +216,13 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
                 "autoAssignable", false
             ), Map.of(
                 "name", "case-manager",
-                "value", "Own,Manage",
+                "value", "Read,Own,Manage,Unassign,Assign,Complete",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "assignmentPriority", 1,
                 "autoAssignable", false
             ), Map.of(
                 "name", "ftpa-judge",
-                "value", "Manage,Execute",
+                "value", "Manage,Execute,Unassign,Assign,Complete",
                 "roleCategory", "JUDICIAL",
                 "assignmentPriority", 1,
                 "autoAssignable", false
@@ -256,7 +255,6 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
 
     }
 
-    @SuppressWarnings("checkstyle:indentation")
     @Test
     void given_reviewSpecificAccessRequestLegalOps_taskType_when_evaluate_dmn_then_it_returns_expected_rule() {
         VariableMap inputVariables = new VariableMapImpl();
@@ -273,7 +271,7 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
             ),
             Map.of(
                 "name", "tribunal-caseworker",
-                "value", "Read,Own",
+                "value", "Read,Own,Manage,Claim",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "assignmentPriority", 1,
                 "autoAssignable", true
@@ -323,7 +321,6 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
 
     }
 
-    @SuppressWarnings("checkstyle:indentation")
     @Test
     void given_reviewSpecificAccessRequestAdmin_taskType_when_evaluate_dmn_then_it_returns_expected_rule() {
         VariableMap inputVariables = new VariableMapImpl();
@@ -362,7 +359,6 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
         )));
     }
 
-    @SuppressWarnings("checkstyle:indentation")
     @Test
     void given_followUpOverdue_taskType_when_evaluate_dmn_then_it_returns_expected_rule() {
         VariableMap inputVariables = new VariableMapImpl();
@@ -420,7 +416,6 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
         )));
     }
 
-    @SuppressWarnings("checkstyle:indentation")
     @Test
     void given_inspectAppeal_taskType_when_evaluate_dmn_then_it_returns_expected_rule() {
         VariableMap inputVariables = new VariableMapImpl();
@@ -437,20 +432,20 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
             ),
             Map.of(
                 "name", "case-manager",
-                "value", "Read,Refer,Own,Cancel",
+                "value", "Read,Own,Cancel",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "autoAssignable", true
             ),
             Map.of(
                 "name", "tribunal-caseworker",
-                "value", "Read,Refer,Own,Manage,Cancel",
+                "value", "Read,Own,Manage,Cancel",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "assignmentPriority", 1,
                 "autoAssignable", false
             ),
             Map.of(
                 "name", "senior-tribunal-caseworker",
-                "value", "Read,Refer,Own,Manage,Cancel",
+                "value", "Read,Own,Manage,Cancel",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "assignmentPriority", 1,
                 "autoAssignable", false
@@ -459,7 +454,6 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
 
     }
 
-    @SuppressWarnings("checkstyle:indentation")
     @Test
     void given_decideOnTimeExtension_taskType_when_evaluate_dmn_then_it_returns_expected_rule() {
         VariableMap inputVariables = new VariableMapImpl();
@@ -476,20 +470,20 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
             ),
             Map.of(
                 "name", "case-manager",
-                "value", "Read,Refer,Own,Cancel",
+                "value", "Read,Own,Cancel",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "autoAssignable", true
             ),
             Map.of(
                 "name", "tribunal-caseworker",
-                "value", "Read,Refer,Own,Manage,Cancel",
+                "value", "Read,Own,Manage,Cancel",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "assignmentPriority", 1,
                 "autoAssignable", false
             ),
             Map.of(
                 "name", "senior-tribunal-caseworker",
-                "value", "Read,Refer,Own,Manage,Cancel",
+                "value", "Read,Own,Manage,Cancel",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "assignmentPriority", 1,
                 "autoAssignable", false
@@ -498,7 +492,6 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
 
     }
 
-    @SuppressWarnings("checkstyle:indentation")
     @Test
     void given_firstTask_taskType_when_evaluate_dmn_then_it_returns_expected_rule() {
         VariableMap inputVariables = new VariableMapImpl();
@@ -515,28 +508,28 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
             ),
             Map.of(
                 "name", "tribunal-caseworker",
-                "value", "Read,Refer,Execute,Manage,Cancel",
+                "value", "Read,Execute,Manage,Cancel",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "assignmentPriority", 2,
                 "autoAssignable", false
             ),
             Map.of(
                 "name", "senior-tribunal-caseworker",
-                "value", "Read,Refer,Execute,Manage,Cancel",
+                "value", "Read,Execute,Manage,Cancel",
                 "roleCategory", "LEGAL_OPERATIONS",
                 "assignmentPriority", 2,
                 "autoAssignable", false
             ),
             Map.of(
                 "name", "hearing-judge",
-                "value", "Read,Refer,Own,Cancel",
+                "value", "Read,Own,Cancel",
                 "roleCategory", "JUDICIAL",
                 "assignmentPriority", 1,
                 "autoAssignable", true
             ),
             Map.of(
                 "name", "judge",
-                "value", "Read,Refer,Own,Manage,Cancel",
+                "value", "Read,Own,Manage,Cancel",
                 "roleCategory", "JUDICIAL",
                 "assignmentPriority", 1,
                 "autoAssignable", false
@@ -545,7 +538,6 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
 
     }
 
-    @SuppressWarnings("checkstyle:indentation")
     @Test
     void given_secondTask_taskType_when_evaluate_dmn_then_it_returns_expected_rule() {
         VariableMap inputVariables = new VariableMapImpl();
@@ -562,7 +554,7 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
             ),
             Map.of(
                 "name", "hearing-centre-admin",
-                "value", "Read,Refer,Own,Manage,Cancel",
+                "value", "Read,Own,Manage,Cancel",
                 "roleCategory", "ADMIN",
                 "assignmentPriority", 1,
                 "autoAssignable", false
@@ -570,7 +562,6 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
         )));
 
     }
-
 
     @Test
     void if_this_test_fails_needs_updating_with_your_changes() {
