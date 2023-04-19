@@ -1,5 +1,8 @@
 package uk.gov.hmcts.reform.wataskconfigurationtemplate.dmn;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
@@ -11,13 +14,23 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTableBaseUnitTest;
+import uk.gov.hmcts.reform.wataskconfigurationtemplate.utils.DelayUntilRequest;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTable.WA_TASK_INITIATION_WA_WACASETYPE;
 
 class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
@@ -47,20 +60,82 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
         assertThat(dmnDecisionTableResult.getResultList(), is(expectedDmnOutcome));
     }
 
+    @Test
+    void should_return_outcome_for_delay_until_in_dmn() {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("eventId", "delayUntilDate");
+        inputVariables.putValue("postEventState", "");
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+        String delayUntilDate = LocalDateTime.now().plusDays(2).withHour(18).withMinute(0).withSecond(0)
+            .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"));
+
+        DelayUntilRequest delayUntil = DelayUntilRequest.builder().delayUntil(delayUntilDate).build();
+
+        assertThat(new ObjectMapper().convertValue(dmnDecisionTableResult.getResultList().get(0).get("delayUntil"),
+                                                   DelayUntilRequest.class), equalTo(delayUntil));
+    }
+
+    @Test
+    void should_return_outcome_for_delay_until_time_in_dmn() {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("eventId", "delayUntilTime");
+        inputVariables.putValue("postEventState", "");
+
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        DelayUntilRequest delayUntil = DelayUntilRequest.builder().delayUntilTime("16:00").build();
+
+        assertThat(new ObjectMapper().convertValue(dmnDecisionTableResult.getResultList().get(0).get("delayUntil"),
+                                                   DelayUntilRequest.class), equalTo(delayUntil));
+    }
+
+    @Test
+    void should_return_outcome_for_delay_until_interval_in_dmn() {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("eventId", "delayUntilInterval");
+        inputVariables.putValue("postEventState", "");
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+
+        DelayUntilRequest delayUntil
+            = DelayUntilRequest.builder()
+            .delayUntilIntervalDays(4)
+            .delayUntilNonWorkingCalendar("https://www.gov.uk/bank-holidays/england-and-wales.json")
+            .delayUntilSkipNonWorkingDays(true)
+            .delayUntilOrigin("2022-12-23T18:00")
+            .delayUntilNonWorkingDaysOfWeek("SATURDAY,SUNDAY")
+            .delayUntilMustBeWorkingDay("No")
+            .build();
+
+        assertThat(new ObjectMapper().convertValue(dmnDecisionTableResult.getResultList().get(0).get("delayUntil"),
+            DelayUntilRequest.class), equalTo(delayUntil));
+    }
+
+    private static LinkedHashMap<String, Object> sortMap(Map<String, Object> delayUntilIntervalDays) {
+        return delayUntilIntervalDays.entrySet().stream()
+            .sorted(Comparator.comparing(Map.Entry::getKey))
+            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+    }
+
     public static Stream<Arguments> scenarioProvider() {
 
+        String delayUntil = LocalDateTime.now().plusDays(2).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+            + "T18:00";
         return Stream.of(
             Arguments.of(
                 "sendDirection", "", "protection",
                 List.of(
                     Map.of(
-                    "taskId", "followUpNonStandardDirection",
-                    "name", "Follow-up non-standard direction",
-                    "workingDaysAllowed", 2,
-                    "delayDuration", 0,
-                    "processCategories", "caseProgression",
-                    "taskType", "followUpNonStandardDirection"
-                )
+                        "taskId", "followUpNonStandardDirection",
+                        "name", "Follow-up non-standard direction",
+                        "workingDaysAllowed", 2,
+                        "delayDuration", 0,
+                        "processCategories", "caseProgression",
+                        "taskType", "followUpNonStandardDirection"
+                    )
                 )
             ),
             Arguments.of(
@@ -102,99 +177,99 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
                 "submitCase", "caseUnderReview", null,
                 List.of(
                     Map.of(
-                    "taskId", "reviewAppealSkeletonArgument",
-                    "name", "Review Appeal Skeleton Argument",
-                    "workingDaysAllowed", 2,
-                    "processCategories", "caseProgression",
-                     "taskType", "reviewAppealSkeletonArgument"
-                )
+                        "taskId", "reviewAppealSkeletonArgument",
+                        "name", "Review Appeal Skeleton Argument",
+                        "workingDaysAllowed", 2,
+                        "processCategories", "caseProgression",
+                        "taskType", "reviewAppealSkeletonArgument"
+                    )
                 )
             ),
             Arguments.of(
                 "submitTimeExtension", "", null,
                 List.of(
                     Map.of(
-                    "taskId", "decideOnTimeExtension",
-                    "name", "Decide On Time Extension",
-                    "workingDaysAllowed", 2,
-                    "processCategories", "timeExtension",
+                        "taskId", "decideOnTimeExtension",
+                        "name", "Decide On Time Extension",
+                        "workingDaysAllowed", 2,
+                        "processCategories", "timeExtension",
                         "taskType", "decideOnTimeExtension"
-                )
+                    )
                 )
             ),
             Arguments.of(
                 "requestCaseBuilding", "caseBuilding", null,
                 List.of(
                     Map.of(
-                    "taskId", "followUpOverdueCaseBuilding",
-                    "name", "Follow-up overdue case building",
-                    "workingDaysAllowed", 2,
-                    "processCategories", "followUpOverdue",
-                    "delayDuration", 0,
+                        "taskId", "followUpOverdueCaseBuilding",
+                        "name", "Follow-up overdue case building",
+                        "workingDaysAllowed", 2,
+                        "processCategories", "followUpOverdue",
+                        "delayDuration", 0,
                         "taskType", "followUpOverdueCaseBuilding"
-                )
+                    )
                 )
             ),
             Arguments.of(
                 "listCma", "cmaListed", null,
                 List.of(
                     Map.of(
-                    "taskId", "attendCma",
-                    "name", "Attend Cma",
-                    "workingDaysAllowed", 2,
-                    "processCategories", "caseProgression",
+                        "taskId", "attendCma",
+                        "name", "Attend Cma",
+                        "workingDaysAllowed", 2,
+                        "processCategories", "caseProgression",
                         "taskType", "attendCma"
-                )
+                    )
                 )
             ),
             Arguments.of(
                 "uploadHomeOfficeAppealResponse", "respondentReview", "",
                 List.of(
                     Map.of(
-                    "taskId", "reviewRespondentResponse",
-                    "name", "Review Respondent Response",
-                    "workingDaysAllowed", 2,
-                    "processCategories", "caseProgression",
-                    "taskType", "reviewRespondentResponse"
-                )
+                        "taskId", "reviewRespondentResponse",
+                        "name", "Review Respondent Response",
+                        "workingDaysAllowed", 2,
+                        "processCategories", "caseProgression",
+                        "taskType", "reviewRespondentResponse"
+                    )
                 )
             ),
             Arguments.of(
                 "requestRespondentEvidence", "awaitingRespondentEvidence", "",
                 List.of(
                     Map.of(
-                    "taskId", "followUpOverdueRespondentEvidence",
-                    "name", "Follow-up overdue respondent evidence",
-                    "delayDuration", 0,
-                    "workingDaysAllowed", 2,
-                    "processCategories", "followUpOverdue",
-                    "taskType", "followUpOverdueRespondentEvidence"
-                )
+                        "taskId", "followUpOverdueRespondentEvidence",
+                        "name", "Follow-up overdue respondent evidence",
+                        "delayDuration", 0,
+                        "workingDaysAllowed", 2,
+                        "processCategories", "followUpOverdue",
+                        "taskType", "followUpOverdueRespondentEvidence"
+                    )
                 )
             ),
             Arguments.of(
                 "dummyEventForMultipleCategories", "DONE", "anything",
                 List.of(
                     Map.of(
-                    "taskId", "dummyActivity",
-                    "name", "Dummy Activity",
-                    "delayDuration", 0,
-                    "workingDaysAllowed", 2,
-                    "processCategories", "caseProgression,followUpOverdue",
-                    "taskType", "dummyActivity"
-                )
+                        "taskId", "dummyActivity",
+                        "name", "Dummy Activity",
+                        "delayDuration", 0,
+                        "workingDaysAllowed", 2,
+                        "processCategories", "caseProgression,followUpOverdue",
+                        "taskType", "dummyActivity"
+                    )
                 )
             ),
             Arguments.of(
                 "submitAppeal", "appealSubmitted", "anything",
                 List.of(
                     Map.of(
-                    "taskId", "inspectAppeal",
-                    "name", "Inspect Appeal",
-                    "workingDaysAllowed", 2,
-                    "processCategories", "caseProgression",
-                    "taskType", "inspectAppeal"
-                )
+                        "taskId", "inspectAppeal",
+                        "name", "Inspect Appeal",
+                        "workingDaysAllowed", 2,
+                        "processCategories", "caseProgression",
+                        "taskType", "inspectAppeal"
+                    )
                 )
             ),
             Arguments.of(
@@ -213,53 +288,53 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
                         "taskType", "secondTask"
                     )
                 )
+            ),
+            Arguments.of(
+                "delayUntilDate", "", "",
+                List.of(
+                    Map.of(
+                        "taskId", "delayUntilDateTask",
+                        "name", "Delay until date Task",
+                        "delayUntil", Map.of("delayUntilTime", "16:00", "delayUntil", delayUntil),
+                        "workingDaysAllowed", 2,
+                        "processCategories", "caseProgression",
+                        "taskType", "delayUntilDateTask"
+                    )
+                )
+            ),
+            Arguments.of(
+                "delayUntilTime", "", "",
+                List.of(
+                    Map.of(
+                        "taskId", "delayUntiltimeTask",
+                        "name", "Delay until time Task",
+                        "delayUntil", Map.of("delayUntilTime", "16:00"),
+                        "workingDaysAllowed", 2,
+                        "processCategories", "caseProgression",
+                        "taskType", "delayUntiltimeTask"
+                    )
+                )
+            ),
+            Arguments.of(
+                "delayUntilInterval", "", "",
+                List.of(
+                    Map.of(
+                        "taskId", "delayUntilIntervalTask",
+                        "name", "Delay until interval Task",
+                        "delayUntil", Map.of("delayUntilIntervalDays", 4,
+                                             "delayUntilNonWorkingCalendar",
+                                             "https://www.gov.uk/bank-holidays/england-and-wales.json",
+                                             "delayUntilSkipNonWorkingDays", true,
+                                             "delayUntilOrigin", "2022-12-23T18:00",
+                                             "delayUntilNonWorkingDaysOfWeek", "SATURDAY,SUNDAY",
+                                             "delayUntilMustBeWorkingDay", "No"
+                        ),
+                        "workingDaysAllowed", 2,
+                        "processCategories", "caseProgression",
+                        "taskType", "delayUntilIntervalTask"
+                    )
+                )
             )
-            ,
-            Arguments.of(
-                "delayUntilDate",
-                List.of(
-                    Map.of(
-                        "taskId", "firstTask",
-                        "name", "First task",
-                        "processCategories", "caseProgression",
-                        "taskType", "firstTask"
-                    )
-                )
-            ),
-            Arguments.of(
-                "delayUntilTime",
-                List.of(
-                    Map.of(
-                        "taskId", "firstTask",
-                        "name", "First task",
-                        "processCategories", "caseProgression",
-                        "taskType", "firstTask"
-                    )
-                )
-            ),
-            Arguments.of(
-                "delayUntilDateTime",
-                List.of(
-                    Map.of(
-                        "taskId", "firstTask",
-                        "name", "First task",
-                        "processCategories", "caseProgression",
-                        "taskType", "firstTask"
-                    )
-                )
-            ),
-            Arguments.of(
-                "delayUntilInterval",
-                List.of(
-                    Map.of(
-                        "taskId", "firstTask",
-                        "name", "First task",
-                        "processCategories", "caseProgression",
-                        "taskType", "firstTask"
-                    )
-                )
-            )
-
         );
     }
 
