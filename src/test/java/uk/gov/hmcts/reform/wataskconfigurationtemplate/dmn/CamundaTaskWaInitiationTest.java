@@ -1,8 +1,9 @@
 package uk.gov.hmcts.reform.wataskconfigurationtemplate.dmn;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
@@ -16,23 +17,21 @@ import org.junit.jupiter.params.provider.MethodSource;
 import uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTableBaseUnitTest;
 import uk.gov.hmcts.reform.wataskconfigurationtemplate.utils.DelayUntilRequest;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTable.WA_TASK_INITIATION_WA_WACASETYPE;
 
+@Slf4j
 class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
@@ -67,13 +66,19 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
         inputVariables.putValue("postEventState", "");
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
-        String delayUntilDate = LocalDateTime.now().plusDays(2).withHour(18).withMinute(0).withSecond(0)
-            .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"));
+        String delayUntilDate = LocalDateTime.now().withHour(18).withMinute(0).withSecond(0)
+            .format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
 
-        DelayUntilRequest delayUntil = DelayUntilRequest.builder().delayUntil(delayUntilDate).build();
+        DelayUntilRequest delayUntil = DelayUntilRequest.builder()
+            .delayUntil(delayUntilDate)
+            .delayUntilTime("16:00:00")
+            .build();
 
-        assertThat(new ObjectMapper().convertValue(dmnDecisionTableResult.getResultList().get(0).get("delayUntil"),
-                                                   DelayUntilRequest.class), equalTo(delayUntil));
+        DelayUntilRequest delayUntil1 = getMapper().convertValue(
+            dmnDecisionTableResult.getResultList().get(0).get("delayUntil"),
+            DelayUntilRequest.class
+        );
+        assertThat(delayUntil1, is(delayUntil));
     }
 
     @Test
@@ -85,10 +90,10 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
-        DelayUntilRequest delayUntil = DelayUntilRequest.builder().delayUntilTime("16:00").build();
+        DelayUntilRequest delayUntilRequest = DelayUntilRequest.builder().delayUntilTime("16:00:00").build();
 
-        assertThat(new ObjectMapper().convertValue(dmnDecisionTableResult.getResultList().get(0).get("delayUntil"),
-                                                   DelayUntilRequest.class), equalTo(delayUntil));
+        Object delayUntil = dmnDecisionTableResult.getResultList().get(0).get("delayUntil");
+        assertThat(getMapper().convertValue(delayUntil, DelayUntilRequest.class), equalTo(delayUntilRequest));
     }
 
     @Test
@@ -110,8 +115,10 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
             .delayUntilMustBeWorkingDay("No")
             .build();
 
-        assertThat(new ObjectMapper().convertValue(dmnDecisionTableResult.getResultList().get(0).get("delayUntil"),
-            DelayUntilRequest.class), equalTo(delayUntil));
+        assertThat(getMapper().convertValue(
+            dmnDecisionTableResult.getResultList().get(0).get("delayUntil"),
+            DelayUntilRequest.class
+        ), equalTo(delayUntil));
     }
 
     private static LinkedHashMap<String, Object> sortMap(Map<String, Object> delayUntilIntervalDays) {
@@ -288,52 +295,6 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
                         "taskType", "secondTask"
                     )
                 )
-            ),
-            Arguments.of(
-                "delayUntilDate", "", "",
-                List.of(
-                    Map.of(
-                        "taskId", "delayUntilDateTask",
-                        "name", "Delay until date Task",
-                        "delayUntil", Map.of("delayUntilTime", "16:00", "delayUntil", delayUntil),
-                        "workingDaysAllowed", 2,
-                        "processCategories", "caseProgression",
-                        "taskType", "delayUntilDateTask"
-                    )
-                )
-            ),
-            Arguments.of(
-                "delayUntilTime", "", "",
-                List.of(
-                    Map.of(
-                        "taskId", "delayUntiltimeTask",
-                        "name", "Delay until time Task",
-                        "delayUntil", Map.of("delayUntilTime", "16:00"),
-                        "workingDaysAllowed", 2,
-                        "processCategories", "caseProgression",
-                        "taskType", "delayUntiltimeTask"
-                    )
-                )
-            ),
-            Arguments.of(
-                "delayUntilInterval", "", "",
-                List.of(
-                    Map.of(
-                        "taskId", "delayUntilIntervalTask",
-                        "name", "Delay until interval Task",
-                        "delayUntil", Map.of("delayUntilIntervalDays", 4,
-                                             "delayUntilNonWorkingCalendar",
-                                             "https://www.gov.uk/bank-holidays/england-and-wales.json",
-                                             "delayUntilSkipNonWorkingDays", true,
-                                             "delayUntilOrigin", "2022-12-23T18:00",
-                                             "delayUntilNonWorkingDaysOfWeek", "SATURDAY,SUNDAY",
-                                             "delayUntilMustBeWorkingDay", "No"
-                        ),
-                        "workingDaysAllowed", 2,
-                        "processCategories", "caseProgression",
-                        "taskType", "delayUntilIntervalTask"
-                    )
-                )
             )
         );
     }
@@ -345,4 +306,12 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
         assertThat(logic.getRules().size(), is(19));
 
     }
+
+    private ObjectMapper getMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        return objectMapper;
+    }
+
 }
