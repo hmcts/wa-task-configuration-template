@@ -564,6 +564,112 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
     }
 
     @Test
+    void given_functionalTestTask1_taskType_when_evaluate_dmn_then_it_returns_expected_rule() {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "functionalTestTask1"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(List.of(
+            Map.of(
+                "name", "task-supervisor",
+                "value", "Read,Manage,Cancel,Assign,Unassign,Complete",
+                "autoAssignable", false,
+                "caseAccessCategory", "categoryA"
+            ),
+            Map.of(
+                "name", "tribunal-caseworker",
+                "value", "Read,Execute",
+                "roleCategory", "LEGAL_OPERATIONS",
+                "assignmentPriority", 1,
+                "autoAssignable", false,
+                "caseAccessCategory", "categoryA"
+            ),
+            Map.of(
+                "name", "case-manager",
+                "value", "Read,Manage,Unassign,Assign,Complete,Execute,Cancel",
+                "roleCategory", "LEGAL_OPERATIONS",
+                "assignmentPriority", 1,
+                "autoAssignable", false,
+                "caseAccessCategory", "categoryA"
+            ),
+            Map.of(
+                "name", "senior-tribunal-caseworker",
+                "value", "Read,Own",
+                "roleCategory", "LEGAL_OPERATIONS",
+                "assignmentPriority", 1,
+                "autoAssignable", false,
+                "caseAccessCategory", "categoryA"
+            )
+        )));
+    }
+
+    @Test
+    void given_endToEndTask_taskType_when_evaluate_dmn_then_it_returns_expected_rule() {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "endToEndTask"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(List.of(
+            Map.of(
+                "name", "task-supervisor",
+                "value", "Read,Manage,Cancel,Assign,Unassign,Complete",
+                "autoAssignable", false,
+                "caseAccessCategory", "categoryA"
+            ),
+            Map.of(
+                "name", "tribunal-caseworker",
+                "value", "Read,Execute",
+                "roleCategory", "LEGAL_OPERATIONS",
+                "assignmentPriority", 1,
+                "autoAssignable", false,
+                "caseAccessCategory", "categoryA"
+            ),
+            Map.of(
+                "name", "case-manager",
+                "value", "Read,Manage,Unassign,Assign,Complete,Execute,Cancel",
+                "roleCategory", "LEGAL_OPERATIONS",
+                "assignmentPriority", 1,
+                "autoAssignable", false,
+                "caseAccessCategory", "categoryA"
+            ),
+            Map.of(
+                "name", "senior-tribunal-caseworker",
+                "value", "Read,Own",
+                "roleCategory", "LEGAL_OPERATIONS",
+                "assignmentPriority", 1,
+                "autoAssignable", false,
+                "caseAccessCategory", "categoryA"
+            )
+        )));
+    }
+
+    @Test
+    void given_functionalTestTask2_taskType_when_evaluate_dmn_then_it_returns_expected_rule() {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "functionalTestTask2"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(List.of(
+            Map.of(
+                "name", "task-supervisor",
+                "value", "Read,Manage,Cancel,Assign,Unassign,Complete",
+                "autoAssignable", false,
+                "caseAccessCategory", "categoryA"
+            ),
+            Map.of(
+                "name", "tribunal-caseworker",
+                "value", "Read,Execute",
+                "roleCategory", "LEGAL_OPERATIONS",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            )
+        )));
+    }
+
+    @Test
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
