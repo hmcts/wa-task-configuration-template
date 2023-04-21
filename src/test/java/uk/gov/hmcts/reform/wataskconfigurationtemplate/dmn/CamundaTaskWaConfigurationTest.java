@@ -2,6 +2,7 @@ package uk.gov.hmcts.reform.wataskconfigurationtemplate.dmn;
 
 import lombok.Builder;
 import lombok.Value;
+import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.dmn.engine.impl.DmnDecisionTableImpl;
 import org.camunda.bpm.engine.variable.VariableMap;
@@ -32,6 +33,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTable.WA_TASK_CONFIGURATION_WA_WACASETYPE;
 
+@Slf4j
 class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
@@ -205,7 +207,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedWorkType("hearing_work")
             .expectedRoleCategory("LEGAL_OPERATIONS")
             .expectedDescription("[Decide an application]"
-                                 + "(/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)")
+                                     + "(/case/WA/WaCaseType/${[CASE_REFERENCE]}/trigger/decideAnApplication)")
             .expectedAdditionalPropertiesKey1("value1")
             .expectedAdditionalPropertiesKey2("value2")
             .expectedAdditionalPropertiesKey3("value3")
@@ -425,8 +427,9 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void when_given_task_type_then_return_review_specific_access_requests(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
 
-        inputVariables.putValue("taskAttributes", Map.of("taskId","1234",
-            "taskType", taskType));
+        inputVariables.putValue("taskAttributes", Map.of("taskId", "1234",
+                                                         "taskType", taskType
+        ));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -452,9 +455,12 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void when_given_task_type_then_return_Legal_Operations(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
 
-        inputVariables.putValue("taskAttributes",
+        inputVariables.putValue(
+            "taskAttributes",
             Map.of("taskId", "1234",
-                "taskType", taskType));
+                   "taskType", taskType
+            )
+        );
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -483,10 +489,10 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         String roleAssignmentId = UUID.randomUUID().toString();
         inputVariables.putValue("taskAttributes", Map.of(
-            "taskId", "1234",
-            "taskType", taskType,
-                "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
-            )
+                                    "taskId", "1234",
+                                    "taskType", taskType,
+                                    "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
+                                )
         );
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
@@ -515,10 +521,10 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         VariableMap inputVariables = new VariableMapImpl();
 
         inputVariables.putValue("taskAttributes", Map.of(
-                "taskId", "1234",
-                "taskType", taskType,
-                "additionalProperties", Map.of()
-            )
+                                    "taskId", "1234",
+                                    "taskType", taskType,
+                                    "additionalProperties", Map.of()
+                                )
         );
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
@@ -547,8 +553,9 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void should_return_dmn_value_when_role_assignment_id_is_not_exist_in_task_attributes(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
 
-        inputVariables.putValue("taskAttributes", Map.of("taskId","1234",
-            "taskType", taskType));
+        inputVariables.putValue("taskAttributes", Map.of("taskId", "1234",
+                                                         "taskType", taskType
+        ));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -571,7 +578,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         if ("reviewSpecificAccessRequestLegalOps".equals(taskType)) {
             List<Map<String, Object>> descriptionResultList = dmnDecisionTableResult.getResultList().stream()
                 .filter((r) -> r.containsValue("description"))
-                .collect(Collectors.toList());
+                .toList();
             assertThat(descriptionResultList.size(), is(1));
             assertTrue(descriptionResultList.contains(Map.of(
                 "name", "description",
@@ -761,6 +768,160 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "canReconfigure", true
         )));
 
+    }
+
+    @Test
+    void when_taskId_is_functional_test_task2_extension_then_return_correct_values() {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "functionalTestTask2"));
+        inputVariables.putValue("caseData", Map.of("nextHearingDate", "2022-12-12T16:00"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "calculatedDates").contains(Map.of(
+            "name", "calculatedDates",
+            "value", "nextHearingDate,hearingPreDate,dueDate,priorityDate"
+        )));
+
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "hearingPreDateOriginRef").contains(Map.of(
+            "name", "hearingPreDateOriginRef",
+            "value", "nextHearingDate"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "hearingPreDateIntervalDays").contains(Map.of(
+            "name", "hearingPreDateIntervalDays",
+            "value", "-5"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "hearingPreDateSkipNonWorkingDays").contains(Map.of(
+            "name", "hearingPreDateSkipNonWorkingDays",
+            "value", "false"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateOrigin").contains(Map.of(
+            "name", "dueDateOrigin",
+            "value", "2022-12-23T18:00"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateIntervalDays").contains(Map.of(
+            "name", "dueDateIntervalDays",
+            "value", "5"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateNonWorkingDaysOfWeek").contains(Map.of(
+            "name", "dueDateNonWorkingDaysOfWeek",
+            "value", "SATURDAY,SUNDAY"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateMustBeWorkingDay").contains(Map.of(
+            "name", "dueDateMustBeWorkingDay",
+            "value", "Next"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "priorityDateOriginEarliest").contains(Map.of(
+            "name", "priorityDateOriginEarliest",
+            "value", "hearingPreDate,dueDate"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "nextHearingDateOrigin").contains(Map.of(
+            "name", "nextHearingDateOrigin",
+            "value", "2022-12-12T16:00"
+        )));
+
+    }
+
+    @Test
+    void when_taskId_is_endToEndTask_extension_then_return_correct_values() {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "endToEndTask"));
+        inputVariables.putValue("caseData", Map.of("nextHearingDate", "2022-12-12T16:00"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "calculatedDates").contains(Map.of(
+            "name", "calculatedDates",
+            "value", "nextHearingDate,nextHearingDateLine,dueDate,priorityDate"
+        )));
+
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "nextHearingDateLineOriginRef").contains(Map.of(
+            "name", "nextHearingDateLineOriginRef",
+            "value", "nextHearingDate"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "nextHearingDateLineIntervalDays").contains(Map.of(
+            "name", "nextHearingDateLineIntervalDays",
+            "value", "-5"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "nextHearingDateLineNonWorkingDaysOfWeek").contains(Map.of(
+            "name", "nextHearingDateLineNonWorkingDaysOfWeek",
+            "value", "SATURDAY,SUNDAY"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "nextHearingDateLineSkipNonWorkingDays").contains(Map.of(
+            "name", "nextHearingDateLineSkipNonWorkingDays",
+            "value", "true"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "nextHearingDateLineNextWorkingDay").contains(Map.of(
+            "name", "nextHearingDateLineNextWorkingDay",
+            "value", "Previous"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateOrigin").contains(Map.of(
+            "name", "dueDateOrigin",
+            "value", "2022-12-01T18:00"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateIntervalDays").contains(Map.of(
+            "name", "dueDateIntervalDays",
+            "value", "5"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateNonWorkingDaysOfWeek").contains(Map.of(
+            "name", "dueDateNonWorkingDaysOfWeek",
+            "value", "SATURDAY,SUNDAY"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateMustBeWorkingDay").contains(Map.of(
+            "name", "dueDateMustBeWorkingDay",
+            "value", "Next"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "priorityDateOriginEarliest").contains(Map.of(
+            "name", "priorityDateOriginEarliest",
+            "value", "nextHearingDateLine,dueDate"
+        )));
+
+    }
+
+    @Test
+    void when_taskId_is_functionalTestTask1_then_return_correct_values() {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "functionalTestTask1"));
+        inputVariables.putValue("caseData", Map.of("nextHearingDate", "2022-12-12T16:00"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateOrigin").contains(Map.of(
+            "name", "dueDateOrigin",
+            "value", "2022-12-23T18:00"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateIntervalDays").contains(Map.of(
+            "name", "dueDateIntervalDays",
+            "value", "14"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateNonWorkingDaysOfWeek").contains(Map.of(
+            "name", "dueDateNonWorkingDaysOfWeek",
+            "value", "SATURDAY,SUNDAY"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateMustBeWorkingDay").contains(Map.of(
+            "name", "dueDateMustBeWorkingDay",
+            "value", "Next"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateSkipNonWorkingDays").contains(Map.of(
+            "name", "dueDateSkipNonWorkingDays",
+            "value", "true"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "priorityDateOriginEarliest").contains(Map.of(
+            "name", "priorityDateOriginEarliest",
+            "value", "nextHearingDate,dueDate",
+            "canReconfigure", true
+        )));
+
+    }
+
+    private List<Map<String, Object>> getMatchingOutput(DmnDecisionTableResult dmnDecisionTableResult, String key) {
+        List<Map<String, Object>> output = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.containsValue(key)).toList();
+        log.info("output value: {}", output);
+        return output;
     }
 
     @Value
