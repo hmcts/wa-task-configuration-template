@@ -213,6 +213,54 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
                         "taskType", "secondTask"
                     )
                 )
+            ),
+            Arguments.of(
+                "submitAppeal", "appealSubmitted", "anything",
+                List.of(
+                    Map.of(
+                        "taskId", "inspectAppeal",
+                        "name", "Inspect Appeal",
+                        "workingDaysAllowed", 2,
+                        "processCategories", "caseProgression",
+                        "taskType", "inspectAppeal"
+                    )
+                )
+            ),
+            Arguments.of(
+                "functionalTestTask2", "", "",
+                List.of(
+                    Map.of(
+                        "taskId", "functionalTestTask2",
+                        "name", "functional Test Task 2",
+                        "workingDaysAllowed", 2,
+                        "processCategories", "caseProgression",
+                        "taskType", "functionalTestTask2"
+                    )
+                )
+            ),
+            Arguments.of(
+                "functionalTestTask1", "", "",
+                List.of(
+                    Map.of(
+                        "taskId", "functionalTestTask1",
+                        "name", "functional Test Task 1",
+                        "workingDaysAllowed", 2,
+                        "processCategories", "caseProgression",
+                        "taskType", "functionalTestTask1"
+                    )
+                )
+            ),
+            Arguments.of(
+                "endToEndTask", "TODO", "",
+                List.of(
+                    Map.of(
+                        "taskId", "endToEndTask",
+                        "name", "End To End Task",
+                        "workingDaysAllowed", 2,
+                        "processCategories", "caseProgression",
+                        "taskType", "endToEndTask"
+                    )
+                )
             )
 
         );
@@ -222,7 +270,7 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(19));
+        assertThat(logic.getRules().size(), is(22));
 
     }
 }

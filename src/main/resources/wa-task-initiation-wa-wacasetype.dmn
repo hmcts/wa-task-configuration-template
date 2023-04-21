@@ -841,6 +841,129 @@
           <text>"delayUntilIntervalTask"</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1xusuto">
+        <inputEntry id="UnaryTests_1qadsme">
+          <text>"functionalTestTask2"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b53ahx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1f8q45r">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vp6yw1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0c1fp6q">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cgl0xi">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0m1epf9">
+          <text>"functionalTestTask2"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ylfgxb">
+          <text>"functional Test Task 2"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0u2k810">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i51a8k">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fydt35">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qwl2ak">
+          <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ejush8">
+          <text>"functionalTestTask2"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0t392ty">
+        <inputEntry id="UnaryTests_1387lxt">
+          <text>"functionalTestTask1"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rql6o9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1uoana4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_044ip2y">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17ydhsc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ikaniq">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_144q2kk">
+          <text>"functionalTestTask1"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wet96a">
+          <text>"functional Test Task 1"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0oc0kwu">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1m7ld1d">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08qp7x7">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14yncsz">
+          <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17t6429">
+          <text>"functionalTestTask1"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0m7fcdp">
+        <inputEntry id="UnaryTests_0uhdadf">
+          <text>"endToEndTask"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_122gklj">
+          <text>"TODO"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qo2n1q">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0o639tc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0sr159x">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10phczd">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qmyyjq">
+          <text>"endToEndTask"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hkydxp">
+          <text>"End To End Task"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01cckuy">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01g0iyw">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15s1jue">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ws0ot9">
+          <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xr6b7c">
+          <text>"endToEndTask"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
