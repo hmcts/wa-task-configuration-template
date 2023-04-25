@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.12.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.8.1">
   <decision id="wa-task-configuration-wa-wacasetype" name="Task configuration DMN">
     <decisionTable id="DecisionTable_14cx079" hitPolicy="RULE ORDER">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
@@ -17,7 +17,7 @@ else
 null</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="307" />
+      <output id="Output_1" label="Name" name="name" typeRef="string" biodi:width="349" />
       <output id="OutputClause_021y3bb" label="Value" name="value" typeRef="string" biodi:width="2175" />
       <output id="OutputClause_0tefly7" label="Can Reconfigure?" name="canReconfigure" typeRef="boolean" />
       <rule id="DecisionRule_19opwhc">
@@ -1041,6 +1041,516 @@ else "roleAssignmentId"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1t2ny34">
           <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1anub1o">
+        <inputEntry id="UnaryTests_1wgsjpx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02sgyz0">
+          <text>"functionalTestTask2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01xzt3y">
+          <text>"calculatedDates"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0g4khr4">
+          <text>"nextHearingDate,hearingPreDate,dueDate,priorityDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qa7ece">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01nhlm8">
+        <inputEntry id="UnaryTests_1r2dc2f">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ekj3ap">
+          <text>"functionalTestTask2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0g82hvw">
+          <text>"hearingPreDateOriginRef"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07ohtre">
+          <text>"nextHearingDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0qawin0">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xdl1c1">
+        <inputEntry id="UnaryTests_0kio5gp">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gdot6w">
+          <text>"functionalTestTask2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0kzj3wt">
+          <text>"hearingPreDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1u21yo8">
+          <text>-5</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dpj74d">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_194hjxy">
+        <inputEntry id="UnaryTests_0uufi4j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0e6bhns">
+          <text>"functionalTestTask2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1o7g6dp">
+          <text>"hearingPreDateSkipNonWorkingDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nlrt5w">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1l4fp9a">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1y56uwp">
+        <inputEntry id="UnaryTests_0zgfnan">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xggpbs">
+          <text>"functionalTestTask2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1818885">
+          <text>"dueDateOrigin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dgam81">
+          <text>date and time(date("2022-12-23"), time("18:00"))</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1an5yx1">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_183atxw">
+        <inputEntry id="UnaryTests_0q1gnsx">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1jkfjy5">
+          <text>"functionalTestTask2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bn8hb1">
+          <text>"dueDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rmrib6">
+          <text>5</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dq7vsx">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0u46etf">
+        <inputEntry id="UnaryTests_1nre1xd">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uf0hcb">
+          <text>"functionalTestTask2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wvd03l">
+          <text>"dueDateNonWorkingDaysOfWeek"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1b955ns">
+          <text>"SATURDAY,SUNDAY"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cf7uuh">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bo4u6q">
+        <inputEntry id="UnaryTests_1ww4wmv">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0thacgg">
+          <text>"functionalTestTask2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1op4r4o">
+          <text>"dueDateMustBeWorkingDay"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rzg7kj">
+          <text>"Next"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cnnuas">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_177h74j">
+        <inputEntry id="UnaryTests_1wazrju">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kijeq5">
+          <text>"functionalTestTask2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qhfmqa">
+          <text>"dueDateSkipNonWorkingDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fprl4t">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1clkrnd">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fiq0n0">
+        <inputEntry id="UnaryTests_01ze1fb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01mx1x7">
+          <text>"functionalTestTask2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zveds7">
+          <text>"priorityDateOriginEarliest"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02tr1gu">
+          <text>"hearingPreDate,dueDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08nten4">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13bekk9">
+        <inputEntry id="UnaryTests_1k1y5te">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0z3umw2">
+          <text>"functionalTestTask2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02eral3">
+          <text>"nextHearingDateOrigin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1e6rwyh">
+          <text>caseData.nextHearingDate</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1e7j10f">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tq65wb">
+        <inputEntry id="UnaryTests_1y0609k">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kxoeay">
+          <text>"functionalTestTask1"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_071ur6q">
+          <text>"dueDateOrigin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vnjaw2">
+          <text>date and time(date("2022-12-23"), time("18:00"))</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ja5iqd">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1y9p7qe">
+        <inputEntry id="UnaryTests_0t6yvpd">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cj77du">
+          <text>"functionalTestTask1"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09umkqo">
+          <text>"dueDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hrujor">
+          <text>14</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zdv3kb">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1p28qsv">
+        <inputEntry id="UnaryTests_01epmee">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jmoh9n">
+          <text>"functionalTestTask1"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0khnkn1">
+          <text>"dueDateNonWorkingDaysOfWeek"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mi6r55">
+          <text>"SATURDAY,SUNDAY"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14ixei1">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0szxn38">
+        <inputEntry id="UnaryTests_15u9cq8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tui6ek">
+          <text>"functionalTestTask1"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1w9dnfj">
+          <text>"dueDateMustBeWorkingDay"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19ycmd0">
+          <text>"Next"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1p8cvtv">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rd4k14">
+        <inputEntry id="UnaryTests_0txuis7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09zhzfa">
+          <text>"functionalTestTask1"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0eyud7w">
+          <text>"dueDateSkipNonWorkingDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1op3hgp">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1v0tccn">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0q226ke">
+        <inputEntry id="UnaryTests_05anaht">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17dcgtl">
+          <text>"functionalTestTask1"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xif3ey">
+          <text>"priorityDateOriginEarliest"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fqw89b">
+          <text>"nextHearingDate,dueDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cwyzcz">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rkxjxu">
+        <inputEntry id="UnaryTests_0o837jt">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1p0zgoq">
+          <text>"functionalTestTask1"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1aw63oo">
+          <text>"nextHearingDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03tcxcs">
+          <text>caseData.nextHearingDate</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1f1cxkw">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0g9o8z6">
+        <inputEntry id="UnaryTests_1h91ab0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15j7l95">
+          <text>"endToEndTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dqh35j">
+          <text>"calculatedDates"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lnrebv">
+          <text>"nextHearingDate,nextHearingDateLine,dueDate,priorityDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0t8c92n">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1curv4r">
+        <inputEntry id="UnaryTests_1hnyyy5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zn66rp">
+          <text>"endToEndTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1qr86d7">
+          <text>"dueDateOrigin"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02hupev">
+          <text>date and time(date("2022-12-01"), time("18:00"))</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04r0b07">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cagomv">
+        <inputEntry id="UnaryTests_1912i03">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12aqv7o">
+          <text>"endToEndTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1bvv943">
+          <text>"dueDateIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02bhtr4">
+          <text>5</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rlu03e">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0cuibnf">
+        <inputEntry id="UnaryTests_12f3jov">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kv1qkw">
+          <text>"endToEndTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0v3w260">
+          <text>"dueDateNonWorkingDaysOfWeek"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vj4ftu">
+          <text>"SATURDAY,SUNDAY"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wmr434">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11h5s4u">
+        <inputEntry id="UnaryTests_1bnuwjl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ayxfdh">
+          <text>"endToEndTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1c7bvld">
+          <text>"dueDateMustBeWorkingDay"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ev17nq">
+          <text>"Next"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1g0g99w">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rlegtw">
+        <inputEntry id="UnaryTests_0ybg3rn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kese2m">
+          <text>"endToEndTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1sk8t3c">
+          <text>"dueDateSkipNonWorkingDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rxtrgt">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17r01uo">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0qmrn9b">
+        <inputEntry id="UnaryTests_1nx1635">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hhf6rg">
+          <text>"endToEndTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ql3nrg">
+          <text>"nextHearingDateLineOriginRef"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ridr6h">
+          <text>"nextHearingDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fa4e5m">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_113qsj5">
+        <inputEntry id="UnaryTests_0lwmgzu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gtw82d">
+          <text>"endToEndTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0wiw8cb">
+          <text>"nextHearingDateLineIntervalDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1r5xfue">
+          <text>-5</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fpgwmn">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xxvlhy">
+        <inputEntry id="UnaryTests_0qadkcb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04c98t2">
+          <text>"endToEndTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0rnu1od">
+          <text>"nextHearingDateLineNonWorkingDaysOfWeek"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cwvc1l">
+          <text>"SATURDAY,SUNDAY"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1o0e106">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17z7t4u">
+        <inputEntry id="UnaryTests_0xr1gzg">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0byy6nd">
+          <text>"endToEndTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0yvvl2g">
+          <text>"nextHearingDateLineSkipNonWorkingDays"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fov204">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0uils6s">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_040tdvf">
+        <inputEntry id="UnaryTests_1cuy114">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07owwdp">
+          <text>"endToEndTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lh2ah1">
+          <text>"nextHearingDateLineNextWorkingDay"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ivy3sn">
+          <text>"Previous"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gh06m9">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18zonq4">
+        <inputEntry id="UnaryTests_1ny11ra">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r0003h">
+          <text>"endToEndTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14mqd0l">
+          <text>"priorityDateOriginEarliest"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0etnif6">
+          <text>"nextHearingDateLine,dueDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jykofr">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
