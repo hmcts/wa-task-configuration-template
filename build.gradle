@@ -265,6 +265,8 @@ dependencies {
   implementation 'org.camunda.bpm:camunda-external-task-client:7.18.0'
   implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '7.0.1'
 
+  implementation group: 'org.json', name: 'json', version: '20231013'
+
   annotationProcessor 'org.projectlombok:lombok:1.18.24'
   compileOnly 'org.projectlombok:lombok:1.18.24'
 
