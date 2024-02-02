@@ -22,10 +22,8 @@
     <notes>
       waiting for spring boot upgrade
     </notes>
-    <cve>CVE-2023-20883</cve>
     <cve>CVE-2023-35116</cve>
     <cve>CVE-2023-5072</cve>
-    <cve>CVE-2023-34055</cve>
   </suppress>
 </suppressions>
 
