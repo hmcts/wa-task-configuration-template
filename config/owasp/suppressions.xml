@@ -12,13 +12,13 @@
     </notes>
     <cve>CVE-2022-45688</cve>
   </suppress>
-  <suppress until = "2024-03-28">
+  <suppress until = "2024-04-05">
     <notes>
       Pitest-command-line failing
     </notes>
     <cve>CVE-2015-0897</cve>
   </suppress>
-  <suppress until = "2024-03-28">
+  <suppress until = "2024-04-05">
     <notes>
       Spring-web, awaiting analysis
     </notes>
