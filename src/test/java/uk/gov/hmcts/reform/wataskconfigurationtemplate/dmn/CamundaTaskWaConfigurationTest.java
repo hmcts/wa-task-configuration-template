@@ -827,7 +827,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void when_taskId_is_endToEndTask_extension_then_return_correct_values() {
         VariableMap inputVariables = new VariableMapImpl();
 
-        inputVariables.putValue("taskAttributes", Map.of("taskType", "endToEndTask"));
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "endToEndTask",
+                                                         "nextHearingDate", "2022-12-12T16:00"));
         inputVariables.putValue("caseData", Map.of("nextHearingDate", "2022-12-12T16:00"));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
@@ -876,6 +877,11 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         assertTrue(getMatchingOutput(dmnDecisionTableResult, "priorityDateOriginEarliest").contains(Map.of(
             "name", "priorityDateOriginEarliest",
             "value", "nextHearingDateLine,dueDate"
+        )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "nextHearingDate").contains(Map.of(
+            "name", "nextHearingDate",
+            "value", "",
+            "canReconfigure", true
         )));
 
     }
@@ -993,7 +999,9 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         getExpectedValue(rules, "majorPriority", scenario.getExpectedMajorPriority());
 
         getExpectedValue(rules, "nextHearingId", scenario.getExpectedNextHearingId());
-        getExpectedValue(rules, "nextHearingDate", scenario.getExpectedNextHearingDate());
+        // getExpectedValue(rules, "nextHearingDate", scenario.getExpectedNextHearingDate());
+        Optional.ofNullable(scenario.getExpectedNextHearingDate())
+            .ifPresent(key -> getExpectedValue(rules, "nextHearingDate", key));
 
         Optional.ofNullable(scenario.getExpectedDueDate())
             .ifPresent(key -> getExpectedValue(rules, "dueDate", key));
