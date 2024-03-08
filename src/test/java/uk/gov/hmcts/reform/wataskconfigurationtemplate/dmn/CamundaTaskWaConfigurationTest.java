@@ -999,9 +999,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         getExpectedValue(rules, "majorPriority", scenario.getExpectedMajorPriority());
 
         getExpectedValue(rules, "nextHearingId", scenario.getExpectedNextHearingId());
-        // getExpectedValue(rules, "nextHearingDate", scenario.getExpectedNextHearingDate());
-        Optional.ofNullable(scenario.getExpectedNextHearingDate())
-            .ifPresent(key -> getExpectedValue(rules, "nextHearingDate", key));
+        getExpectedValue(rules, "nextHearingDate", scenario.getExpectedNextHearingDate());
 
         Optional.ofNullable(scenario.getExpectedDueDate())
             .ifPresent(key -> getExpectedValue(rules, "dueDate", key));
