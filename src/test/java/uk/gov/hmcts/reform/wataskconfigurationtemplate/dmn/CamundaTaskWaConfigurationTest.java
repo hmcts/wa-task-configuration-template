@@ -985,20 +985,22 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void should_reconfigure_only_when_reconfigure_set_to_true(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
         String roleAssignmentId = UUID.randomUUID().toString();
-        Map<String, String> taskAttributeMap = new HashMap<>(Map.of("taskId", "1234",
-                "taskType", taskType,
-                "roleAssignmentId", roleAssignmentId,
-                "key1", "value1",
-                "key2", "value2",
-                "key3", "value3",
-                "key4", "value4",
-                "key5", "value5",
-                "key6", "value6",
-                "roleCategory", "JUDICIARY"
+        Map<String, Object> taskAttributeMap = new HashMap<>(Map.of("taskId", "1234",
+                "taskType", taskType, "roleCategory", "JUDICIARY"
         ));
-        taskAttributeMap.put("key7", null);
+        Map<String, String> additionalPropertyMap = new HashMap<>(Map.of("roleAssignmentId", roleAssignmentId,
+            "key1", "value1",
+            "key2", "value2",
+            "key3", "value3",
+            "key4", "value4",
+            "key5", "value5",
+            "key6", "value6"));
+        additionalPropertyMap.put("key7", null);
+        taskAttributeMap.put("additionalProperties", additionalPropertyMap);
         inputVariables.putValue("taskAttributes",
                                taskAttributeMap);
+
+
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
