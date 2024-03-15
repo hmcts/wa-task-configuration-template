@@ -510,7 +510,7 @@ else "roleAssignmentId"</text>
           <text>"nextHearingDate"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ycw69t">
-          <text>if caseData.nextHearingDate != null then caseData.nextHearingDate else ""</text>
+          <text>if (taskAttributes != null and taskAttributes.taskType = "endToEndTask" and taskAttributes.nextHearingDate != null) then "" else if (caseData.nextHearingDate != null) then caseData.nextHearingDate else ""</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1oyay8a">
           <text>true</text>
