@@ -1743,6 +1743,57 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_0rtjo99">
+        <inputEntry id="UnaryTests_1osfjvj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cwt9fk">
+          <text>"reconfigTaskAttributesTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1kncmy8">
+          <text>"title"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_147r7my">
+          <text>if (taskAttributes != null and taskAttributes.reconfigureRequestTime != null) then ("name - " + taskAttributes.name + " - state - "+ taskAttributes.taskState + " - category - " + taskAttributes.caseManagementCategory ) else taskAttributes.name</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1grplcx">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1y9e95i">
+        <inputEntry id="UnaryTests_0nj32ca">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tpv4en">
+          <text>"reconfigTaskAttributesTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1bi5ujy">
+          <text>"dueDate"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zssrcl">
+          <text>if (taskAttributes != null and taskAttributes.reconfigureRequestTime != null) then (taskAttributes.dueDate) else caseData.nextHearingDate</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_191lmu4">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_069xs0n">
+        <inputEntry id="UnaryTests_0insad5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0oit8yv">
+          <text>"reconfigTaskAttributesTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01992bl">
+          <text>"roleCategory"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ox46ge">
+          <text>if (taskAttributes != null and taskAttributes.reconfigureRequestTime != null) then ("name - " + taskAttributes.name + " - state - "+ taskAttributes.taskState + " - category - " + taskAttributes.caseManagementCategory ) else "CTSC"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04koa1v">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
