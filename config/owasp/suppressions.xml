@@ -14,9 +14,9 @@
   </suppress>
   <suppress until = "2024-05-03">
     <notes>
-      Spring-web, awaiting analysis
+      Pitest-command-line failing
     </notes>
-    <cve>CVE-2024-22243</cve>
+    <cve>CVE-2015-0897</cve>
   </suppress>
   <suppress>
     <notes>
