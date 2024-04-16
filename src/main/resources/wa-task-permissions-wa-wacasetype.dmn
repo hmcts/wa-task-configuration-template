@@ -203,7 +203,7 @@ else
       <rule id="DecisionRule_1l4qhkw">
         <description>Judge task permissions</description>
         <inputEntry id="UnaryTests_1wx9djl">
-          <text>"reviewSpecificAccessRequestJudiciary","reviewSpecificAccessRequestJudiciary1","reviewSpecificAccessRequestJudiciary2","reviewSpecificAccessRequestJudiciary3","reconfigTaskAttributesTask"</text>
+          <text>"reviewSpecificAccessRequestJudiciary","reviewSpecificAccessRequestJudiciary1","reviewSpecificAccessRequestJudiciary2","reviewSpecificAccessRequestJudiciary3","reconfigTaskAttributesTask","reconfigTaskAttributesTask2"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1568z16">
           <text></text>
@@ -473,7 +473,7 @@ else
       <rule id="DecisionRule_02rjpwi">
         <description>Specific Access Lead Judge task permissions</description>
         <inputEntry id="UnaryTests_1d7m5cg">
-          <text>"reviewSpecificAccessRequestJudiciary","reviewSpecificAccessRequestJudiciary1","reviewSpecificAccessRequestJudiciary2","reviewSpecificAccessRequestJudiciary3","reconfigTaskAttributesTask"</text>
+          <text>"reviewSpecificAccessRequestJudiciary","reviewSpecificAccessRequestJudiciary1","reviewSpecificAccessRequestJudiciary2","reviewSpecificAccessRequestJudiciary3","reconfigTaskAttributesTask","reconfigTaskAttributesTask2"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_00ikaea">
           <text></text>
@@ -503,7 +503,7 @@ else
       <rule id="DecisionRule_0ibd622">
         <description>Specific Access Case Manager task permissions</description>
         <inputEntry id="UnaryTests_102l2ov">
-          <text>"reviewSpecificAccessRequestJudiciary","reviewSpecificAccessRequestJudiciary1","reviewSpecificAccessRequestJudiciary2","reviewSpecificAccessRequestJudiciary3","reconfigTaskAttributesTask"</text>
+          <text>"reviewSpecificAccessRequestJudiciary","reviewSpecificAccessRequestJudiciary1","reviewSpecificAccessRequestJudiciary2","reviewSpecificAccessRequestJudiciary3","reconfigTaskAttributesTask","reconfigTaskAttributesTask2"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0un5dgg">
           <text></text>
