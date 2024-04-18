@@ -1083,9 +1083,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
                                        "caseManagementCategory", "caseCategory",
                                        "taskState", "ASSIGNED",
                                        "roleCategory", "CTSC",
-                                       "reconfigureRequestTime", "2023-01-01T14:00:00.000",
                                        "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
-
                                 ));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
