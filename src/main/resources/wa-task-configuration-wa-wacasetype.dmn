@@ -1823,10 +1823,27 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text>"additionalProperties_key1"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_100pqzc">
-          <text>if (taskAttributes != null and taskAttributes.__processCategory__Protection = true and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then "reconfigValue1" else if (taskAttributes != null and taskAttributes.__processCategory__Protection = true and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then "reconfigValue2" else if (taskAttributes != null and taskAttributes.__processCategory__Protection = true) then "value1" else "value2"</text>
+          <text>if (taskAttributes != null and taskAttributes.__processCategory__Protection = true and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then "reconfigValue1" else if (taskAttributes != null and taskAttributes.__processCategory__Protection = null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then "reconfigValue2" else if (taskAttributes != null and taskAttributes.__processCategory__Protection = true) then "value1" else "value2"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0nt9uyo">
           <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_12g9ure">
+        <inputEntry id="UnaryTests_0xbbwm8">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rlqq1q">
+          <text>"reconfigTaskAttributesTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0q8qez8">
+          <text>"additionalProperties_key2"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0k81jrh">
+          <text>if (taskAttributes != null and taskAttributes.__processCategory__Protection = true and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then "reconfigValue1" else if (taskAttributes != null and taskAttributes.__processCategory__Protection = null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then "reconfigValue2" else if (taskAttributes != null and taskAttributes.__processCategory__Protection = true) then "value1" else "value2"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zi148z">
+          <text>true</text>
         </outputEntry>
       </rule>
     </decisionTable>
