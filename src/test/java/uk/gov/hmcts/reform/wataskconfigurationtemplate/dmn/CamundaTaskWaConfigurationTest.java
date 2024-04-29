@@ -45,7 +45,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(101));
+        assertThat(logic.getRules().size(), is(104));
     }
 
     @SuppressWarnings("checkstyle:indentation")
@@ -1073,6 +1073,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     })
     void should_reconfigure_from_updated_task_attributes(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
+        String roleAssignmentId = UUID.randomUUID().toString();
         inputVariables.putValue("caseData", Map.of("nextHearingDate", "2022-12-12T16:00"));
         inputVariables.putValue("taskAttributes",
                                 Map.of("taskId", "1234",
@@ -1082,7 +1083,9 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
                                        "caseManagementCategory", "caseCategory",
                                        "taskState", "ASSIGNED",
                                        "roleCategory", "CTSC",
-                                       "reconfigureRequestTime", "2023-01-01T14:00:00.000"
+                                       "reconfigureRequestTime", "2023-01-01T14:00:00.000",
+                                       "__processCategory__Protection", true,
+                                       "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
                                 ));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
@@ -1090,10 +1093,11 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
             .filter((r) -> r.get("name").toString().equals("title")
                     || r.get("name").toString().equals("roleCategory")
-                    || r.get("name").toString().equals("dueDate"))
+                    || r.get("name").toString().equals("dueDate")
+                    || r.get("name").toString().equals("additionalProperties_key1"))
             .collect(Collectors.toList());
 
-        assertThat(dmnResults.size(), is(3));
+        assertThat(dmnResults.size(), is(4));
 
         assertTrue(dmnResults.contains(Map.of(
             "name", "title",
@@ -1109,7 +1113,11 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "name", "roleCategory",
             "value", "name - taskName - state - ASSIGNED - category - caseCategory"
         )));
-
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "additionalProperties_key1",
+            "value", "reconfigValue1",
+            "canReconfigure", false
+        )));
         assertDescriptionField(taskType, dmnDecisionTableResult);
     }
 
