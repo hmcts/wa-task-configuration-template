@@ -183,7 +183,7 @@ dependencyManagement {
     dependency group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.0-rc1'
 
     //CVE-2021-28170
-    dependency group: 'org.glassfish', name: 'jakarta.el', version: '4.0.1'
+    dependency group: 'org.glassfish', name: 'jakarta.el', version: '4.0.2'
 
     //CVE-2021-42550
     dependencySet(group: 'ch.qos.logback', version: '1.2.13') {
