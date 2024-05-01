@@ -12,6 +12,9 @@
     </notes>
     <cve>CVE-2023-35116</cve>
     <cve>CVE-2023-5072</cve>
+    <cve>CVE-2016-1000027</cve>
+    <cve>CVE-2024-22243</cve>
+    <cve>CVE-2024-22262</cve>
   </suppress>
 </suppressions>
 
