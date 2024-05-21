@@ -5,13 +5,28 @@
       jackson-core-2.13.4 is directly used by spring-boot-starter-json 2.7.7, spring boot 3 needed
     </notes>
     <cve>CVE-2022-45688</cve>
+    <cve>CVE-2023-5072</cve>
   </suppress>
   <suppress>
     <notes>
+      jackson-databind False positive: Jackson community does not consider this a security issue
+      (https://github.com/FasterXML/jackson-databind/issues/3972)
       waiting for spring boot upgrade
     </notes>
     <cve>CVE-2023-35116</cve>
-    <cve>CVE-2023-5072</cve>
+  </suppress>
+  <suppress until = "2024-06-07">
+    <notes>
+      spring-web-5.3.31.jar - waiting for spring upgrade
+    </notes>
+    <cve>CVE-2016-1000027</cve>
+  </suppress>
+  <suppress until = "2024-06-07">
+    <notes>
+      Spring UriComponentsBuilder which has fixed versions in Spring 5 and 6, unable to upgrade at present
+    </notes>
+    <cve>CVE-2024-22243</cve>
+    <cve>CVE-2024-22262</cve>
   </suppress>
 </suppressions>
 
