@@ -45,7 +45,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(87));
+        assertThat(logic.getRules().size(), is(104));
     }
 
     @SuppressWarnings("checkstyle:indentation")
@@ -827,7 +827,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void when_taskId_is_endToEndTask_extension_then_return_correct_values() {
         VariableMap inputVariables = new VariableMapImpl();
 
-        inputVariables.putValue("taskAttributes", Map.of("taskType", "endToEndTask"));
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "endToEndTask",
+                                                         "nextHearingDate", "2022-12-12T16:00"));
         inputVariables.putValue("caseData", Map.of("nextHearingDate", "2022-12-12T16:00"));
 
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
@@ -877,6 +878,11 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "name", "priorityDateOriginEarliest",
             "value", "nextHearingDateLine,dueDate"
         )));
+        assertTrue(getMatchingOutput(dmnDecisionTableResult, "nextHearingDate").contains(Map.of(
+            "name", "nextHearingDate",
+            "value", "",
+            "canReconfigure", true
+        )));
 
     }
 
@@ -915,6 +921,204 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             "canReconfigure", true
         )));
 
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "reviewSpecificAccessRequestJudiciary1"
+    })
+    void should_return_dmn_value_role_assignment_id_from_task_attributes(String taskType) {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        String roleAssignmentId = UUID.randomUUID().toString();
+        inputVariables.putValue("taskAttributes",
+                                Map.of("taskId", "1234",
+                                       "taskType", taskType,
+                                       "roleAssignmentId", roleAssignmentId
+        ));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
+            .collect(Collectors.toList());
+
+        assertThat(dmnResults.size(), is(1));
+
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "additionalProperties_roleAssignmentId",
+            "value", roleAssignmentId,
+            "canReconfigure", true
+        )));
+
+        assertDescriptionField(taskType, dmnDecisionTableResult);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "reviewSpecificAccessRequestJudiciary3"
+    })
+    void should_return_initial_value_role_assignment_id_when_reconfigured_false(String taskType) {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        String roleAssignmentId = UUID.randomUUID().toString();
+        inputVariables.putValue("taskAttributes",
+                                Map.of("taskId", "1234",
+                                       "taskType", taskType,
+                                       "roleAssignmentId", roleAssignmentId));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
+            .collect(Collectors.toList());
+
+        assertThat(dmnResults.size(), is(1));
+
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "additionalProperties_roleAssignmentId",
+            "value", roleAssignmentId,
+            "canReconfigure", false
+        )));
+
+        assertDescriptionField(taskType, dmnDecisionTableResult);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "reviewSpecificAccessRequestJudiciary2"
+    })
+    void should_reconfigure_only_when_reconfigure_set_to_true(String taskType) {
+        VariableMap inputVariables = new VariableMapImpl();
+        String roleAssignmentId = UUID.randomUUID().toString();
+        Map<String, Object> taskAttributeMap = new HashMap<>(Map.of("taskId", "1234",
+                "taskType", taskType, "roleCategory", "JUDICIARY"
+        ));
+        Map<String, String> additionalPropertyMap = new HashMap<>(Map.of("roleAssignmentId", roleAssignmentId,
+            "key1", "value1",
+            "key2", "value2",
+            "key3", "value3",
+            "key4", "value4",
+            "key5", "value5",
+            "key6", "value6"));
+        additionalPropertyMap.put("key7", null);
+        taskAttributeMap.put("additionalProperties", additionalPropertyMap);
+        inputVariables.putValue("taskAttributes",
+                               taskAttributeMap);
+
+
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> (r.get("name").toString().startsWith("additionalProperties")
+                || r.get("name").toString().equals("roleCategory")))
+            .collect(Collectors.toList());
+
+        assertThat(dmnResults.size(), is(9));
+
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "additionalProperties_roleAssignmentId",
+            "value", roleAssignmentId,
+            "canReconfigure", true
+        )));
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "additionalProperties_key1",
+            "value", "value1",
+            "canReconfigure", true
+        )));
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "additionalProperties_key2",
+            "value", "updatedvalue2",
+            "canReconfigure", true
+        )));
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "additionalProperties_key3",
+            "value", "updatedvalue3",
+            "canReconfigure", false
+        )));
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "additionalProperties_key4",
+            "value", "",
+            "canReconfigure", true
+        )));
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "additionalProperties_key5",
+            "value", "updatedvalue5"
+        )));
+        Map<String, Object> existingvalueMap = new HashMap<>();
+        existingvalueMap.put("name", "additionalProperties_key6");
+        existingvalueMap.put("value", null);
+        existingvalueMap.put("canReconfigure", true);
+
+        assertTrue(dmnResults.contains(existingvalueMap));
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "additionalProperties_key7",
+            "value", "updatedvalue7",
+            "canReconfigure", true
+        )));
+        existingvalueMap = new HashMap<>();
+        existingvalueMap.put("name", "roleCategory");
+        existingvalueMap.put("value", null);
+        existingvalueMap.put("canReconfigure", true);
+
+        assertTrue(dmnResults.contains(existingvalueMap));
+
+        assertDescriptionField(taskType, dmnDecisionTableResult);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "reconfigTaskAttributesTask"
+    })
+    void should_reconfigure_from_updated_task_attributes(String taskType) {
+        VariableMap inputVariables = new VariableMapImpl();
+        String roleAssignmentId = UUID.randomUUID().toString();
+        inputVariables.putValue("caseData", Map.of("nextHearingDate", "2022-12-12T16:00"));
+        inputVariables.putValue("taskAttributes",
+                                Map.of("taskId", "1234",
+                                       "taskType", taskType,
+                                       "name", "taskName",
+                                       "dueDate", "2023-01-01T14:00:00.000",
+                                       "caseManagementCategory", "caseCategory",
+                                       "taskState", "ASSIGNED",
+                                       "roleCategory", "CTSC",
+                                       "reconfigureRequestTime", "2023-01-01T14:00:00.000",
+                                       "__processCategory__Protection", true,
+                                       "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
+                                ));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.get("name").toString().equals("title")
+                    || r.get("name").toString().equals("roleCategory")
+                    || r.get("name").toString().equals("dueDate")
+                    || r.get("name").toString().equals("additionalProperties_key1"))
+            .collect(Collectors.toList());
+
+        assertThat(dmnResults.size(), is(4));
+
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "title",
+            "value", "name - taskName - state - ASSIGNED - category - caseCategory",
+            "canReconfigure", true
+        )));
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "dueDate",
+            "value", "2023-01-01T14:00:00.000",
+            "canReconfigure", true
+        )));
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "roleCategory",
+            "value", "name - taskName - state - ASSIGNED - category - caseCategory"
+        )));
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "additionalProperties_key1",
+            "value", "reconfigValue1",
+            "canReconfigure", false
+        )));
+        assertDescriptionField(taskType, dmnDecisionTableResult);
     }
 
     private List<Map<String, Object>> getMatchingOutput(DmnDecisionTableResult dmnDecisionTableResult, String key) {
