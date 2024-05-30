@@ -1932,6 +1932,23 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text>true</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1v2djol">
+        <inputEntry id="UnaryTests_1capfrc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15fnsgl">
+          <text>"reconfigTaskAttributesTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vp90ev">
+          <text>"securityClassification"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_180dp95">
+          <text>if (taskAttributes.securityClassification != "PUBLIC") then "PUBLIC" else "PRIVATE"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0c23fnc">
+          <text>true</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
