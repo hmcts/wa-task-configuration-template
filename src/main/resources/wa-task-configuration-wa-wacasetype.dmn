@@ -1898,24 +1898,6 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0sd5q7s">
-        <inputEntry id="UnaryTests_1ma9i3h">
-          <text></text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_14040yd">
-          <text>"reconfigTaskAttributesTask"</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0ycu0e0">
-          <text>"additionalProperties_roleAssignmentId"</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_1clkfme">
-          <text>if (taskAttributes != null and taskAttributes.roleAssignmentId != null) then taskAttributes.roleAssignmentId
-else if (taskAttributes != null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then taskAttributes.additionalProperties.roleAssignmentId else ""</text>
-        </outputEntry>
-        <outputEntry id="LiteralExpression_0nbe9bc">
-          <text>true</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1jgrzvh">
         <inputEntry id="UnaryTests_0pyrora">
           <text></text>
