@@ -194,8 +194,9 @@ dependencyManagement {
 }
 
 repositories {
-  mavenCentral()
+  mavenLocal()
   maven { url 'https://jitpack.io' }
+  mavenCentral()
 }
 
 def versions = [
