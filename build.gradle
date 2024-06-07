@@ -124,7 +124,7 @@ jacocoTestReport {
   reports {
     xml.required = true
     csv.required = false
-    xml.destination file("${buildDir}/reports/jacoco/test/jacocoTestReport.xml")
+    xml.outputLocation.set(file("${buildDir}/reports/jacoco/test/jacocoTestReport.xml"))
   }
 }
 
@@ -134,7 +134,7 @@ sonarqube {
   properties {
     property "sonar.projectName", "Reform :: wa-task-configuration-template"
     property "sonar.projectKey", "uk.gov.hmcts.reform:wa-task-configuration-template"
-    property "sonar.coverage.jacoco.xmlReportPaths", "${jacocoTestReport.reports.xml.destination.path}"
+    property "sonar.coverage.jacoco.xmlReportPaths", "${jacocoTestReport.reports.xml.outputLocation.get().asFile.absolutePath}"
     property "sonar.exclusions", "src/main/java/uk/gov/hmcts/reform/wataskconfigurationtemplate/config/**," +
       "src/main/java/uk/gov/hmcts/reform/wataskconfigurationtemplate/Application.java"
   }
@@ -194,9 +194,8 @@ dependencyManagement {
 }
 
 repositories {
-  mavenLocal()
-  maven { url 'https://jitpack.io' }
   mavenCentral()
+  maven { url 'https://jitpack.io' }
 }
 
 def versions = [
