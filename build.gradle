@@ -230,6 +230,8 @@ dependencies {
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
 
+  implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.16.1'
+
   implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: versions.springDoc
 
   implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: versions.reformLogging
