@@ -180,7 +180,7 @@ dependencyManagement {
     dependency group: 'org.camunda.connect', name: 'camunda-connect-connectors-all', version: '1.6.0'
     dependency group: 'org.apiguardian', name: 'apiguardian-api', version: '1.1.2'
 
-    dependency group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.17.1'
+    dependency group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.17.2'
 
     //CVE-2021-28170
     dependency group: 'org.glassfish', name: 'jakarta.el', version: '4.0.2'
@@ -230,8 +230,8 @@ dependencies {
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
   implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
 
-  implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.17.1'
-  implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.17.1'
+  implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.17.2'
+  implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.17.2'
 
   implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: versions.springDoc
 
@@ -247,8 +247,8 @@ dependencies {
   implementation 'org.camunda.bpm:camunda-external-task-client:7.21.0'
   implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '7.4'
 
-  annotationProcessor 'org.projectlombok:lombok:1.18.32'
-  compileOnly 'org.projectlombok:lombok:1.18.32'
+  annotationProcessor 'org.projectlombok:lombok:1.18.34'
+  compileOnly 'org.projectlombok:lombok:1.18.34'
 
   testImplementation libraries.junit5
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', {
@@ -261,7 +261,7 @@ dependencies {
   testImplementation group: 'org.camunda.bpm.assert', name: 'camunda-bpm-assert', version: '8.0.0'
   testImplementation group: 'org.camunda.bpm', name: 'camunda-engine', version: '7.21.0'
   testImplementation group: 'com.h2database', name: 'h2', version: '2.2.224'
-  testImplementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.17.1'
+  testImplementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.17.2'
 
   integrationTestImplementation sourceSets.main.runtimeClasspath
   integrationTestImplementation sourceSets.test.runtimeClasspath
