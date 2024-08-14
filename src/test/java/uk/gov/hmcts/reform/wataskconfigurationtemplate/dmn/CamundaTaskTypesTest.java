@@ -24,7 +24,7 @@ class CamundaTaskTypesTest extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = DmnDecisionTable.WA_TASK_TYPES_WA_WACASETYPE;
+        currentDmnDecisionTable = DmnDecisionTable.WA_TASK_TYPES_WA_WACASETYPE;
     }
 
     static Stream<Arguments> scenarioProvider() {

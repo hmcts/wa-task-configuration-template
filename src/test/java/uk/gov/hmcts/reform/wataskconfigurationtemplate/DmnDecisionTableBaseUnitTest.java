@@ -14,7 +14,7 @@ import java.util.Map;
 @Slf4j
 public abstract class DmnDecisionTableBaseUnitTest {
 
-    protected static DmnDecisionTable CURRENT_DMN_DECISION_TABLE;
+    protected static DmnDecisionTable currentDmnDecisionTable;
     protected DmnEngine dmnEngine;
     protected DmnDecision decision;
 
@@ -26,8 +26,8 @@ public abstract class DmnDecisionTableBaseUnitTest {
         dmnEngine = defaultDmnEngineConfiguration.buildEngine();
         // Parse decision
         ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
-        InputStream inputStream = contextClassLoader.getResourceAsStream(CURRENT_DMN_DECISION_TABLE.getFileName());
-        decision = dmnEngine.parseDecision(CURRENT_DMN_DECISION_TABLE.getKey(), inputStream);
+        InputStream inputStream = contextClassLoader.getResourceAsStream(currentDmnDecisionTable.getFileName());
+        decision = dmnEngine.parseDecision(currentDmnDecisionTable.getKey(), inputStream);
 
     }
 
