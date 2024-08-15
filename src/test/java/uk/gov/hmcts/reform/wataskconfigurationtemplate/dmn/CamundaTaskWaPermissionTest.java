@@ -25,7 +25,7 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = WA_TASK_PERMISSIONS_WA_WACASETYPE;
+        currentDmnDecisionTable = WA_TASK_PERMISSIONS_WA_WACASETYPE;
     }
 
     static Stream<Arguments> scenarioProvider() {
