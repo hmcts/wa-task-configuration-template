@@ -24,7 +24,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.Collections.emptyMap;
@@ -36,9 +35,11 @@ import static uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTable.W
 @Slf4j
 class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
+    public static final String CTSC = "CTSC";
+
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = WA_TASK_CONFIGURATION_WA_WACASETYPE;
+        currentDmnDecisionTable = WA_TASK_CONFIGURATION_WA_WACASETYPE;
     }
 
     @Test
@@ -434,8 +435,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("workType"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("workType"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -465,8 +466,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("roleCategory"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("roleCategory"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -498,8 +499,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("additionalProperties_roleAssignmentId"))
+            .toList();
 
         assertThat(dmnResults.size(), is(1));
 
@@ -530,8 +531,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("additionalProperties_roleAssignmentId"))
+            .toList();
 
         assertThat(dmnResults.size(), is(1));
 
@@ -560,8 +561,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("additionalProperties_roleAssignmentId"))
+            .toList();
 
         assertThat(dmnResults.size(), is(1));
 
@@ -577,7 +578,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     private void assertDescriptionField(String taskType, DmnDecisionTableResult dmnDecisionTableResult) {
         if ("reviewSpecificAccessRequestLegalOps".equals(taskType)) {
             List<Map<String, Object>> descriptionResultList = dmnDecisionTableResult.getResultList().stream()
-                .filter((r) -> r.containsValue("description"))
+                .filter(r -> r.containsValue("description"))
                 .toList();
             assertThat(descriptionResultList.size(), is(1));
             assertTrue(descriptionResultList.contains(Map.of(
@@ -597,8 +598,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("roleCategory"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("roleCategory"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -618,8 +619,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("roleCategory"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("roleCategory"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -639,8 +640,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("workType"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("workType"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -651,12 +652,12 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         )));
 
         List<Map<String, Object>> roleCategoryResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("roleCategory"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("roleCategory"))
+            .toList();
 
         assertTrue(roleCategoryResultList.contains(Map.of(
             "name", "roleCategory",
-            "value", "CTSC",
+            "value", CTSC,
             "canReconfigure", true
         )));
 
@@ -671,8 +672,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("workType"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("workType"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -683,8 +684,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         )));
 
         List<Map<String, Object>> roleCategoryResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("roleCategory"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("roleCategory"))
+            .toList();
 
         assertTrue(roleCategoryResultList.contains(Map.of(
             "name", "roleCategory",
@@ -703,8 +704,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("workType"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("workType"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -725,8 +726,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("roleCategory"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("roleCategory"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -747,8 +748,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("workType"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("workType"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -759,8 +760,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         )));
 
         List<Map<String, Object>> roleCategoryResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("roleCategory"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("roleCategory"))
+            .toList();
 
         assertTrue(roleCategoryResultList.contains(Map.of(
             "name", "roleCategory",
@@ -940,8 +941,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("additionalProperties_roleAssignmentId"))
+            .toList();
 
         assertThat(dmnResults.size(), is(1));
 
@@ -970,8 +971,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("additionalProperties_roleAssignmentId"))
+            .toList();
 
         assertThat(dmnResults.size(), is(1));
 
@@ -1011,9 +1012,9 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> (r.get("name").toString().startsWith("additionalProperties")
+            .filter(r -> (r.get("name").toString().startsWith("additionalProperties")
                 || r.get("name").toString().equals("roleCategory")))
-            .collect(Collectors.toList());
+            .toList();
 
         assertThat(dmnResults.size(), is(9));
 
@@ -1082,7 +1083,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
                                        "dueDate", "2023-01-01T14:00:00.000",
                                        "caseManagementCategory", "caseCategory",
                                        "taskState", "ASSIGNED",
-                                       "roleCategory", "CTSC",
+                                       "roleCategory", CTSC,
                                        "reconfigureRequestTime", "2023-01-01T14:00:00.000",
                                        "__processCategory__Protection", true,
                                        "additionalProperties", Map.of("roleAssignmentId", roleAssignmentId)
@@ -1091,11 +1092,11 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.get("name").toString().equals("title")
+            .filter(r -> r.get("name").toString().equals("title")
                     || r.get("name").toString().equals("roleCategory")
                     || r.get("name").toString().equals("dueDate")
                     || r.get("name").toString().equals("additionalProperties_key1"))
-            .collect(Collectors.toList());
+            .toList();
 
         assertThat(dmnResults.size(), is(4));
 
@@ -1123,7 +1124,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
     private List<Map<String, Object>> getMatchingOutput(DmnDecisionTableResult dmnDecisionTableResult, String key) {
         List<Map<String, Object>> output = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue(key)).toList();
+            .filter(r -> r.containsValue(key)).toList();
         log.info("output value: {}", output);
         return output;
     }
