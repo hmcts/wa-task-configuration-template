@@ -165,7 +165,7 @@ dependencyCheck {
   }
 }
 
-  dependencyManagement {
+dependencyManagement {
   dependencies {
     dependency group: 'org.bouncycastle', name: 'bcpkix-jdk15on', version: '1.70'
     // CVE-2018-10237 - Unbounded memory allocation
