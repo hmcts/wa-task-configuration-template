@@ -131,6 +131,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             caseData.put("caseManagementCategory", caseManagementCategory);
             VariableMap inputVariables = new VariableMapImpl();
             inputVariables.putValue("caseData", caseData);
+            inputVariables.putValue("taskAttributes", emptyMap());
 
             DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -159,6 +160,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         Scenario givenCaseDataIsMissedThenDefaultToTaylorHouseScenario = Scenario.builder()
             .scenarioName("test1")
             .caseData(emptyMap())
+            .taskAttributes(emptyMap())
             .expectedCaseNameValue(null)
             .expectedAppealTypeValue("")
             .expectedRegionValue("1")
@@ -1174,7 +1176,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         getExpectedValue(rules, "locationName", scenario.getExpectedLocationNameValue());
         getExpectedValue(rules, "caseManagementCategory", scenario.getExpectedCaseManagementCategoryValue());
 
-        if (!Objects.isNull(scenario.getTaskAttributes())
+        if (!Objects.isNull(scenario.getTaskAttributes()) && !Objects.isNull(scenario.taskAttributes.get("taskType"))
             && StringUtils.isNotBlank(scenario.taskAttributes.get("taskType").toString())) {
             Optional.ofNullable(scenario.getExpectedWorkType())
                 .ifPresent(key -> getExpectedValue(rules, "workType", key));

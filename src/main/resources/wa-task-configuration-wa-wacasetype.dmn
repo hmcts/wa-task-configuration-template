@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.15.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.10.0">
   <decision id="wa-task-configuration-wa-wacasetype" name="Task configuration DMN" camunda:historyTimeToLive="P90D">
+    <informationRequirement id="InformationRequirement_0d9g22c">
+      <requiredDecision href="#Decision_0p6b5dq" />
+    </informationRequirement>
     <decisionTable id="DecisionTable_14cx079" hitPolicy="RULE ORDER">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
         <inputExpression id="LiteralExpression_0mra7c4" typeRef="string">
@@ -1848,10 +1851,28 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
       </rule>
     </decisionTable>
   </decision>
+  <decision id="Decision_0p6b5dq" name="taskAttributes">
+    <variable id="InformationItem_0kmpo68" name="taskAttributeTest" typeRef="string" />
+    <literalExpression id="LiteralExpression_1vyrbot">
+      <text>{
+  "__prefix" : "__processCategory__orderId_",
+  "__attribute_entries" : get entries(taskAttributes),
+  "__nullable_order_id" : for __item in __attribute_entries return if starts with(__item.key, __prefix) then substring(__item.key, string length(__prefix) + 1) else null[1]
+}.__nullable_order_id</text>
+    </literalExpression>
+  </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_1ifewa3">
       <dmndi:DMNShape id="DMNShape_0ijg0or" dmnElementRef="wa-task-configuration-wa-wacasetype">
         <dc:Bounds height="80" width="180" x="150" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_07oolil" dmnElementRef="InformationRequirement_0d9g22c">
+        <di:waypoint x="430" y="120" />
+        <di:waypoint x="350" y="120" />
+        <di:waypoint x="330" y="120" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1cswtv2" dmnElementRef="Decision_0p6b5dq">
+        <dc:Bounds height="80" width="180" x="430" y="80" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
