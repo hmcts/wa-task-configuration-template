@@ -258,7 +258,7 @@ dependencies {
   testImplementation group: 'org.camunda.bpm.dmn', name: 'camunda-engine-dmn', version: "${versions.camunda}"
   testImplementation group: 'org.camunda.bpm', name: 'camunda-engine-plugin-spin', version: "${versions.camunda}"
   testImplementation group: 'org.camunda.bpm.assert', name: 'camunda-bpm-assert', version: '15.0.0'
-  testImplementation group: 'org.camunda.bpm', name: 'camunda-engine', version: '7.21.0'
+  testImplementation group: 'org.camunda.bpm', name: 'camunda-engine', version: '7.22.0'
   testImplementation group: 'com.h2database', name: 'h2', version: '2.3.232'
   testImplementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.18.0'
 
