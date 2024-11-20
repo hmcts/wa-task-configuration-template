@@ -926,6 +926,34 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
     }
 
+    @Test
+    void when_taskId_is_reconfig_failure_task_then_return_correct_values() {
+        VariableMap inputVariables = new VariableMapImpl();
+
+        inputVariables.putValue("caseData", Map.of("urgent", "Yes"));
+        inputVariables.putValue("taskAttributes",
+                                Map.of("taskType", "reconfigFailureTask",
+                                       "reconfigureRequestTime", "2023-01-01T14:00:00.000"
+                                ));
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
+            .toList();
+
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "minorPriority",
+            "value", "1500",
+            "canReconfigure", true
+        )));
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "majorPriority",
+            "value", "test",
+            "canReconfigure", true
+        )));
+
+
+    }
+
     @ParameterizedTest
     @CsvSource({
         "reviewSpecificAccessRequestJudiciary1"

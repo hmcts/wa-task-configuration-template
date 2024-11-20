@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.10.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.15.0">
   <decision id="wa-task-configuration-wa-wacasetype" name="Task configuration DMN" camunda:historyTimeToLive="P90D">
     <informationRequirement id="InformationRequirement_0d9g22c">
       <requiredDecision href="#Decision_0p6b5dq" />
@@ -462,7 +462,7 @@ else "roleAssignmentId"</text>
           <text>"minorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0iyo4pw">
-          <text>500</text>
+          <text>if (taskAttributes != null and taskAttributes.taskType = "reconfigFailureTask" and taskAttributes.reconfigureRequestTime != null) then 1500 else 500</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_05pid1p">
           <text>true</text>
@@ -479,7 +479,7 @@ else "roleAssignmentId"</text>
           <text>"majorPriority"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0b5ts53">
-          <text>if (caseData.urgent != null and caseData.urgent = "Yes") then 1000 else 5000</text>
+          <text>if (caseData.urgent != null and caseData.urgent = "Yes" and taskAttributes.taskType = "reconfigFailureTask" and taskAttributes.reconfigureRequestTime != null) then "test" else if (caseData.urgent != null and caseData.urgent = "Yes" ) then 1000 else 5000</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0r59qwr">
           <text>true</text>
@@ -1785,7 +1785,7 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0oit8yv">
-          <text>"reconfigTaskAttributesTask"</text>
+          <text>"reconfigTaskAttributesTask","reconfigFailureTask"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_01992bl">
           <text>"roleCategory"</text>

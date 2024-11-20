@@ -750,4 +750,41 @@ class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
         assertThat(logic.getRules().size(), is(57));
 
     }
+
+    @Test
+    void given_reconfig_failure_task_taskType_when_evaluate_dmn_then_it_returns_expected_rule() {
+        VariableMap inputVariables = new VariableMapImpl();
+        inputVariables.putValue("taskAttributes", Map.of("taskType", "reconfigFailureTask"));
+
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        MatcherAssert.assertThat(dmnDecisionTableResult.getResultList(), is(List.of(
+            Map.of(
+                "name", "task-supervisor",
+                "value", "Read,Manage,Cancel,Assign,Unassign,Complete",
+                "autoAssignable", false,
+                "caseAccessCategory", "categoryA"
+            ),
+            Map.of(
+                "name", "judge",
+                "value", "Read,Own",
+                "roleCategory", "JUDICIAL",
+                "assignmentPriority", 1,
+                "autoAssignable", true
+            ), Map.of(
+                "name", "lead-judge",
+                "value", "Cancel",
+                "roleCategory", "JUDICIAL",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            ), Map.of(
+                "name", "case-manager",
+                "value", "Read,Own,Manage,Unassign,Assign,Complete",
+                "roleCategory", "LEGAL_OPERATIONS",
+                "assignmentPriority", 1,
+                "autoAssignable", false
+            )
+        )));
+
+    }
 }
