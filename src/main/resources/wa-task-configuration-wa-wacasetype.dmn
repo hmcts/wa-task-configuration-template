@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.10.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.15.0">
   <decision id="wa-task-configuration-wa-wacasetype" name="Task configuration DMN" camunda:historyTimeToLive="P90D">
     <informationRequirement id="InformationRequirement_0d9g22c">
       <requiredDecision href="#Decision_0p6b5dq" />
@@ -139,7 +139,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1a8bdg5">
-          <text>"processApplication","reviewAppealSkeletonArgument","followUpOverdueRespondentEvidence"</text>
+          <text>"processApplication","reviewAppealSkeletonArgument","followUpOverdueRespondentEvidence","validateMandatoryTaskAttributesDuringInitiation","validateMandatoryTaskAttributesDuringReconfiguration","functionalTestTask1","calculateDueDate","endToEndTask","reconfigTaskAttributesTask","followUpOverdue","functionalTestTask2"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tv7w74">
           <text>"workType"</text>
@@ -173,7 +173,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_05lncbx">
-          <text>"processApplication","reviewSpecificAccessRequestLegalOps","processRequestTaskId","followUpOverdueRespondentEvidence"</text>
+          <text>"processApplication","reviewSpecificAccessRequestLegalOps","processRequestTaskId","followUpOverdueRespondentEvidence","functionalTestTask1","calculateDueDate","endToEndTask","followUpOverdue","functionalTestTask2"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0h44xpe">
           <text>"roleCategory"</text>
@@ -182,6 +182,23 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text>"LEGAL_OPERATIONS"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_01l3oah">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18e6zkl">
+        <inputEntry id="UnaryTests_18m0h1t">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1x4oxz7">
+          <text>"validateMandatoryTaskAttributesDuringReconfiguration"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17a2s7m">
+          <text>"roleCategory"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gwb5dj">
+          <text>if (taskAttributes != null and taskAttributes.reconfigureRequestTime != null) then "" else "LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1u52quo">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -1740,7 +1757,7 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text>"roleCategory"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_03zhe49">
-          <text>if (taskAttributes != null and taskAttributes.roleCategory != null) then null else "JUDICIARY"</text>
+          <text>if (taskAttributes != null and taskAttributes.roleCategory != null) then "ADMIN" else "JUDICIARY"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0n1nkzv">
           <text>true</text>

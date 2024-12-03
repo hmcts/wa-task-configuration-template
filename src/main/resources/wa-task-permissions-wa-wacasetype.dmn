@@ -144,7 +144,7 @@ else
       </rule>
       <rule id="DecisionRule_0xwt5yu">
         <inputEntry id="UnaryTests_18pne00">
-          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence","validateMandatoryTaskAttributesDuringInitiation","validateMandatoryTaskAttributesDuringReconfiguration"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_09g3r7q">
           <text></text>
@@ -443,7 +443,7 @@ else
       <rule id="DecisionRule_0bzsq7p">
         <description>Specific Access Hearing Panel Judge task permissions</description>
         <inputEntry id="UnaryTests_1g1jifr">
-          <text>"processApplication","followUpOverdueRespondentEvidence"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence","validateMandatoryTaskAttributesDuringInitiation","validateMandatoryTaskAttributesDuringReconfiguration"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1dwx6pq">
           <text></text>
