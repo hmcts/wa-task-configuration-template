@@ -46,7 +46,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(104));
+        assertThat(logic.getRules().size(), is(105));
     }
 
     @SuppressWarnings("checkstyle:indentation")
@@ -244,6 +244,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedAdditionalPropertiesKey4("value4")
             .expectedDueDate(expectedDueDate + "T00:00")
             .expectedDueDateTime("16:00")
+            .expectedWorkType("hearing_work")
+            .expectedRoleCategory("LEGAL_OPERATIONS")
             .build();
 
         Scenario givenTaskAttributesForAdditionalPropertiesThenReturnNameAndValueScenario = Scenario.builder()
@@ -317,15 +319,59 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedDueDateNonWorkingDaysOfWeek("SATURDAY,SUNDAY")
             .expectedDueDateSkipNonWorkingDays("true")
             .expectedDueDateMustBeWorkingDay("Next")
+            .expectedRoleCategory("LEGAL_OPERATIONS")
+            .expectedWorkType("hearing_work")
             .build();
 
+        Scenario givenValidateMandatoryTaskAttributesDuringReconfigurationScenario = Scenario.builder()
+            .scenarioName("ValidateMandatoryTaskAttributesDuringReconfiguration")
+            .caseData(Map.of(
+            ))
+            .taskAttributes(Map.of("taskType", "validateMandatoryTaskAttributesDuringReconfiguration"))
+            .expectedCaseNameValue(null)
+            .expectedAppealTypeValue("")
+            .expectedRegionValue("1")
+            .expectedLocationValue("765324")
+            .expectedLocationNameValue("Taylor House")
+            .expectedCaseManagementCategoryValue("")
+            .expectedWorkType("hearing_work")
+            .expectedRoleCategory("LEGAL_OPERATIONS")
+            .expectedDescription("")
+            .expectedMinorPriority("500")
+            .expectedMajorPriority("5000")
+            .expectedNextHearingId("")
+            .expectedNextHearingDate("")
+            .expectedPriorityDate("")
+            .build();
+
+        Scenario givenValidateMandatoryTaskAttributesDuringInitiationScenario = Scenario.builder()
+            .scenarioName("ValidateMandatoryTaskAttributesDuringInitiation")
+            .caseData(Map.of(
+            ))
+            .taskAttributes(Map.of("taskType", "validateMandatoryTaskAttributesDuringInitiation"))
+            .expectedCaseNameValue(null)
+            .expectedAppealTypeValue("")
+            .expectedRegionValue("1")
+            .expectedLocationValue("765324")
+            .expectedLocationNameValue("Taylor House")
+            .expectedCaseManagementCategoryValue("")
+            .expectedWorkType("hearing_work")
+            .expectedDescription("")
+            .expectedMinorPriority("500")
+            .expectedMajorPriority("5000")
+            .expectedNextHearingId("")
+            .expectedNextHearingDate("")
+            .expectedPriorityDate("")
+            .build();
 
         return Stream.of(
             givenCaseDataIsMissedThenDefaultToTaylorHouseScenario,
             givenCaseDataIsPresentThenReturnNameAndValueScenario,
             givenTaskAttributesForAdditionalPropertiesThenReturnNameAndValueScenario,
             givenDueDateAndTimeScenario,
-            givenDueDateOriginScenario
+            givenDueDateOriginScenario,
+            givenValidateMandatoryTaskAttributesDuringReconfigurationScenario,
+            givenValidateMandatoryTaskAttributesDuringInitiationScenario
         );
     }
 
@@ -453,7 +499,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
     @ParameterizedTest
     @CsvSource({
-        "processApplication", "reviewSpecificAccessRequestLegalOps"
+        "processApplication",
+        "reviewSpecificAccessRequestLegalOps"
     })
     void when_given_task_type_then_return_Legal_Operations(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
@@ -1062,7 +1109,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         )));
         existingvalueMap = new HashMap<>();
         existingvalueMap.put("name", "roleCategory");
-        existingvalueMap.put("value", null);
+        existingvalueMap.put("value", "ADMIN");
         existingvalueMap.put("canReconfigure", true);
 
         assertTrue(dmnResults.contains(existingvalueMap));
