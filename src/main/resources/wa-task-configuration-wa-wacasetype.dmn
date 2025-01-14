@@ -156,7 +156,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1uh9kju">
-          <text>"reviewSpecificAccessRequestJudiciary","reviewSpecificAccessRequestLegalOps","reviewSpecificAccessRequestAdmin","reviewSpecificAccessRequestJudiciary1","reviewSpecificAccessRequestJudiciary2"</text>
+          <text>"reviewSpecificAccessRequestJudiciary","reviewSpecificAccessRequestLegalOps","reviewSpecificAccessRequestAdmin","reviewSpecificAccessRequestJudiciary1","reviewSpecificAccessRequestJudiciary2","followUpOverdueReasonsForAppeal"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1pytknt">
           <text>"workType"</text>
@@ -173,7 +173,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_05lncbx">
-          <text>"processApplication","reviewSpecificAccessRequestLegalOps","processRequestTaskId","followUpOverdueRespondentEvidence","functionalTestTask1","calculateDueDate","endToEndTask","followUpOverdue","functionalTestTask2","reviewTheAppeal","firstTask"</text>
+          <text>"processApplication","reviewSpecificAccessRequestLegalOps","processRequestTaskId","followUpOverdueRespondentEvidence","functionalTestTask1","calculateDueDate","endToEndTask","followUpOverdue","functionalTestTask2","reviewTheAppeal","firstTask","followUpOverdueReasonsForAppeal"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0h44xpe">
           <text>"roleCategory"</text>
