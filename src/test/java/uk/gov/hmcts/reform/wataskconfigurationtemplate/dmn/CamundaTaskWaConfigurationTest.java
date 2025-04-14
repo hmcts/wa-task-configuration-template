@@ -24,7 +24,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.Collections.emptyMap;
@@ -36,9 +35,11 @@ import static uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTable.W
 @Slf4j
 class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
+    public static final String CTSC = "CTSC";
+
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = WA_TASK_CONFIGURATION_WA_WACASETYPE;
+        currentDmnDecisionTable = WA_TASK_CONFIGURATION_WA_WACASETYPE;
     }
 
     @Test
@@ -130,6 +131,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             caseData.put("caseManagementCategory", caseManagementCategory);
             VariableMap inputVariables = new VariableMapImpl();
             inputVariables.putValue("caseData", caseData);
+            inputVariables.putValue("taskAttributes", emptyMap());
 
             DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
@@ -158,6 +160,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         Scenario givenCaseDataIsMissedThenDefaultToTaylorHouseScenario = Scenario.builder()
             .scenarioName("test1")
             .caseData(emptyMap())
+            .taskAttributes(emptyMap())
             .expectedCaseNameValue(null)
             .expectedAppealTypeValue("")
             .expectedRegionValue("1")
@@ -241,6 +244,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedAdditionalPropertiesKey4("value4")
             .expectedDueDate(expectedDueDate + "T00:00")
             .expectedDueDateTime("16:00")
+            .expectedWorkType("hearing_work")
+            .expectedRoleCategory("LEGAL_OPERATIONS")
             .build();
 
         Scenario givenTaskAttributesForAdditionalPropertiesThenReturnNameAndValueScenario = Scenario.builder()
@@ -314,15 +319,59 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedDueDateNonWorkingDaysOfWeek("SATURDAY,SUNDAY")
             .expectedDueDateSkipNonWorkingDays("true")
             .expectedDueDateMustBeWorkingDay("Next")
+            .expectedRoleCategory("LEGAL_OPERATIONS")
+            .expectedWorkType("hearing_work")
             .build();
 
+        Scenario givenValidateMandatoryTaskAttributesDuringReconfigurationScenario = Scenario.builder()
+            .scenarioName("ValidateMandatoryTaskAttributesDuringReconfiguration")
+            .caseData(Map.of(
+            ))
+            .taskAttributes(Map.of("taskType", "validateMandatoryTaskAttributesDuringReconfiguration"))
+            .expectedCaseNameValue(null)
+            .expectedAppealTypeValue("")
+            .expectedRegionValue("1")
+            .expectedLocationValue("765324")
+            .expectedLocationNameValue("Taylor House")
+            .expectedCaseManagementCategoryValue("")
+            .expectedWorkType("hearing_work")
+            .expectedRoleCategory("LEGAL_OPERATIONS")
+            .expectedDescription("")
+            .expectedMinorPriority("500")
+            .expectedMajorPriority("5000")
+            .expectedNextHearingId("")
+            .expectedNextHearingDate("")
+            .expectedPriorityDate("")
+            .build();
+
+        Scenario givenValidateMandatoryTaskAttributesDuringInitiationScenario = Scenario.builder()
+            .scenarioName("ValidateMandatoryTaskAttributesDuringInitiation")
+            .caseData(Map.of(
+            ))
+            .taskAttributes(Map.of("taskType", "validateMandatoryTaskAttributesDuringInitiation"))
+            .expectedCaseNameValue(null)
+            .expectedAppealTypeValue("")
+            .expectedRegionValue("1")
+            .expectedLocationValue("765324")
+            .expectedLocationNameValue("Taylor House")
+            .expectedCaseManagementCategoryValue("")
+            .expectedWorkType("hearing_work")
+            .expectedDescription("")
+            .expectedMinorPriority("500")
+            .expectedMajorPriority("5000")
+            .expectedNextHearingId("")
+            .expectedNextHearingDate("")
+            .expectedPriorityDate("")
+            .build();
 
         return Stream.of(
             givenCaseDataIsMissedThenDefaultToTaylorHouseScenario,
             givenCaseDataIsPresentThenReturnNameAndValueScenario,
             givenTaskAttributesForAdditionalPropertiesThenReturnNameAndValueScenario,
             givenDueDateAndTimeScenario,
-            givenDueDateOriginScenario
+            givenDueDateOriginScenario,
+            givenValidateMandatoryTaskAttributesDuringReconfigurationScenario,
+            givenValidateMandatoryTaskAttributesDuringInitiationScenario
         );
     }
 
@@ -434,8 +483,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("workType"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("workType"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -450,7 +499,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
     @ParameterizedTest
     @CsvSource({
-        "processApplication", "reviewSpecificAccessRequestLegalOps"
+        "processApplication",
+        "reviewSpecificAccessRequestLegalOps"
     })
     void when_given_task_type_then_return_Legal_Operations(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
@@ -465,8 +515,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("roleCategory"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("roleCategory"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -498,8 +548,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("additionalProperties_roleAssignmentId"))
+            .toList();
 
         assertThat(dmnResults.size(), is(1));
 
@@ -530,8 +580,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("additionalProperties_roleAssignmentId"))
+            .toList();
 
         assertThat(dmnResults.size(), is(1));
 
@@ -560,8 +610,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("additionalProperties_roleAssignmentId"))
+            .toList();
 
         assertThat(dmnResults.size(), is(1));
 
@@ -577,7 +627,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     private void assertDescriptionField(String taskType, DmnDecisionTableResult dmnDecisionTableResult) {
         if ("reviewSpecificAccessRequestLegalOps".equals(taskType)) {
             List<Map<String, Object>> descriptionResultList = dmnDecisionTableResult.getResultList().stream()
-                .filter((r) -> r.containsValue("description"))
+                .filter(r -> r.containsValue("description"))
                 .toList();
             assertThat(descriptionResultList.size(), is(1));
             assertTrue(descriptionResultList.contains(Map.of(
@@ -597,8 +647,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("roleCategory"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("roleCategory"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -618,8 +668,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("roleCategory"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("roleCategory"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -639,8 +689,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("workType"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("workType"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -651,12 +701,12 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         )));
 
         List<Map<String, Object>> roleCategoryResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("roleCategory"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("roleCategory"))
+            .toList();
 
         assertTrue(roleCategoryResultList.contains(Map.of(
             "name", "roleCategory",
-            "value", "CTSC",
+            "value", CTSC,
             "canReconfigure", true
         )));
 
@@ -671,8 +721,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("workType"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("workType"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -683,8 +733,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         )));
 
         List<Map<String, Object>> roleCategoryResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("roleCategory"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("roleCategory"))
+            .toList();
 
         assertTrue(roleCategoryResultList.contains(Map.of(
             "name", "roleCategory",
@@ -703,8 +753,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("workType"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("workType"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -725,8 +775,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("roleCategory"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("roleCategory"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -747,8 +797,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> workTypeResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("workType"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("workType"))
+            .toList();
 
         assertThat(workTypeResultList.size(), is(1));
 
@@ -759,8 +809,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         )));
 
         List<Map<String, Object>> roleCategoryResultList = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("roleCategory"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("roleCategory"))
+            .toList();
 
         assertTrue(roleCategoryResultList.contains(Map.of(
             "name", "roleCategory",
@@ -940,8 +990,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("additionalProperties_roleAssignmentId"))
+            .toList();
 
         assertThat(dmnResults.size(), is(1));
 
@@ -970,8 +1020,8 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue("additionalProperties_roleAssignmentId"))
-            .collect(Collectors.toList());
+            .filter(r -> r.containsValue("additionalProperties_roleAssignmentId"))
+            .toList();
 
         assertThat(dmnResults.size(), is(1));
 
@@ -1011,9 +1061,9 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> (r.get("name").toString().startsWith("additionalProperties")
+            .filter(r -> (r.get("name").toString().startsWith("additionalProperties")
                 || r.get("name").toString().equals("roleCategory")))
-            .collect(Collectors.toList());
+            .toList();
 
         assertThat(dmnResults.size(), is(9));
 
@@ -1059,7 +1109,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         )));
         existingvalueMap = new HashMap<>();
         existingvalueMap.put("name", "roleCategory");
-        existingvalueMap.put("value", null);
+        existingvalueMap.put("value", "ADMIN");
         existingvalueMap.put("canReconfigure", true);
 
         assertTrue(dmnResults.contains(existingvalueMap));
@@ -1091,11 +1141,11 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.get("name").toString().equals("title")
+            .filter(r -> r.get("name").toString().equals("title")
                     || r.get("name").toString().equals("roleCategory")
                     || r.get("name").toString().equals("dueDate")
                     || r.get("name").toString().equals("additionalProperties_key1"))
-            .collect(Collectors.toList());
+            .toList();
 
         assertThat(dmnResults.size(), is(4));
 
@@ -1174,7 +1224,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
     private List<Map<String, Object>> getMatchingOutput(DmnDecisionTableResult dmnDecisionTableResult, String key) {
         List<Map<String, Object>> output = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.containsValue(key)).toList();
+            .filter(r -> r.containsValue(key)).toList();
         log.info("output value: {}", output);
         return output;
     }
@@ -1224,7 +1274,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         getExpectedValue(rules, "locationName", scenario.getExpectedLocationNameValue());
         getExpectedValue(rules, "caseManagementCategory", scenario.getExpectedCaseManagementCategoryValue());
 
-        if (!Objects.isNull(scenario.getTaskAttributes())
+        if (!Objects.isNull(scenario.getTaskAttributes()) && !Objects.isNull(scenario.taskAttributes.get("taskType"))
             && StringUtils.isNotBlank(scenario.taskAttributes.get("taskType").toString())) {
             Optional.ofNullable(scenario.getExpectedWorkType())
                 .ifPresent(key -> getExpectedValue(rules, "workType", key));

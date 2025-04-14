@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
-  <suppress until = "2024-08-09">
-    <notes>
-      jackson-core- is now at the latest 2.17.1, but showing as a false positive still
-    </notes>
-    <cve>CVE-2022-45688</cve>
-    <cve>CVE-2023-5072</cve>
-  </suppress>
 </suppressions>
 

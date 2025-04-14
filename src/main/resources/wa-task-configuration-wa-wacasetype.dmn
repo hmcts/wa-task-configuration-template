@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.15.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.15.0">
   <decision id="wa-task-configuration-wa-wacasetype" name="Task configuration DMN" camunda:historyTimeToLive="P90D">
+    <informationRequirement id="InformationRequirement_0d9g22c">
+      <requiredDecision href="#Decision_0p6b5dq" />
+    </informationRequirement>
     <decisionTable id="DecisionTable_14cx079" hitPolicy="RULE ORDER">
       <input id="InputClause_1gxyo7f" label="CCD Case Data" camunda:inputVariable="caseData">
         <inputExpression id="LiteralExpression_0mra7c4" typeRef="string">
@@ -136,7 +139,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1a8bdg5">
-          <text>"processApplication","reviewAppealSkeletonArgument","followUpOverdueRespondentEvidence"</text>
+          <text>"processApplication","reviewAppealSkeletonArgument","followUpOverdueRespondentEvidence","validateMandatoryTaskAttributesDuringInitiation","validateMandatoryTaskAttributesDuringReconfiguration","functionalTestTask1","calculateDueDate","endToEndTask","reconfigTaskAttributesTask","followUpOverdue","functionalTestTask2","reviewTheAppeal","secondTask"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tv7w74">
           <text>"workType"</text>
@@ -153,7 +156,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1uh9kju">
-          <text>"reviewSpecificAccessRequestJudiciary","reviewSpecificAccessRequestLegalOps","reviewSpecificAccessRequestAdmin","reviewSpecificAccessRequestJudiciary1","reviewSpecificAccessRequestJudiciary2"</text>
+          <text>"reviewSpecificAccessRequestJudiciary","reviewSpecificAccessRequestLegalOps","reviewSpecificAccessRequestAdmin","reviewSpecificAccessRequestJudiciary1","reviewSpecificAccessRequestJudiciary2","followUpOverdueReasonsForAppeal"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1pytknt">
           <text>"workType"</text>
@@ -170,7 +173,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_05lncbx">
-          <text>"processApplication","reviewSpecificAccessRequestLegalOps","processRequestTaskId","followUpOverdueRespondentEvidence"</text>
+          <text>"processApplication","reviewSpecificAccessRequestLegalOps","processRequestTaskId","followUpOverdueRespondentEvidence","functionalTestTask1","calculateDueDate","endToEndTask","followUpOverdue","functionalTestTask2","reviewTheAppeal","firstTask","followUpOverdueReasonsForAppeal"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0h44xpe">
           <text>"roleCategory"</text>
@@ -179,6 +182,23 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text>"LEGAL_OPERATIONS"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_01l3oah">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_18e6zkl">
+        <inputEntry id="UnaryTests_18m0h1t">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1x4oxz7">
+          <text>"validateMandatoryTaskAttributesDuringReconfiguration"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17a2s7m">
+          <text>"roleCategory"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gwb5dj">
+          <text>if (taskAttributes != null and taskAttributes.reconfigureRequestTime != null) then "" else "LEGAL_OPERATIONS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1u52quo">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -1737,7 +1757,7 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text>"roleCategory"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_03zhe49">
-          <text>if (taskAttributes != null and taskAttributes.roleCategory != null) then null else "JUDICIARY"</text>
+          <text>if (taskAttributes != null and taskAttributes.roleCategory != null) then "ADMIN" else "JUDICIARY"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0n1nkzv">
           <text>true</text>
@@ -1951,10 +1971,28 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
       </rule>
     </decisionTable>
   </decision>
+  <decision id="Decision_0p6b5dq" name="taskAttributes">
+    <variable id="InformationItem_0kmpo68" name="taskAttributeTest" typeRef="string" />
+    <literalExpression id="LiteralExpression_1vyrbot">
+      <text>{
+  "__prefix" : "__processCategory__orderId_",
+  "__attribute_entries" : get entries(taskAttributes),
+  "__nullable_order_id" : for __item in __attribute_entries return if starts with(__item.key, __prefix) then substring(__item.key, string length(__prefix) + 1) else null[1]
+}.__nullable_order_id</text>
+    </literalExpression>
+  </decision>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="DMNDiagram_1ifewa3">
       <dmndi:DMNShape id="DMNShape_0ijg0or" dmnElementRef="wa-task-configuration-wa-wacasetype">
         <dc:Bounds height="80" width="180" x="150" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_07oolil" dmnElementRef="InformationRequirement_0d9g22c">
+        <di:waypoint x="430" y="120" />
+        <di:waypoint x="350" y="120" />
+        <di:waypoint x="330" y="120" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1cswtv2" dmnElementRef="Decision_0p6b5dq">
+        <dc:Bounds height="80" width="180" x="430" y="80" />
       </dmndi:DMNShape>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>

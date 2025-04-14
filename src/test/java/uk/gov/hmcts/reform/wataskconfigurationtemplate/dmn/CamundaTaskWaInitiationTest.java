@@ -19,11 +19,8 @@ import uk.gov.hmcts.reform.wataskconfigurationtemplate.utils.DelayUntilRequest;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -36,7 +33,7 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
     public static void initialization() {
-        CURRENT_DMN_DECISION_TABLE = WA_TASK_INITIATION_WA_WACASETYPE;
+        currentDmnDecisionTable = WA_TASK_INITIATION_WA_WACASETYPE;
     }
 
     @ParameterizedTest
@@ -121,16 +118,8 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
         ), equalTo(delayUntil));
     }
 
-    private static LinkedHashMap<String, Object> sortMap(Map<String, Object> delayUntilIntervalDays) {
-        return delayUntilIntervalDays.entrySet().stream()
-            .sorted(Comparator.comparing(Map.Entry::getKey))
-            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-    }
-
     public static Stream<Arguments> scenarioProvider() {
 
-        String delayUntil = LocalDateTime.now().plusDays(2).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-            + "T18:00";
         return Stream.of(
             Arguments.of(
                 "sendDirection", "", "protection",
