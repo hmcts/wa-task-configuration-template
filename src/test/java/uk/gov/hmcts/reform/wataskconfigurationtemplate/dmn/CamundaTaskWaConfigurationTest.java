@@ -1198,7 +1198,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .filter((r) -> r.get("name").toString().equals("title")
                 || r.get("name").toString().equals("roleCategory")
                 || r.get("name").toString().equals("workType"))
-            .collect(Collectors.toList());
+            .toList();
 
         assertThat(dmnResults.size(), is(3));
 
