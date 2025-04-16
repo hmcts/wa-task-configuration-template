@@ -139,7 +139,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1a8bdg5">
-          <text>"processApplication","reviewAppealSkeletonArgument","followUpOverdueRespondentEvidence","validateMandatoryTaskAttributesDuringInitiation","validateMandatoryTaskAttributesDuringReconfiguration","functionalTestTask1","calculateDueDate","endToEndTask","reconfigTaskAttributesTask","followUpOverdue","functionalTestTask2","reviewTheAppeal","secondTask"</text>
+          <text>"processApplication","reviewAppealSkeletonArgument","followUpOverdueRespondentEvidence","validateMandatoryTaskAttributesDuringInitiation","validateMandatoryTaskAttributesDuringReconfiguration","functionalTestTask1","calculateDueDate","endToEndTask","followUpOverdue","functionalTestTask2","reviewTheAppeal","secondTask"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tv7w74">
           <text>"workType"</text>

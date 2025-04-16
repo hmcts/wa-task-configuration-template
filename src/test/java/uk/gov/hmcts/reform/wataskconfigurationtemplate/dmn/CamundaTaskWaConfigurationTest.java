@@ -46,7 +46,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(110));
+        assertThat(logic.getRules().size(), is(111));
     }
 
     @SuppressWarnings("checkstyle:indentation")
@@ -1198,7 +1198,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .filter((r) -> r.get("name").toString().equals("title")
                 || r.get("name").toString().equals("roleCategory")
                 || r.get("name").toString().equals("workType"))
-            .collect(Collectors.toList());
+            .toList();
 
         assertThat(dmnResults.size(), is(3));
 
