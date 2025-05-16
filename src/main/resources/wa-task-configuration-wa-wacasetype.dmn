@@ -196,7 +196,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text>"roleCategory"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0gwb5dj">
-          <text>if (taskAttributes != null and taskAttributes.reconfigureRequestTime != null) then "" else "LEGAL_OPERATIONS"</text>
+          <text>if (taskAttributes != null and taskAttributes.workType != null) then "" else "LEGAL_OPERATIONS"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1u52quo">
           <text>true</text>
