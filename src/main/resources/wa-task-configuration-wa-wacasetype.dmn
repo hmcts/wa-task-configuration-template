@@ -139,7 +139,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1a8bdg5">
-          <text>"processApplication","reviewAppealSkeletonArgument","followUpOverdueRespondentEvidence","validateMandatoryTaskAttributesDuringInitiation","validateMandatoryTaskAttributesDuringReconfiguration","functionalTestTask1","calculateDueDate","endToEndTask","reconfigTaskAttributesTask","followUpOverdue","functionalTestTask2","reviewTheAppeal","secondTask"</text>
+          <text>"processApplication","reviewAppealSkeletonArgument","followUpOverdueRespondentEvidence","validateMandatoryTaskAttributesDuringInitiation","validateMandatoryTaskAttributesDuringReconfiguration","functionalTestTask1","calculateDueDate","endToEndTask","followUpOverdue","functionalTestTask2","reviewTheAppeal","secondTask"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tv7w74">
           <text>"workType"</text>
@@ -196,7 +196,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text>"roleCategory"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0gwb5dj">
-          <text>if (taskAttributes != null and taskAttributes.reconfigureRequestTime != null) then "" else "LEGAL_OPERATIONS"</text>
+          <text>if (taskAttributes != null and taskAttributes.workType != null) then "" else "LEGAL_OPERATIONS"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1u52quo">
           <text>true</text>
@@ -1774,7 +1774,7 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text>"title"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_147r7my">
-          <text>if (taskAttributes != null and taskAttributes.reconfigureRequestTime != null) then ("name - " + taskAttributes.name + " - state - "+ taskAttributes.taskState + " - category - " + taskAttributes.caseManagementCategory ) else taskAttributes.name</text>
+          <text>if (taskAttributes != null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then ("name - " + taskAttributes.name + " - state - "+ taskAttributes.taskState + " - category - " + taskAttributes.caseManagementCategory ) else taskAttributes.name</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1grplcx">
           <text>true</text>
@@ -1791,7 +1791,7 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text>"dueDate"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zssrcl">
-          <text>if (taskAttributes != null and taskAttributes.reconfigureRequestTime != null) then (taskAttributes.dueDate) else caseData.nextHearingDate</text>
+          <text>if (taskAttributes != null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then (taskAttributes.dueDate) else caseData.nextHearingDate</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_191lmu4">
           <text>true</text>
@@ -1808,27 +1808,113 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text>"roleCategory"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ox46ge">
-          <text>if (taskAttributes != null and taskAttributes.reconfigureRequestTime != null) then ("name - " + taskAttributes.name + " - state - "+ taskAttributes.taskState + " - category - " + taskAttributes.caseManagementCategory ) else "CTSC"</text>
+          <text>if (taskAttributes != null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then ("name - " + taskAttributes.name + " - state - "+ taskAttributes.taskState + " - category - " + taskAttributes.caseManagementCategory ) else "CTSC"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_04koa1v">
           <text></text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0sd5q7s">
-        <inputEntry id="UnaryTests_1ma9i3h">
+      <rule id="DecisionRule_1ike20b">
+        <inputEntry id="UnaryTests_0zoagxz">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_14040yd">
+        <inputEntry id="UnaryTests_1tr0yl9">
           <text>"reconfigTaskAttributesTask"</text>
         </inputEntry>
-        <outputEntry id="LiteralExpression_0ycu0e0">
+        <outputEntry id="LiteralExpression_0hnw2hk">
+          <text>"workType"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0uzgmdb">
+          <text>if (taskAttributes != null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then ("access_requests") else "hearing_work"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1onv4yn">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01f8thf">
+        <inputEntry id="UnaryTests_1hvmpr3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xe68e0">
+          <text>"reconfigTaskAttributesTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03pa0o8">
           <text>"additionalProperties_roleAssignmentId"</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_1clkfme">
+        <outputEntry id="LiteralExpression_0m8rp27">
           <text>if (taskAttributes != null and taskAttributes.roleAssignmentId != null) then taskAttributes.roleAssignmentId
 else if (taskAttributes != null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then taskAttributes.additionalProperties.roleAssignmentId else ""</text>
         </outputEntry>
-        <outputEntry id="LiteralExpression_0nbe9bc">
+        <outputEntry id="LiteralExpression_1s94e5o">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1omyzel">
+        <inputEntry id="UnaryTests_1xwtlz2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jdapd9">
+          <text>"reconfigTaskAttributesTask2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ubnthy">
+          <text>"title"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ep1zj0">
+          <text>if (taskAttributes.lastUpdatedUser != null or taskAttributes.taskName != null or taskAttributes.dueDateTime != null or taskAttributes.caseCategory != null or taskAttributes.securityClassification != null or taskAttributes.lastReconfigurationTime != null or taskAttributes.reconfigureRequestTime != null or taskAttributes.autoAssigned != null or taskAttributes.state != null or taskAttributes.taskSystem != null or taskAttributes.indexed != null or taskAttributes.lastUpdatedTimestamp != null or taskAttributes.taskRoleResources != null or taskAttributes.executionTypeCode != null or taskAttributes.businessContext != null or taskAttributes.terminationReason != null or taskAttributes.notes != null or taskAttributes.assignmentExpiry != null or taskAttributes.workTypeResource != null) then "updatedTitle" else "Title"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16c0v15">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1b1e5lq">
+        <inputEntry id="UnaryTests_1sdql36">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05rvnd6">
+          <text>"reconfigTaskAttributesTask2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0z8dwo4">
+          <text>"additionalProperties_roleAssignmentId"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1q3mczh">
+          <text>if (taskAttributes != null and taskAttributes.roleAssignmentId != null) then taskAttributes.roleAssignmentId
+else if (taskAttributes != null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then taskAttributes.additionalProperties.roleAssignmentId else ""</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1kcs87s">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1n0b4fy">
+        <inputEntry id="UnaryTests_0hylkyu">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0r42li1">
+          <text>"reconfigTaskAttributesTask2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1us201f">
+          <text>"roleCategory"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ttfo9v">
+          <text>if (taskAttributes != null and taskAttributes.workType != null ) then taskAttributes.workType else "CTSC"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1a86ryb">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0s6qylo">
+        <inputEntry id="UnaryTests_1jmfikf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lnvohg">
+          <text>"reconfigTaskAttributesTask2"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1tsfk4s">
+          <text>"workType"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0x31cof">
+          <text>"hearing_work"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1r75qw9">
           <text>true</text>
         </outputEntry>
       </rule>
@@ -1863,6 +1949,23 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text>if (taskAttributes != null and taskAttributes.__processCategory__Protection = true and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then "reconfigValue1" else if (taskAttributes != null and taskAttributes.__processCategory__Protection = null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then "reconfigValue2" else if (taskAttributes != null and taskAttributes.__processCategory__Protection = true) then "value1" else "value2"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0zi148z">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1v2djol">
+        <inputEntry id="UnaryTests_1capfrc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15fnsgl">
+          <text>"reconfigTaskAttributesTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1vp90ev">
+          <text>"securityClassification"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_180dp95">
+          <text>if (taskAttributes.securityClassification != "PUBLIC") then "PUBLIC" else "PRIVATE"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0c23fnc">
           <text>true</text>
         </outputEntry>
       </rule>
