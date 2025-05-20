@@ -7,7 +7,7 @@ plugins {
   id 'org.springframework.boot' version '3.3.4'
   id 'org.owasp.dependencycheck' version '10.0.4'
   id 'com.github.ben-manes.versions' version '0.51.0'
-  id 'org.sonarqube' version '6.0.1.5171'
+  id 'org.sonarqube' version '6.2.0.5505'
   id 'io.freefair.lombok' version '8.11'
 }
 
@@ -98,7 +98,7 @@ task tests {
 
 checkstyle {
   maxWarnings = 0
-  toolVersion = '10.20.2'
+  toolVersion = '10.23.1'
   getConfigDirectory().set(new File(rootDir, 'config/checkstyle'))
 }
 
