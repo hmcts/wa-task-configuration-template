@@ -8,7 +8,7 @@ plugins {
   id 'org.owasp.dependencycheck' version '10.0.4'
   id 'com.github.ben-manes.versions' version '0.51.0'
   id 'org.sonarqube' version '6.2.0.5505'
-  id 'io.freefair.lombok' version '8.11'
+  id 'io.freefair.lombok' version '8.13.1'
 }
 
 group = 'uk.gov.hmcts.reform'
