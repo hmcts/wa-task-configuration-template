@@ -1214,7 +1214,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         )));
         assertTrue(dmnResults.contains(Map.of(
             "name", "roleCategory",
-            "value", "hearing_work",
+            "value", "JUDICIAL",
             "canReconfigure", true
 
         )));
