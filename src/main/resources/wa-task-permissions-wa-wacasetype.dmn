@@ -144,7 +144,7 @@ else
       </rule>
       <rule id="DecisionRule_0xwt5yu">
         <inputEntry id="UnaryTests_18pne00">
-          <text>"processApplication","followUpOverdueRespondentEvidence","validateMandatoryTaskAttributesDuringInitiation","validateMandatoryTaskAttributesDuringReconfiguration"</text>
+          <text>"processApplication","followUpOverdueRespondentEvidence","validateMandatoryTaskAttributesDuringInitiation","validateMandatoryTaskAttributesDuringReconfiguration","taskAttributesWithDefaultValue"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_09g3r7q">
           <text></text>
@@ -503,7 +503,7 @@ else
       <rule id="DecisionRule_0ibd622">
         <description>Specific Access Case Manager task permissions</description>
         <inputEntry id="UnaryTests_102l2ov">
-          <text>"reviewSpecificAccessRequestJudiciary","reviewSpecificAccessRequestJudiciary1","reviewSpecificAccessRequestJudiciary2","reviewSpecificAccessRequestJudiciary3","reconfigTaskAttributesTask","reconfigTaskAttributesTask2"</text>
+          <text>"reviewSpecificAccessRequestJudiciary","reviewSpecificAccessRequestJudiciary1","reviewSpecificAccessRequestJudiciary2","reviewSpecificAccessRequestJudiciary3","reconfigTaskAttributesTask","reconfigTaskAttributesTask2","taskAttributesWithDefaultValue"</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0un5dgg">
           <text></text>

@@ -1957,16 +1957,50 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text>-</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0i1ldcc">
-          <text>"reviewSpecificAccessRequestJudiciary2"</text>
+          <text>"taskAttributesWithDefaultValue"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0xqzjmu">
           <text>"title"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_08xzo7h">
-          <text>if (taskAttributes != null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then "" else "Title"</text>
+          <text>if (taskAttributes != null and taskAttributes.additionalProperties != null and taskAttributes.additionalProperties.roleAssignmentId != null) then "" else "Task Title"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0po38pc">
           <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1klfryk">
+        <inputEntry id="UnaryTests_1gg7ubr">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qa7tol">
+          <text>"taskAttributesWithDefaultValue"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1cnc4m7">
+          <text>"workType"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yxd95r">
+          <text>"hearing_work"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ecxxmr">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0cl330y">
+        <inputEntry id="UnaryTests_1mzi641">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19cmk4p">
+          <text>"taskAttributesWithDefaultValue"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gglf1u">
+          <text>"roleCategory"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0w653qj">
+          <text>"ADMIN"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bikeht">
+          <text>false</text>
         </outputEntry>
       </rule>
     </decisionTable>
