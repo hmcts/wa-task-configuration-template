@@ -46,7 +46,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     void if_this_test_fails_needs_updating_with_your_changes() {
         //The purpose of this test is to prevent adding new rows without being tested
         DmnDecisionTableImpl logic = (DmnDecisionTableImpl) decision.getDecisionLogic();
-        assertThat(logic.getRules().size(), is(111));
+        assertThat(logic.getRules().size(), is(113));
     }
 
     @SuppressWarnings("checkstyle:indentation")
@@ -153,6 +153,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
         assertThat(dmnDecisionTableResult.getResultList(), is(getExpectedValues(scenario)));
     }
+
 
     private static Stream<Scenario> nameAndValueScenarioProvider() {
         String expectedDueDate = ZonedDateTime.now().plusDays(2)
@@ -766,6 +767,50 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
     }
 
+
+    @ParameterizedTest
+    @MethodSource("taskAttributesWithDefaultValueScenarioProvider")
+    void when_taskId_is_task_attributes_with_default_value_then_return_correct_values(Map<String,
+        Object> taskAttributeMap) {
+        VariableMap inputVariables = new VariableMapImpl();
+
+
+        inputVariables.putValue("taskAttributes", taskAttributeMap);
+        DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
+
+        List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
+            .filter((r) -> r.get("name").toString().equals("title")
+                || r.get("name").toString().equals("roleCategory")
+                || r.get("name").toString().equals("workType"))
+            .toList();
+
+        assertThat(dmnResults.size(), is(3));
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "roleCategory",
+            "value", "ADMIN",
+            "canReconfigure", false
+        )));
+        assertTrue(dmnResults.contains(Map.of(
+            "name", "workType",
+            "value", "hearing_work",
+            "canReconfigure", false
+        )));
+        if (taskAttributeMap.containsKey("additionalProperties")) {
+            assertTrue(dmnResults.contains(Map.of(
+                "name", "title",
+                "value", "",
+                "canReconfigure", true
+            )));
+        } else {
+            assertTrue(dmnResults.contains(Map.of(
+                "name", "title",
+                "value", "Task Title",
+                "canReconfigure", true
+            )));
+        }
+
+    }
+
     @Test
     void when_taskId_is_second_task_then_return_correct_values() {
         VariableMap inputVariables = new VariableMapImpl();
@@ -1329,6 +1374,16 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         rule.put("value", value);
         rule.put("canReconfigure", true);
         rules.add(rule);
+    }
+
+    private static Stream<Map<String, Object>> taskAttributesWithDefaultValueScenarioProvider() {
+        return Stream.of(
+            Map.of("taskType", "taskAttributesWithDefaultValue",
+                   "additionalProperties", Map.of(
+                       "roleAssignmentId", UUID.randomUUID().toString()
+                   )),
+            Map.of("taskType", "taskAttributesWithDefaultValue")
+        );
     }
 
 }
