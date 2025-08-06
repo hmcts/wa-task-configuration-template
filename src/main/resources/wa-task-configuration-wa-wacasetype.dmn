@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.15.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="wa-configuration-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.32.0">
   <decision id="wa-task-configuration-wa-wacasetype" name="Task configuration DMN" camunda:historyTimeToLive="P90D">
     <informationRequirement id="InformationRequirement_0d9g22c">
       <requiredDecision href="#Decision_0p6b5dq" />
@@ -1757,7 +1757,7 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text>"roleCategory"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_03zhe49">
-          <text>if (taskAttributes != null and taskAttributes.roleCategory != null) then "ADMIN" else "JUDICIARY"</text>
+          <text>if (taskAttributes != null and taskAttributes.roleCategory != null) then "ADMIN" else "JUDICIAL"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0n1nkzv">
           <text>true</text>
@@ -1895,7 +1895,7 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text>"roleCategory"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1ttfo9v">
-          <text>if (taskAttributes != null and taskAttributes.workType != null ) then taskAttributes.workType else "CTSC"</text>
+          <text>if (taskAttributes != null and taskAttributes.workType != null ) then "JUDICIAL" else "CTSC"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1a86ryb">
           <text>true</text>
