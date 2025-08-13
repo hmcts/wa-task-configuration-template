@@ -314,7 +314,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
             .expectedNextHearingId("")
             .expectedNextHearingDate("")
             .expectedDueDateTime("20:00")
-            .expectedDueDateOrigin("2022-10-13T18:00")
+            .expectedDueDateOrigin("2025-10-13T18:00")
             .expectedDueDateIntervalDays("8")
             .expectedDueDateNonWorkingCalendar("https://www.gov.uk/bank-holidays/england-and-wales.json")
             .expectedDueDateNonWorkingDaysOfWeek("SATURDAY,SUNDAY")
@@ -893,7 +893,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         )));
         assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateOrigin").contains(Map.of(
             "name", "dueDateOrigin",
-            "value", "2022-12-23T18:00"
+            "value", "2025-12-23T18:00"
         )));
         assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateIntervalDays").contains(Map.of(
             "name", "dueDateIntervalDays",
@@ -955,7 +955,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         )));
         assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateOrigin").contains(Map.of(
             "name", "dueDateOrigin",
-            "value", "2022-12-01T18:00"
+            "value", "2025-12-01T18:00"
         )));
         assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateIntervalDays").contains(Map.of(
             "name", "dueDateIntervalDays",
@@ -992,7 +992,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
 
         assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateOrigin").contains(Map.of(
             "name", "dueDateOrigin",
-            "value", "2022-12-23T18:00"
+            "value", "2025-12-23T18:00"
         )));
         assertTrue(getMatchingOutput(dmnDecisionTableResult, "dueDateIntervalDays").contains(Map.of(
             "name", "dueDateIntervalDays",
