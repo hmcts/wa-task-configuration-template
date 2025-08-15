@@ -107,7 +107,7 @@ class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
             .delayUntilIntervalDays(4)
             .delayUntilNonWorkingCalendar("https://www.gov.uk/bank-holidays/england-and-wales.json")
             .delayUntilSkipNonWorkingDays(true)
-            .delayUntilOrigin("2022-12-23T18:00")
+            .delayUntilOrigin("2026-12-23T18:00")
             .delayUntilNonWorkingDaysOfWeek("SATURDAY,SUNDAY")
             .delayUntilMustBeWorkingDay("No")
             .build();
