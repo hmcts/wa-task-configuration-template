@@ -32,7 +32,7 @@ import static uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTable.W
 class CamundaTaskWaInitiationTest extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
-    public static void initialization() {
+    static void initialization() {
         currentDmnDecisionTable = WA_TASK_INITIATION_WA_WACASETYPE;
     }
 

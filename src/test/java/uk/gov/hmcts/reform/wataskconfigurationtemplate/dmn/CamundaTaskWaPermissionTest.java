@@ -24,7 +24,7 @@ import static uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTable.W
 class CamundaTaskWaPermissionTest extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
-    public static void initialization() {
+    static void initialization() {
         currentDmnDecisionTable = WA_TASK_PERMISSIONS_WA_WACASETYPE;
     }
 
