@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.15.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-permissions-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.0.0">
   <decision id="wa-task-permissions-wa-wacasetype" name="Permissions DMN" camunda:historyTimeToLive="P90D">
     <decisionTable id="DecisionTable_1pr5oic" hitPolicy="RULE ORDER">
       <input id="InputClause_1t6frhu" label="Task Type" camunda:inputVariable="taskType">
@@ -162,7 +162,7 @@ else
           <text>"LEGAL_OPERATIONS"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0jblid5">
-          <text></text>
+          <text>"SKILL:AB01:PROCESS_APP_001,SKILL:AB01:PROCESS_APP_002,SKILL:AB01:PROCESS_APP_003"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1g74z0i">
           <text>2</text>
@@ -191,7 +191,7 @@ else
           <text>"LEGAL_OPERATIONS"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_07p5iot">
-          <text></text>
+          <text>"SKILL:AB01:PROCESS_APP_001,SKILL:AB01:PROCESS_APP_002,SKILL:AB01:PROCESS_APP_004,SKILL:AB01:PROCESS_APP_005"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_17lqk2p">
           <text>2</text>
