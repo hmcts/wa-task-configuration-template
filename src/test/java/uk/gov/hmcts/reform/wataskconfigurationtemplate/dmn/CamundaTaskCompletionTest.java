@@ -26,7 +26,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 class CamundaTaskCompletionTest extends DmnDecisionTableBaseUnitTest {
 
     @BeforeAll
-    public static void initialization() {
+    static void initialization() {
         currentDmnDecisionTable = DmnDecisionTable.WA_TASK_COMPLETION_WA_WACASETYPE;
     }
 

@@ -38,7 +38,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     public static final String CTSC = "CTSC";
 
     @BeforeAll
-    public static void initialization() {
+    static void initialization() {
         currentDmnDecisionTable = WA_TASK_CONFIGURATION_WA_WACASETYPE;
     }
 
@@ -779,7 +779,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.get("name").toString().equals("title")
+            .filter(r -> r.get("name").toString().equals("title")
                 || r.get("name").toString().equals("roleCategory")
                 || r.get("name").toString().equals("workType"))
             .toList();
@@ -1223,7 +1223,6 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
     })
     void should_reconfigure_from_updated_task_attributes_ignore_not_required_db_attributes(String taskType) {
         VariableMap inputVariables = new VariableMapImpl();
-        String roleAssignmentId = UUID.randomUUID().toString();
         inputVariables.putValue("caseData", Map.of("nextHearingDate", "2022-12-12T16:00"));
         inputVariables.putValue("taskAttributes",
                                 Map.of("taskId", "1234",
@@ -1240,7 +1239,7 @@ class CamundaTaskWaConfigurationTest extends DmnDecisionTableBaseUnitTest {
         DmnDecisionTableResult dmnDecisionTableResult = evaluateDmnTable(inputVariables);
 
         List<Map<String, Object>> dmnResults = dmnDecisionTableResult.getResultList().stream()
-            .filter((r) -> r.get("name").toString().equals("title")
+            .filter(r -> r.get("name").toString().equals("title")
                 || r.get("name").toString().equals("roleCategory")
                 || r.get("name").toString().equals("workType"))
             .toList();
