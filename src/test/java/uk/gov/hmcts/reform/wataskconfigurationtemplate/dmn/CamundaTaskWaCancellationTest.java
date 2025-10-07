@@ -21,7 +21,7 @@ import static uk.gov.hmcts.reform.wataskconfigurationtemplate.DmnDecisionTable.W
 
 class CamundaTaskWaCancellationTest extends DmnDecisionTableBaseUnitTest {
     @BeforeAll
-    public static void initialization() {
+    static void initialization() {
         currentDmnDecisionTable = WA_TASK_CANCELLATION_WA_WACASETYPE;
     }
 
