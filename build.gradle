@@ -22,30 +22,27 @@ java {
 
 sourceSets {
   functionalTest {
-    java {
-      compileClasspath += main.output
-      runtimeClasspath += main.output
-      srcDir file('src/functionalTest/java')
-    }
+    java.srcDir file('src/functionalTest/java')
     resources.srcDir file('src/functionalTest/resources')
+
+    compileClasspath += sourceSets.main.output
+    runtimeClasspath += sourceSets.main.output
   }
 
   integrationTest {
-    java {
-      compileClasspath += main.output
-      runtimeClasspath += main.output
-      srcDir file('src/integrationTest/java')
-    }
+    java.srcDir file('src/integrationTest/java')
     resources.srcDir file('src/integrationTest/resources')
+
+    compileClasspath += sourceSets.main.output
+    runtimeClasspath += sourceSets.main.output
   }
 
   smokeTest {
-    java {
-      compileClasspath += main.output
-      runtimeClasspath += main.output
-      srcDir file('src/smokeTest/java')
-    }
+    java.srcDir file('src/smokeTest/java')
     resources.srcDir file('src/smokeTest/resources')
+
+    compileClasspath += sourceSets.main.output
+    runtimeClasspath += sourceSets.main.output
   }
 }
 
