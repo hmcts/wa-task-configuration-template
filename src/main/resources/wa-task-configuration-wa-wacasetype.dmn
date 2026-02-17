@@ -139,7 +139,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1a8bdg5">
-          <text>"processApplication","reviewAppealSkeletonArgument","followUpOverdueRespondentEvidence","validateMandatoryTaskAttributesDuringInitiation","validateMandatoryTaskAttributesDuringReconfiguration","functionalTestTask1","calculateDueDate","endToEndTask","followUpOverdue","functionalTestTask2","reviewTheAppeal","secondTask"</text>
+          <text>"processApplication","reviewAppealSkeletonArgument","followUpOverdueRespondentEvidence","validateMandatoryTaskAttributesDuringInitiation","validateMandatoryTaskAttributesDuringReconfiguration","functionalTestTask1","calculateDueDate","endToEndTask","followUpOverdue","functionalTestTask2","reviewTheAppeal","secondTask","assigneeTestTask","incorrectRoleAssigneeTestTask","multipleAssigneeTestTask"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tv7w74">
           <text>"workType"</text>
@@ -173,7 +173,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_05lncbx">
-          <text>"processApplication","reviewSpecificAccessRequestLegalOps","processRequestTaskId","followUpOverdueRespondentEvidence","functionalTestTask1","calculateDueDate","endToEndTask","followUpOverdue","functionalTestTask2","reviewTheAppeal","firstTask","followUpOverdueReasonsForAppeal"</text>
+          <text>"processApplication","reviewSpecificAccessRequestLegalOps","processRequestTaskId","followUpOverdueRespondentEvidence","functionalTestTask1","calculateDueDate","endToEndTask","followUpOverdue","functionalTestTask2","reviewTheAppeal","firstTask","followUpOverdueReasonsForAppeal","assigneeTestTask","incorrectRoleAssigneeTestTask","multipleAssigneeTestTask"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_0h44xpe">
           <text>"roleCategory"</text>
@@ -2001,6 +2001,57 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
         </outputEntry>
         <outputEntry id="LiteralExpression_0bikeht">
           <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00d41bc">
+        <inputEntry id="UnaryTests_05lppdk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_068mzqi">
+          <text>"assigneeTestTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1s5fyw1">
+          <text>"assignee"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0r8u50x">
+          <text>"dd8b6c25-6079-36f2-ba0c-afd189308b68"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jy6gm0">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02xkfep">
+        <inputEntry id="UnaryTests_1ajtbbe">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wdx2my">
+          <text>"multipleAssigneeTestTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12nzmw6">
+          <text>"assignee"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11cobyn">
+          <text>"682318bb-917d-3beb-82af-8037f9dca1a2"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04vihgb">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0bwm20i">
+        <inputEntry id="UnaryTests_1khaxb3">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tljsto">
+          <text>"incorrectRoleAssigneeTestTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1r7wd42">
+          <text>"assignee"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bujc2g">
+          <text>"4a7e1774-8a9f-300d-9cf2-f4471f004eda"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1caqho5">
+          <text></text>
         </outputEntry>
       </rule>
     </decisionTable>
