@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.0.0">
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="wa-initiation-definition" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.32.0">
   <decision id="wa-task-initiation-wa-wacasetype" name="Task initiation DMN" camunda:historyTimeToLive="P90D">
     <decisionTable id="DecisionTable_0jtevuc" hitPolicy="COLLECT">
       <input id="Input_1" label="Event Id" camunda:inputVariable="eventId">
@@ -962,6 +962,129 @@
         </outputEntry>
         <outputEntry id="LiteralExpression_0xr6b7c">
           <text>"endToEndTask"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17lhpac">
+        <inputEntry id="UnaryTests_1tot4hq">
+          <text>"assigneeTestTask"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lkutia">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19eepw5">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02q49u4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1hd6lnk">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1achdcu">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_135s55x">
+          <text>"assigneeTestTask"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02lqqnn">
+          <text>"Assignee Test Task"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vasaly">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sw2lls">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rnhy5l">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_093uqa7">
+          <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wifyed">
+          <text>"assigneeTestTask"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03u9a85">
+        <inputEntry id="UnaryTests_1v9xat6">
+          <text>"multipleAssigneeTestTask"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fd969x">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0877da2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17mcivo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19g7mf7">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0g9ws07">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1volf9b">
+          <text>"multipleAssigneeTestTask"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1j0v3a2">
+          <text>"Multiple Assignee Test Task"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0htq3gt">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gu1qye">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gymcce">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wd5coa">
+          <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08t4eef">
+          <text>"multipleAssigneeTestTask"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1763i9q">
+        <inputEntry id="UnaryTests_1ibl7de">
+          <text>"incorrectRoleAssigneeTestTask"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ywpnsa">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zvjqap">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r87lwl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05y0eby">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fgwkdm">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bv486h">
+          <text>"incorrectRoleAssigneeTestTask"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jed1iq">
+          <text>"Incorrect RoleAssignment Task Test"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1d94btm">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19jrpdp">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19496de">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1c44nho">
+          <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ckz7vt">
+          <text>"incorrectRoleAssigneeTestTask"</text>
         </outputEntry>
       </rule>
     </decisionTable>
