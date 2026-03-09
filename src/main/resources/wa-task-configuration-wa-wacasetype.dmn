@@ -139,7 +139,7 @@ else if caseData.appealType = "revocationOfProtection" then "Revocation" else ""
           <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1a8bdg5">
-          <text>"processApplication","reviewAppealSkeletonArgument","followUpOverdueRespondentEvidence","validateMandatoryTaskAttributesDuringInitiation","validateMandatoryTaskAttributesDuringReconfiguration","functionalTestTask1","calculateDueDate","endToEndTask","followUpOverdue","functionalTestTask2","reviewTheAppeal","secondTask","assigneeTestTask","incorrectRoleAssigneeTestTask","multipleAssigneeTestTask"</text>
+          <text>"processApplication","reviewAppealSkeletonArgument","followUpOverdueRespondentEvidence","validateMandatoryTaskAttributesDuringInitiation","validateMandatoryTaskAttributesDuringReconfiguration","functionalTestTask1","calculateDueDate","endToEndTask","followUpOverdue","functionalTestTask2","reviewTheAppeal","secondTask","assigneeTestTask","incorrectRoleAssigneeTestTask","multipleAssigneeTestTask","enforcementRoleCategoryTask"</text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1tv7w74">
           <text>"workType"</text>
@@ -2000,6 +2000,23 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text>"ADMIN"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_0bikeht">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ojzcmk">
+        <inputEntry id="UnaryTests_17t3rjq">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nnaqj9">
+          <text>"enforcementRoleCategoryTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1a5mz0k">
+          <text>"roleCategory"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0l8inmb">
+          <text>"ENFORCEMENT"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13n8wmh">
           <text>false</text>
         </outputEntry>
       </rule>
