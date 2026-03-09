@@ -1747,6 +1747,180 @@ else
           <text>false</text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1nuoktx">
+              <inputEntry id="UnaryTests_1pzgonb">
+                <text>"multipleAssigneeTestTask","assigneeTestTask"</text>
+              </inputEntry>
+              <inputEntry id="UnaryTests_0z4wocq">
+                <text></text>
+              </inputEntry>
+              <outputEntry id="LiteralExpression_0zvffkz">
+                <text>"categoryA"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_06y2z03">
+                <text>"tribunal-caseworker"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_1nkulfe">
+                <text>"Read,Execute"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_1ydtl2t">
+                <text>"LEGAL_OPERATIONS"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0pgj4r1">
+                <text>"testAuth"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0vjypth">
+                <text>1</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_03bypbk">
+                <text>false</text>
+              </outputEntry>
+            </rule>
+            <rule id="DecisionRule_1b29i91">
+              <inputEntry id="UnaryTests_0gzs7r3">
+                <text>"multipleAssigneeTestTask","assigneeTestTask"</text>
+              </inputEntry>
+              <inputEntry id="UnaryTests_1nwwcrk">
+                <text></text>
+              </inputEntry>
+              <outputEntry id="LiteralExpression_0wwc41m">
+                <text>"categoryA"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_013h5qv">
+                <text>"case-manager"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_00lz4ub">
+                <text>"Read,Manage,Unassign,Assign,Complete,Execute,Cancel"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0mhmyby">
+                <text>"LEGAL_OPERATIONS"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0fhapo5">
+                <text>"testAuth"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_1p3ptk7">
+                <text>1</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_1f4kqq3">
+                <text>false</text>
+              </outputEntry>
+            </rule>
+            <rule id="DecisionRule_0yljwjq">
+              <inputEntry id="UnaryTests_0ffoyir">
+                <text>"multipleAssigneeTestTask","assigneeTestTask"</text>
+              </inputEntry>
+              <inputEntry id="UnaryTests_0py7uzn">
+                <text></text>
+              </inputEntry>
+              <outputEntry id="LiteralExpression_1s0fnwu">
+                <text>"categoryA"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0e32wyd">
+                <text>"senior-tribunal-caseworker"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_1tzj8wi">
+                <text>"Read,Own"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0c6lh2a">
+                <text>"LEGAL_OPERATIONS"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_1an8n0h">
+                <text>"testAuth"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_1vzcoae">
+                <text>1</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0v9vvm7">
+                <text>false</text>
+              </outputEntry>
+            </rule>
+            <rule id="DecisionRule_1vzu6w0">
+              <inputEntry id="UnaryTests_1uy9erz">
+                <text>"incorrectRoleAssigneeTestTask"</text>
+              </inputEntry>
+              <inputEntry id="UnaryTests_0tm97hs">
+                <text></text>
+              </inputEntry>
+              <outputEntry id="LiteralExpression_0ijetz6">
+                <text>"categoryA"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0lvd5ce">
+                <text>"tribunal-caseworker"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_1ifsp8h">
+                <text>"Read,Execute"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0t9ayjk">
+                <text>"LEGAL_OPERATIONS"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_032vjga">
+                <text></text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0vt2388">
+                <text>1</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0kqw9ga">
+                <text>false</text>
+              </outputEntry>
+            </rule>
+            <rule id="DecisionRule_0v1c3ud">
+              <inputEntry id="UnaryTests_1jv1i2u">
+                <text>"incorrectRoleAssigneeTestTask"</text>
+              </inputEntry>
+              <inputEntry id="UnaryTests_1mh9vug">
+                <text></text>
+              </inputEntry>
+              <outputEntry id="LiteralExpression_12ar6pf">
+                <text>"categoryA"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0bqn1gw">
+                <text>"case-manager"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_048fgqq">
+                <text>"Read,Manage,Unassign,Assign,Complete,Execute,Cancel"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_1x3uv5z">
+                <text>"LEGAL_OPERATIONS"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0ukmkxz">
+                <text></text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_1orbvd5">
+                <text>1</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_11pmpgo">
+                <text>false</text>
+              </outputEntry>
+            </rule>
+            <rule id="DecisionRule_0fgf24l">
+              <inputEntry id="UnaryTests_05cxdod">
+                <text>"incorrectRoleAssigneeTestTask"</text>
+              </inputEntry>
+              <inputEntry id="UnaryTests_1yki56l">
+                <text></text>
+              </inputEntry>
+              <outputEntry id="LiteralExpression_1d0zv0q">
+                <text>"categoryA"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0gzcbcd">
+                <text>"senior-tribunal-caseworker"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0urg3br">
+                <text>"Read,Execute"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0xor48i">
+                <text>"LEGAL_OPERATIONS"</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0raen63">
+                <text></text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_0wvlsd8">
+                <text>1</text>
+              </outputEntry>
+              <outputEntry id="LiteralExpression_14t2m6o">
+                <text>false</text>
+              </outputEntry>
+            </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
