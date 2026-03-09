@@ -1006,46 +1006,128 @@
         </outputEntry>
       </rule>
       <rule id="DecisionRule_1763i9q">
-              <inputEntry id="UnaryTests_1ibl7de">
-                <text>"incorrectRoleAssigneeTestTask"</text>
-              </inputEntry>
-              <inputEntry id="UnaryTests_0ywpnsa">
-                <text></text>
-              </inputEntry>
-              <inputEntry id="UnaryTests_0zvjqap">
-                <text></text>
-              </inputEntry>
-              <inputEntry id="UnaryTests_1r87lwl">
-                <text></text>
-              </inputEntry>
-              <inputEntry id="UnaryTests_05y0eby">
-                <text></text>
-              </inputEntry>
-              <inputEntry id="UnaryTests_1fgwkdm">
-                <text></text>
-              </inputEntry>
-              <outputEntry id="LiteralExpression_0bv486h">
-                <text>"incorrectRoleAssigneeTestTask"</text>
-              </outputEntry>
-              <outputEntry id="LiteralExpression_1jed1iq">
-                <text>"Incorrect RoleAssignment Task Test"</text>
-              </outputEntry>
-              <outputEntry id="LiteralExpression_1d94btm">
-                <text></text>
-              </outputEntry>
-              <outputEntry id="LiteralExpression_19jrpdp">
-                <text></text>
-              </outputEntry>
-              <outputEntry id="LiteralExpression_19496de">
-                <text>2</text>
-              </outputEntry>
-              <outputEntry id="LiteralExpression_1c44nho">
-                <text>"caseProgression"</text>
-              </outputEntry>
-              <outputEntry id="LiteralExpression_0ckz7vt">
-                <text>"incorrectRoleAssigneeTestTask"</text>
-              </outputEntry>
-            </rule>
+        <inputEntry id="UnaryTests_1ibl7de">
+          <text>"incorrectRoleAssigneeTestTask"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ywpnsa">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zvjqap">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1r87lwl">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05y0eby">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fgwkdm">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0bv486h">
+          <text>"incorrectRoleAssigneeTestTask"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jed1iq">
+          <text>"Incorrect RoleAssignment Task Test"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1d94btm">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19jrpdp">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19496de">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1c44nho">
+          <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ckz7vt">
+          <text>"incorrectRoleAssigneeTestTask"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_158if5l">
+        <inputEntry id="UnaryTests_1ye1bml">
+          <text>"multipleAssigneeTestTask"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0xqaq22">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pmswox">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0lfpjjc">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b3g5tf">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08uhytz">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1n6glnl">
+          <text>"multipleAssigneeTestTask"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0h83luq">
+          <text>"Multiple Assignee Test Task"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jzzkeb">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1j3xkgx">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cm1ek5">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0v1ddq4">
+          <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hhfart">
+          <text>"multipleAssigneeTestTask"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0fpkabv">
+        <inputEntry id="UnaryTests_0e03tni">
+          <text>"assigneeTestTask"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ryjfyd">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cxw5v1">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09y2jvy">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0uuz72w">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1scco19">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04v39dc">
+          <text>"assigneeTestTask"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1v7jvf7">
+          <text>"Assignee Test Task"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gw0i37">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ckbkco">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01bj7s6">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04t3pqp">
+          <text>"caseProgression"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16qefsn">
+          <text>"assigneeTestTask"</text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <dmndi:DMNDI>
