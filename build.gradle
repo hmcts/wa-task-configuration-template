@@ -248,8 +248,8 @@ dependencies {
   implementation 'org.camunda.bpm:camunda-external-task-client:7.24.0'
   implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '9.0'
 
-  annotationProcessor 'org.projectlombok:lombok:1.18.42'
-  compileOnly 'org.projectlombok:lombok:1.18.42'
+  annotationProcessor 'org.projectlombok:lombok:1.18.44'
+  compileOnly 'org.projectlombok:lombok:1.18.44'
 
   testImplementation libraries.junit5
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', {
