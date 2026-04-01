@@ -2048,7 +2048,7 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text>"assignee"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_11cobyn">
-          <text>"682318bb-917d-3beb-82af-8037f9dca1a2","8b48c4bd-6281-32f8-a880-a3be29d3b952"</text>
+          <text>"682318bb-917d-3beb-82af-8037f9dca1a2"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_04vihgb">
           <text></text>
@@ -2068,6 +2068,23 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text>"4a7e1774-8a9f-300d-9cf2-f4471f004eda"</text>
         </outputEntry>
         <outputEntry id="LiteralExpression_1caqho5">
+          <text></text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03a42nm">
+        <inputEntry id="UnaryTests_0iucd1k">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0al3my7">
+          <text>"multipleAssigneeTestTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ok21v0">
+          <text>"assignee"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06tatk8">
+          <text>"8b48c4bd-6281-32f8-a880-a3be29d3b952"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08oy39w">
           <text></text>
         </outputEntry>
       </rule>
