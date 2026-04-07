@@ -207,7 +207,7 @@ def versions = [
   reformLogging   : '8.0.0',
   springDoc       : '2.8.16',
   camunda         : '7.24.0',
-  tomcat          : '10.1.53'
+  tomcat          : '10.1.54'
 
 ]
 
