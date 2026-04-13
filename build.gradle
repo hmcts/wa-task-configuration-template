@@ -5,7 +5,7 @@ plugins {
   id 'jacoco'
   id 'io.spring.dependency-management' version '1.1.7'
   id 'org.springframework.boot' version '3.5.13'
-  id 'org.owasp.dependencycheck' version '12.2.0'
+  id 'org.owasp.dependencycheck' version '12.2.1'
   id 'com.github.ben-manes.versions' version '0.53.0'
   id 'org.sonarqube' version '7.2.3.7755'
   id 'io.freefair.lombok' version '9.2.0'
@@ -205,7 +205,7 @@ def versions = [
   junit           : '6.0.3',
   junitPlatform   : '6.0.3',
   reformLogging   : '8.0.0',
-  springDoc       : '2.8.16',
+  springDoc       : '2.8.17',
   camunda         : '7.24.0',
   tomcat          : '10.1.54'
 
