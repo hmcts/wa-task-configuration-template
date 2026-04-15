@@ -2088,6 +2088,23 @@ else if (taskAttributes != null and taskAttributes.additionalProperties != null 
           <text></text>
         </outputEntry>
       </rule>
+      <rule id="DecisionRule_1ifwhd5">
+        <inputEntry id="UnaryTests_0izit8l">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0klncd6">
+          <text>"reconfigTaskAttributesTask"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1xp8ju3">
+          <text>"additionalProperties_processCategoryProtection"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tb8epq">
+          <text>if (taskAttributes != null and taskAttributes.__processCategory__Protection = true) then "true" else "false"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10zufzj">
+          <text></text>
+        </outputEntry>
+      </rule>
     </decisionTable>
   </decision>
   <decision id="Decision_0p6b5dq" name="taskAttributes">
