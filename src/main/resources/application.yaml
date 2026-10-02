@@ -5,6 +5,8 @@ management:
   endpoint:
     health:
       show-details: "always"
+      probes:
+        enabled: false
   endpoints:
     web:
       base-path: /
