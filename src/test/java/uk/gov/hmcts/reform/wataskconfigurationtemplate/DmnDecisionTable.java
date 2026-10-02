@@ -1,5 +1,6 @@
 package uk.gov.hmcts.reform.wataskconfigurationtemplate;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum DmnDecisionTable {
@@ -31,6 +32,7 @@ public enum DmnDecisionTable {
     private final String key;
     private final String fileName;
 
+    @JsonCreator
     DmnDecisionTable(String key, String fileName) {
         this.key = key;
         this.fileName = fileName;
